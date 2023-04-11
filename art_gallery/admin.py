@@ -16,6 +16,7 @@ class PostAdmin(SummernoteModelAdmin):
     def ban_posts(self, request, queryset):
         queryset.update(approved=False)
 
+
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
 
