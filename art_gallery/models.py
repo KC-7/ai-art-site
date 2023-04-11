@@ -12,10 +12,11 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField()
     post_image = CloudinaryField('image', default='placeholder')  # Placeholder to be removed...
-    excerpt = models.TextField(blank=True)
+    # excerpt = models.TextField(blank=True)  # To be removed
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=1)  # This makes user uploads public by default
     likes = models.ManyToManyField(User, related_name='image_likes', blank=True)
+    approved = models.BooleanField(default=True)
 
     class Meta:
         ordering = ['-created_on']
