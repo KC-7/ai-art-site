@@ -14,6 +14,10 @@ a {
     background-color: #c8c8c8;
 }
 
+.medium-bg {
+    background-color: #7d399c;
+}
+
 .dark-bg {
     background-color: #40005e;
 }
@@ -36,7 +40,7 @@ a {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #00ffff;
+    background-color: #00ffffb0;
 }
 
 .author {
@@ -81,7 +85,7 @@ a {
 
 .post-link {
     text-decoration: none;
-    color: #46006c;
+    color: #40005e;
 }
 
 .post-link:hover,
