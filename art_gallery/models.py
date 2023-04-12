@@ -6,12 +6,12 @@ STATUS = ((0, "Private"), (1, "Public"))
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=250, unique=True)
+    title = models.CharField(max_length=250, unique=True, blank=False, null=False)
     slug = models.SlugField(max_length=250, unique=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="image_posts")
     updated_on = models.DateTimeField(auto_now=True)
-    description = models.TextField()
-    post_image = CloudinaryField('image')
+    description = models.TextField(blank=False, null=False)
+    post_image = CloudinaryField('image', blank=False, null=False)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=1)  # This makes user uploads public by default
     likes = models.ManyToManyField(User, related_name='image_likes', blank=True)
