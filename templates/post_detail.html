@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <!-- Image Title -->
+            <div class="col-md-8 masthead-text">
+                <h1 class="post-title">{{ post.title }}</h1>
+            </div>
+            <!-- Uploader & Created Date -->
+            <div class="col-md-4 masthead-text">
+                <p class="post-subtitle">{{ post.creator }} | {{ post.created_date }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 card mb-4 mt-3 left top">
+            <!-- Uploaded Image -->
+            <img src="{{ post.post_image.url }}" width="100%">
+            <div class="card-body">
+                <!-- Image Description -->
+                <p class="card-text ">{{ post.description | safe }}</p>
+                <div class="row">
+                    <div class="col-1">
+                        <!-- Number of Likes -->
+                        <strong class="text-secondary"><i class="far fa-heart"></i> {{ post.likes }}</strong>
+                    </div>
+                    <div class="col-1">
+                        <!-- Number of Comments -->
+                        {% with comments.count as total_comments %}
+                        <strong class="text-secondary"><i class="far fa-comments"></i> {{ total_comments }}</strong>
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 card mb-4 mt-3 ">
+            <h3>Comments:</h3>
+            <div class="card-body">
+                <!-- Comments -->
+                {% for comment in comments %}
+                <div class="comments" style="padding: 10px;">
+                    <p class="font-weight-bold">
+                        <!-- Comment Author -->
+                        {{ comment.author }}
+                        <!-- Comment Created Date -->
+                        <span class=" text-muted font-weight-normal">
+                            {{ comment.created_date }}
+                        </span> wrote:
+                    </p>
+                    <!-- Comment Text -->
+                    {{ comment.body | linebreaks }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4 card mb-4 mt-3 ">
+            <div class="card-body">
+                <!-- Placeholder -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

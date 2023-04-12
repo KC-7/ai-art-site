@@ -8,10 +8,10 @@ STATUS = ((0, "Private"), (1, "Public"))
 class Post(models.Model):
     title = models.CharField(max_length=250, unique=True)
     slug = models.SlugField(max_length=250, unique=True)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="image_posts")
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="image_posts")
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField()
-    post_image = CloudinaryField('image', default='placeholder')  # Placeholder to be removed...
+    post_image = CloudinaryField('image')  # Placeholder to be removed..., default='placeholder'
     # excerpt = models.TextField(blank=True)  # To be removed
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=1)  # This makes user uploads public by default
