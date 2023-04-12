@@ -2,6 +2,10 @@ body {
     background-color: #F9FAFC;
 }
 
+a {
+    color: #00ffff;
+}
+
 .thin {
     font-weight: 300;
 }
@@ -36,7 +40,7 @@ body {
 }
 
 .author {
-    color: white;
+    color: darkblue;
     margin: 4px;
     text-transform: uppercase;
 }
