@@ -1,12 +1,24 @@
-from django.shortcuts import render, get_object_or_404, reverse
+import os
+import requests
+import openai
+import sys
+import cloudinary.uploader
+from django.utils.text import slugify
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
+from io import BytesIO
+from PIL import Image
+from .utils import generate_image_from_text
 from .models import Post
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, GenerateForm
+if os.path.isfile('env.py'):
+    import env
 
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 class PostList(generic.ListView):
     model = Post
@@ -96,4 +108,37 @@ class UploadForm(FormView):
 
     def get_success_url(self):
         return reverse('post_detail', args=[self.object.slug])
+
+
+class GenerateArt(FormView):
+    template_name = 'generate_art.html'
+    form_class = GenerateForm
+
+    def form_valid(self, form):
+        prompt = form.cleaned_data['prompt']
+        image_url = generate_image_from_text(prompt)
+        
+        response = requests.get(image_url)
+        image_io = BytesIO(response.content)
+        image = Image.open(image_io)
+        
+        output_io = BytesIO()
+        image.save(output_io, format="JPEG")
+        output_io.seek(0)
+
+        uploaded_image = cloudinary.uploader.upload(
+            output_io,
+            public_id=f"{slugify(prompt)}",
+            format="jpg",
+        )
+
+        post = Post()
+        post.title = f"Generation for: '{prompt}'"
+        post.description = f"AI-generated art based on the prompt: {prompt}. Created using onlineAI.art."
+        post.post_image = uploaded_image['public_id']  # Set the post_image field to the public_id returned by Cloudinary
+        post.creator = self.request.user
+        post.status = 1  # To make the post public by default
+        post.slug = slugify(post.title)
+        post.save()
+        return redirect('post_detail', slug=post.slug)
 

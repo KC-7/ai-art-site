@@ -22,3 +22,13 @@ class PostForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+
+class GenerateForm(forms.Form):
+    prompt = forms.CharField(
+        label='Enter your prompt here', max_length=1000,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. "An abstract painting of a sunset"'}),
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+

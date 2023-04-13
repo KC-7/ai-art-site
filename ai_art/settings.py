@@ -37,12 +37,14 @@ ALLOWED_HOSTS = ['ai-art-site.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    # Third Party Apps
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'django_summernote',
     'crispy_forms',
+    # My Apps
     'art_gallery',
 ]
 
