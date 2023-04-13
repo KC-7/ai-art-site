@@ -3,6 +3,7 @@ from requests.structures import CaseInsensitiveDict
 import json
 import os
 
+
 def generate_image_from_text(prompt):
     headers = CaseInsensitiveDict()
     headers["Content-Type"] = "application/json"

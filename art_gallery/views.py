@@ -20,6 +20,7 @@ if os.path.isfile('env.py'):
 
 openai.api_key = os.environ['OPENAI_API_KEY']
 
+
 class PostList(generic.ListView):
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -117,11 +118,11 @@ class GenerateArt(FormView):
     def form_valid(self, form):
         prompt = form.cleaned_data['prompt']
         image_url = generate_image_from_text(prompt)
-        
+
         response = requests.get(image_url)
         image_io = BytesIO(response.content)
         image = Image.open(image_io)
-        
+
         output_io = BytesIO()
         image.save(output_io, format="JPEG")
         output_io.seek(0)
@@ -141,4 +142,3 @@ class GenerateArt(FormView):
         post.slug = slugify(post.title)
         post.save()
         return redirect('post_detail', slug=post.slug)
-
