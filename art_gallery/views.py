@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
+from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class PostList(generic.ListView):
@@ -79,3 +81,19 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class UploadForm(FormView):
+    template_name = 'upload_form.html'
+    form_class = PostForm
+
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.creator = self.request.user
+        post.save()
+        self.object = post
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('post_detail', args=[self.object.slug])
+
