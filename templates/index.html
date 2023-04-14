@@ -40,7 +40,8 @@
                                 </p>
                                 <hr />
                                 <p class="card-text text-muted h6">
-                                    <strong>{{ post.created_on}}</strong><span class="right"><i class="far fa-heart"></i> {{ post.number_of_likes }}</span>                                    
+                                    <strong>{{ post.created_on}}</strong><span class="right"><i
+                                            class="far fa-heart"></i> {{ post.number_of_likes }}</span>
                                 </p>
                             </a>
                         </div>
@@ -58,17 +59,37 @@
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
+            {% if page_obj.number|add:"-2" > 0 %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link btn-custom">
-                    &laquo; ⬅️ PREV
+                <a href="?page=1" class="page-link btn-custom">
+                    &laquo; &laquo; FIRST
                 </a>
             </li>
             {% endif %}
+            {% if page_obj.has_previous %}
+            <li>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link btn-custom">
+                    &laquo; PREV
+                </a>
+            </li>
+            {% endif %}
+            <!-- Display current page number and total pages -->
+            <li class="align-self-center">
+                <span class="page-info">
+                    Page {{ page_obj.number }} of {{ paginator.num_pages }}
+                </span>
+            </li>
             {% if page_obj.has_next %}
             <li>
                 <a href="?page={{ page_obj.next_page_number }}" class="page-link btn-custom">
-                    NEXT ➡️ &raquo;
+                    NEXT &raquo;
+                </a>
+            </li>
+            {% endif %}
+            {% if paginator.num_pages|add:"-1" > page_obj.number %}
+            <li>
+                <a href="?page={{ paginator.num_pages }}" class="page-link btn-custom">
+                    LAST &raquo; &raquo;
                 </a>
             </li>
             {% endif %}

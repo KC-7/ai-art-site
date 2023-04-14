@@ -40,7 +40,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    font-weight: bolder;
 }
 
 .right {
@@ -134,7 +134,7 @@ a:hover {
 }
 
 .post-link:hover {
-    color: var(--col-4);
+    color: var(--col-2);
 }
 
 .post-title {
