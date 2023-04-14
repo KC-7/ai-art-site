@@ -3,12 +3,12 @@
 {% block title %}Upload Art{% endblock %}
 
 {% block content %}
-
-<h1>Upload a New Post</h1>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Upload Post</button>
-</form>
-
+<div class="form-container-left">
+  <h1>Upload a New Post</h1>
+  <form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-custom right">Upload Post</button>
+  </form>
+</div>
 {% endblock %}

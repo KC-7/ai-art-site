@@ -1,12 +1,56 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Generate Art{% endblock %}
 
 {% block content %}
+<div class="form-container">
   <h1>Generate Art</h1>
-  <form method="post">
+  <form method="post" id="generate-art-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Generate Art</button>
+    <button type="submit" class="btn btn-custom right" id="generate-art-btn">Generate Art</button>
   </form>
+  <!-- <div>
+    <strong>
+      <ul>
+        <li>Try saying xxxx.....</li>
+        <li>Try saying xxxx.....</li>
+        <li>Try saying xxxx.....</li>
+        <li>Try saying xxxx.....</li>
+        <li>Try saying xxxx.....</li>
+      </ul>
+    </strong>
+  </div> -->
+  <div class="loading-message hide">
+    <img src="{% static 'images/spinner.gif' %}" alt="Loading...">
+    <p>AI magic taking place 🧙‍♂️</p>
+    <p class="longer-than-expected hide">This is taking a little longer than expected... it'll be ready shortly...</p>
+    <p class="something-wrong hide">Uh oh, we are still trying but this is taking unusually long, try again!</p>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('generate-art-form');
+      const btn = document.getElementById('generate-art-btn');
+      const loadingMessage = document.querySelector('.loading-message');
+      const longerThanExpected = document.querySelector('.longer-than-expected');
+      const somethingWrong = document.querySelector('.something-wrong');
+
+      form.addEventListener('submit', function (event) {
+        btn.classList.add('hide');
+        btn.disabled = true;
+        loadingMessage.classList.remove('hide');
+
+        setTimeout(function () {
+          longerThanExpected.classList.remove('hide');
+        }, 3000);
+
+        setTimeout(function () {
+          somethingWrong.classList.remove('hide');
+        }, 30000);
+      });
+    });
+  </script>
+</div>
 {% endblock %}

@@ -1,34 +1,83 @@
+/* Color Palette */
+
+:root {
+    --col-1: #00B4D8;
+    --col-2: #7B2CBF;
+    --col-3: #008891;
+    --col-4: #FFC300;
+    --col-5: #D9A9FF;
+    --col-6: #3D3A6E;
+    --col-7: #A9A9A9;
+    --col-8: #F5F5F5;
+}
+
+/* ------------------------------------------------- General */
+
 body {
-    background-color: #F9FAFC;
+    background-color: var(--col-8);
+    font-family: Arial, sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrapper {
+    padding-bottom: 250px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+}
+
+.hide {
+    display: none;
 }
 
 a {
-    color: #00ffff;
+    color: var(--col-1);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .right {
     float: right;
 }
 
+/* .white-text {
+    color: var(--col-8);
+} */
+
 .thin {
     font-weight: 300;
 }
 
+.no-underline {
+    text-decoration: none;
+}
+
+/* ------------------------------------------------- Backgrounds */
+
 .light-bg {
-    background-color: #c8c8c8;
+    background-color: var(--col-7);
 }
 
 .medium-bg {
-    background-color: #7d399c;
+    background-color: var(--col-3);
 }
 
 .dark-bg {
-    background-color: #40005e;
+    background-color: var(--col-6);
 }
 
 .main-bg {
-    background-color: #fff;
+    background-color: var(--col-8);
 }
+
+/* ------------------------------------------------- Imange & Containers */
 
 .card {
     border: none;
@@ -58,78 +107,77 @@ a {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #00ffffb0;
+    background-color: var(--col-1);
+    opacity: 0.7;
+
+}
+
+/* ------------------------------------------------- Text */
+
+.nav-text {
+    color: var(--col-6);
+}
+
+.nav-link {
+    color: var(--col-2);
 }
 
 .author {
-    color: darkblue;
+    color: var(--col-6);
     margin: 4px;
     text-transform: uppercase;
 }
 
-/* .masthead {
-    margin-top: 10px;
-    overflow: hidden;
-    position: relative;
-    display: inline-block;
-    height: 33vh;
-    width: 100%;
-}
-
-.masthead-text {
-    background-color: #003975;
-    color: white;
-    position: relative;
-}
-
-.masthead-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.masthead-image:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 90%;
-    height: 100%;
-    width: 150%;
-    background: #ccddf0;
-    -webkit-transform: skew(15deg);
-    -moz-transform: skew(15deg);
-    transform: skew(15deg);
-    z-index: 100;
-} */
-
 .post-link {
     text-decoration: none;
-    color: #40005e;
+    color: var(--col-6);
 }
 
-.post-link:hover,
-.page-link {
-    color: #fc00ea;
+.post-link:hover {
+    color: var(--col-4);
 }
 
 .post-title {
     margin-top: 25px;
-    text-align: center;
 }
 
 .post-subtitle {
-    color: rgb(125, 125, 125);
+    color: var(--col-7);
     text-align: right;
 }
 
+.link {
+    color: var(--col-2);
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: var(--col-5);
+    text-decoration: underline;
+}
+
+.social-icons {
+    padding: 15px 10%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+/* ------------------------------------------------- Buttons */
+
 .btn-custom {
-    background-color: #05b0b0;
-    color: #fff;
+    background-color: var(--col-3);
+    color: var(--col-8);
+    border-radius: 10px;
 }
 
 .btn-custom:hover,
 .btn-custom:active {
-    background-color: #fff;
-    color: #6ae4e4;
+    background-color: var(--col-6);
+    color: var(--col-8);
+    text-decoration: none;
 }
 
 .download-image {
@@ -138,64 +186,84 @@ a {
     padding-bottom: 0;
 }
 
-.link {
-    color: #ff00ea;
-    text-decoration: none;
-}
-
-.link:hover,
-.link:active {
-    color: #46006c;
-    text-decoration: underline;
-}
-
 .btn-like {
-    color: #ff0000;
+    color: red;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #fc00ea;
+    color: var(--col-2);
     background: transparent;
     border: none;
 }
 
-
-
 /* ----------------------------------------------------- cre8ai.art Logo */
-
-.no-underline {
-    text-decoration: none;
-  }
 
 .logo-text {
     font-family: 'Pacifico', cursive;
     display: inline-block;
     transform: rotate(-5deg) translate(-3px, 3px);
-  }
-  
-  .logo-cre {
-    color: #ffca3a;
+}
+
+.logo-cre {
+    color: var(--col-4);
     transform: rotate(-20deg) translate(5px, 4px);
-  }
-  
-  .logo-eight {
-    color: #44b54a;
+}
+
+.logo-eight {
+    color: red;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 150%;
     font-weight: bold;
     transform: translate(3px, 5px);
-  }
-  
-  .logo-ai {
-    color: #fa1100;
+}
+
+.logo-ai {
+    color: var(--col-1);
     transform: rotate(20deg) translate(5px, -1px);
-  }
-  
-  .logo-art {
-    color: #00f7ff;
+}
+
+.logo-art {
+    color: var(--col-2);
     font-weight: bold;
     transform: rotate(-20deg) translate(-6px, 1px);
-  }
+}
+
+/* ----------------------------------------------------- Forms */
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.form-container h1,
+.form-container h3 {
+    margin-bottom: 1rem;
+}
+
+.form-container p {
+    text-align: center;
+}
+
+.form-container form {
+    width: 100%;
+}
+
+.form-container .btn-custom {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-container-left {
+    margin-top: 3rem;
+}
+
+.form-container-left .btn-custom {
+    margin-top: 1rem;
+    float: left;
+}

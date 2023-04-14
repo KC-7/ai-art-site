@@ -135,8 +135,8 @@ class GenerateArt(FormView):
 
         post = Post()
         post.title = f"Generation for: '{prompt}'"
-        post.description = f"AI-generated art based on the prompt: {prompt}. Created using onlineAI.art."
-        post.post_image = uploaded_image['public_id']  # Set the post_image field to the public_id returned by Cloudinary
+        post.description = f"AI-generated art based on the prompt: {prompt}. Created using cre8ai.art."
+        post.post_image = uploaded_image['public_id']  # Sets the post_image field to the public_id returned by Cloudinary
         post.creator = self.request.user
         post.status = 1  # To make the post public by default
         post.slug = slugify(post.title)

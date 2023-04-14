@@ -7,7 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>onlineAI.art | {% block title %} <!-- Page Title --> {% endblock %}</title>
+    <title>onlineAI.art | {% block title %}
+        <!-- Page Title --> {% endblock %}</title>
     <link rel="icon" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -18,42 +19,62 @@
 
 <body class="d-flex flex-column h-100 main-bg">
 
-    <header>
-        {% include 'header.html' %}
-    </header>
+    <div class="content-wrapper">
+        <header>
+            {% include 'header.html' %}
+        </header>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    {% for message in messages %}
                     <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
                         {{ message | safe }}
                         <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
 
-    <main class="container">
-        {% block content %}{% endblock %}
-    </main>
+        <main class="container">
+            {% block content %}{% endblock %}
+        </main>
+
+    </div>
 
     <footer>
         {% include 'footer.html' %}
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
 
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             let messages = document.getElementById("msg");
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }, 3000);
     </script>
+
+<script>
+    // Function to adjust padding-bottom based on footer height
+    function adjustContentWrapperPadding() {
+        const footer = document.querySelector('.footer');
+        const contentWrapper = document.querySelector('.content-wrapper');
+
+        const footerHeight = footer.offsetHeight;
+        contentWrapper.style.paddingBottom = footerHeight + 'px';
+    }
+
+    // Calls the function initially
+    adjustContentWrapperPadding();
+
+    // Calls the function when the window is resized
+    window.addEventListener('resize', adjustContentWrapperPadding);
+</script>
 
 </body>
 
