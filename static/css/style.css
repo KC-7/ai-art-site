@@ -49,7 +49,7 @@ a {
     text-transform: uppercase;
 }
 
-.masthead {
+/* .masthead {
     margin-top: 10px;
     overflow: hidden;
     position: relative;
@@ -81,7 +81,7 @@ a {
     -moz-transform: skew(15deg);
     transform: skew(15deg);
     z-index: 100;
-}
+} */
 
 .post-link {
     text-decoration: none;
@@ -142,26 +142,36 @@ a {
 
 /* ----------------------------------------------------- cre8ai.art Logo */
 
+.no-underline {
+    text-decoration: none;
+  }
+
 .logo-text {
     font-family: 'Pacifico', cursive;
+    display: inline-block;
+    transform: rotate(-5deg) translate(-3px, 3px);
   }
   
   .logo-cre {
     color: #ffca3a;
+    transform: rotate(-20deg) translate(5px, 4px);
   }
   
   .logo-eight {
     color: #44b54a;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: x-large;
+    font-size: 150%;
     font-weight: bold;
+    transform: translate(3px, 5px);
   }
   
   .logo-ai {
     color: #fa1100;
+    transform: rotate(20deg) translate(5px, -1px);
   }
   
   .logo-art {
     color: #00f7ff;
     font-weight: bold;
+    transform: rotate(-20deg) translate(-6px, 1px);
   }
