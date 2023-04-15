@@ -7,8 +7,8 @@
 <div class="col-12 mt-3 text-center">
     <h1>
         <div class="logo">
-            <span class="logo-text logo-cre">cre </span>
-            <span class="logo-text logo-eight"> 8</span><span class="logo-text logo-ai">ai</span>
+            <span class="logo-text logo-cre">cre</span><span class="logo-text logo-eight">8</span>
+            <span class="logo-text logo-ai">ai</span>
             <span class="logo-text logo-art">.art</span>
         </div>
         AI Art Gallery
@@ -61,15 +61,15 @@
         <ul class="pagination justify-content-center">
             {% if page_obj.number|add:"-2" > 0 %}
             <li>
-                <a href="?page=1" class="page-link btn-custom">
-                    &laquo; &laquo; FIRST
+                <a href="?page=1" class="page-button">
+                    &laquo; &laquo;
                 </a>
             </li>
             {% endif %}
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-link btn-custom">
-                    &laquo; PREV
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-button">
+                    &laquo;
                 </a>
             </li>
             {% endif %}
@@ -81,15 +81,15 @@
             </li>
             {% if page_obj.has_next %}
             <li>
-                <a href="?page={{ page_obj.next_page_number }}" class="page-link btn-custom">
-                    NEXT &raquo;
+                <a href="?page={{ page_obj.next_page_number }}" class="page-button">
+                    &raquo;
                 </a>
             </li>
             {% endif %}
             {% if paginator.num_pages|add:"-1" > page_obj.number %}
             <li>
-                <a href="?page={{ paginator.num_pages }}" class="page-link btn-custom">
-                    LAST &raquo; &raquo;
+                <a href="?page={{ paginator.num_pages }}" class="page-button">
+                    &raquo; &raquo;
                 </a>
             </li>
             {% endif %}

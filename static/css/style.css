@@ -37,10 +37,12 @@ body {
 a {
     color: var(--col-1);
     text-decoration: none;
+    transition: background-color 0.3s;
+    border-radius: 10px;
 }
 
 a:hover {
-    font-weight: bolder;
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .right {
@@ -197,6 +199,28 @@ a:hover {
     color: var(--col-2);
     background: transparent;
     border: none;
+}
+
+.page-button {
+    /* border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px; */
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: var(--col-2);
+    color: var(--col-8);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.page-button:hover {
+    background-color: var(--col-3);
+}
+
+.page-info {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 /* ----------------------------------------------------- cre8ai.art Logo */
