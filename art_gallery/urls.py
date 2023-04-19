@@ -10,4 +10,5 @@ urlpatterns = [
     path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
     path('private/<slug:slug>/', views.PostPrivate.as_view(), name='post_private'),
     path('delete/<slug:slug>/', views.DeletePost.as_view(), name='delete_post'),
+    path('profile/<str:username>/', views.user_profile, name='user_profile'),
 ]

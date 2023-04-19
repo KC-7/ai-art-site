@@ -1,6 +1,6 @@
-from .models import Comment, Post
 from django import forms
 from django.utils.text import slugify
+from .models import Comment, Post, Profile
 
 
 class CommentForm(forms.ModelForm):
@@ -32,3 +32,9 @@ class GenerateForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio', 'profile_picture']

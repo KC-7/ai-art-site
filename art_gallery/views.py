@@ -8,13 +8,14 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic.edit import FormView
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 from io import BytesIO
 from PIL import Image
 from .utils import generate_image_from_text
-from .models import Post
-from .forms import CommentForm, PostForm, GenerateForm
+from .models import Post, Profile
+from .forms import CommentForm, PostForm, GenerateForm, ProfileForm
 if os.path.isfile('env.py'):
     import env
 
@@ -160,3 +161,25 @@ class DeletePost(View):
         post.delete()
         messages.success(request, 'Your post has been deleted.')
         return redirect('home')
+
+
+def user_profile(request, username):
+    user = get_object_or_404(User, username=username)
+    profile = Profile.objects.get_or_create(user=user)[0]
+    posts = Post.objects.filter(creator=user).order_by('-created_on')
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('user_profile', username=username)
+    else:
+        form = ProfileForm(instance=profile)
+
+    context = {
+        'form': form,
+        'profile': profile,
+        'posts': posts,
+    }
+    return render(request, 'user_profile.html', context)
