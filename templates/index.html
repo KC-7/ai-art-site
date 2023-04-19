@@ -62,14 +62,14 @@
             {% if page_obj.number|add:"-2" > 0 %}
             <li>
                 <a href="?page=1" class="page-button">
-                    &laquo; &laquo;
+                    <i class="fa-solid fa-backward-fast"></i>
                 </a>
             </li>
             {% endif %}
             {% if page_obj.has_previous %}
             <li>
                 <a href="?page={{ page_obj.previous_page_number }}" class="page-button">
-                    &laquo;
+                    <i class="fa-solid fa-backward-step"></i>
                 </a>
             </li>
             {% endif %}
@@ -82,14 +82,14 @@
             {% if page_obj.has_next %}
             <li>
                 <a href="?page={{ page_obj.next_page_number }}" class="page-button">
-                    &raquo;
+                    <i class="fa-solid fa-forward-step"></i>
                 </a>
             </li>
             {% endif %}
             {% if paginator.num_pages|add:"-1" > page_obj.number %}
             <li>
                 <a href="?page={{ paginator.num_pages }}" class="page-button">
-                    &raquo; &raquo;
+                    <i class="fa-solid fa-forward-fast"></i>
                 </a>
             </li>
             {% endif %}

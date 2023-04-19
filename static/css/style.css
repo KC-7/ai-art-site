@@ -202,20 +202,14 @@ a:hover {
 }
 
 .page-button {
-    /* border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px; */
     margin-left: 3px;
     margin-right: 3px;
-    background-color: var(--col-2);
-    color: var(--col-8);
-    transition: background-color 0.3s, transform 0.3s;
+    color: var(--col-2);
+    transition: color 0.3s, transform 0.3s;
 }
 
 .page-button:hover {
-    background-color: var(--col-3);
+    color: var(--col-3);
 }
 
 .page-info {

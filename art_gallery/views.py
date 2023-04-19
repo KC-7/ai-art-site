@@ -9,7 +9,7 @@ from django.views import generic, View
 from django.views.generic.edit import FormView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from io import BytesIO
 from PIL import Image
 from .utils import generate_image_from_text
@@ -142,3 +142,21 @@ class GenerateArt(FormView):
         post.slug = slugify(post.title)
         post.save()
         return redirect('post_detail', slug=post.slug)
+
+
+class PostPrivate(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug, creator=request.user)
+        post.status = 0
+        post.save()
+        messages.success(request, 'Your post has been made private.')
+        # return redirect('post_detail', slug=post.slug)
+        return redirect('home')
+
+
+class DeletePost(View):
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=slug, creator=request.user)
+        post.delete()
+        messages.success(request, 'Your post has been deleted.')
+        return redirect('home')

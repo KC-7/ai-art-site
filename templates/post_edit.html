@@ -1,44 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}Edit: {{ post.title }}{% endblock %}
 
 {% block content %}
 
 {% load crispy_forms_tags %}
 
 <div class="masthead">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row g-0">
             <!-- Image Title -->
             <div class="col-md-12 masthead-text">
-                <h3 class="post-title">{{ post.title }}</h3>
+                <h3 class="post-title">Edit: {{ post.title }}</h3>
             </div>
             <!-- Uploader & Created Date -->
             <div class="col-md-12 masthead-text">
                 <p class="post-subtitle">{{ post.creator }} | {{ post.created_on }}</p>
-            </div>
-        </div>
-        <!-- Post Creater Options - Update & Delete (CRUD) -->
-        <div class="row g-0">
-            <div>
-                {% if user == post.creator %}
-                    <p class="post-subtitle">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <form method="POST" action="#" class="col-md-4 text-center">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-custom">Edit Post</button>
-                            </form>
-                            <form method="POST" action="{% url 'post_private' slug=post.slug %}" class="col-md-4 text-center">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-custom">Make Private</button>
-                            </form>
-                            <form method="POST" action="{% url 'delete_post' slug=post.slug %}" class="col-md-4 text-center" id="delete-post-form">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger">Delete Post</button>
-                            </form>
-                        </div>
-                    </p>
-                {% endif %}
             </div>
         </div>
     </div>
@@ -143,22 +120,6 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Prevent users from deleting content without typing "DELETE"
-    const deletePostForm = document.getElementById('delete-post-form');
-    deletePostForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // prevent form submission
-        const confirmation = prompt("Generation of AI art is resource intensive, are you sure you want to delete this post? If so, type 'DELETE' (not case sensitive) and then press OK, otherwise press CANCEL.");
-        if (confirmation && confirmation.toLowerCase() === 'delete') {
-            // If the user typed "DELETE", submit the form
-            deletePostForm.submit();
-        } else {
-            // If the user did not type "Delete", display an error message
-            alert("You must type 'DELETE' to confirm the deletion of this post.");
-        }
-    });
-</script>
 
 
 {% endblock content %}
