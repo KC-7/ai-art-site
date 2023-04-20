@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Search Results{% endblock %}
 
 {% block content %}
 
@@ -11,8 +11,11 @@
             <span class="logo-text logo-ai">ai</span>
             <span class="logo-text logo-art">.art</span>
         </div>
-        AI Art Gallery
+        Search Results
     </h1>
+    <h2>
+        for: <em>"{{ query }}"</em>
+    </h2>
 </div>
 
 <div class="col-12 mt-3 text-center">
@@ -22,8 +25,7 @@
     </form>
 </div>
 
-
-<div class="col-12 mt-3 text-right">
+<div class="col-12 mt-3">
     {% with request.GET.sorting as sorting %}
     <form method="get" class="sorting-form">
         <label for="sorting">Sort by:</label>
@@ -40,7 +42,7 @@
         <!-- Posted Images -->
         <div class="col-12 mt-3 left">
             <div class="row">
-                {% for post in post_list %}
+                {% for post in posts %}
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">

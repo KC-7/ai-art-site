@@ -8,6 +8,8 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic.edit import FormView
 from django.contrib import messages
+from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
@@ -24,9 +26,20 @@ openai.api_key = os.environ['OPENAI_API_KEY']
 
 class PostList(generic.ListView):
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 9  # Django will restrict 9 posts to paginate_by
+    # queryset = Post.objects.filter(status=1).order_by('-created_on')
+
+    def get_queryset(self):
+        queryset = Post.objects.filter(status=1)
+        sorting = self.request.GET.get('sorting', 'newest')
+
+        if sorting == 'most_likes':
+            queryset = queryset.annotate(likes_count=models.Count('likes')).order_by('-likes_count', '-created_on')
+        else:
+            queryset = queryset.order_by('-created_on')
+
+        return queryset
 
 
 class PostDetail(View):
@@ -163,23 +176,31 @@ class DeletePost(View):
         return redirect('home')
 
 
-def user_profile(request, username):
-    user = get_object_or_404(User, username=username)
-    profile = Profile.objects.get_or_create(user=user)[0]
-    posts = Post.objects.filter(creator=user).order_by('-created_on')
+class UserProfile(View):
+    def get(request, username):
+        user = get_object_or_404(User, username=username)
+        profile = Profile.objects.get_or_create(user=user)[0]
+        posts = Post.objects.filter(creator=user).order_by('-created_on')
 
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Profile updated successfully.')
-            return redirect('user_profile', username=username)
-    else:
-        form = ProfileForm(instance=profile)
+        if request.method == 'POST':
+            form = ProfileForm(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Profile updated successfully.')
+                return redirect('user_profile', username=username)
+        else:
+            form = ProfileForm(instance=profile)
 
-    context = {
-        'form': form,
-        'profile': profile,
-        'posts': posts,
-    }
-    return render(request, 'user_profile.html', context)
+        context = {
+            'form': form,
+            'profile': profile,
+            'posts': posts,
+        }
+        return render(request, 'user_profile.html', context)
+
+
+class Search(View):
+    def get(self, request):
+        query = request.GET.get('q', '')
+        posts = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1).order_by('-created_on')
+        return render(request, 'search_results.html', {'posts': posts, 'query': query})
