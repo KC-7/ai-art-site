@@ -181,15 +181,7 @@ class UserProfile(View):
         user = get_object_or_404(User, username=username)
         profile = Profile.objects.get_or_create(user=user)[0]
         posts = Post.objects.filter(creator=user).order_by('-created_on')
-
-        if request.method == 'POST':
-            form = ProfileForm(request.POST, request.FILES, instance=profile)
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'Profile updated successfully.')
-                return redirect('user_profile', username=username)
-        else:
-            form = ProfileForm(instance=profile)
+        form = ProfileForm(instance=profile)
 
         context = {
             'form': form,
@@ -197,6 +189,25 @@ class UserProfile(View):
             'posts': posts,
         }
         return render(request, 'user_profile.html', context)
+
+    def post(self, request, username):
+        user = get_object_or_404(User, username=username)
+        profile = Profile.objects.get_or_create(user=user)[0]
+        posts = Post.objects.filter(creator=user).order_by('-created_on')
+
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('user_profile', username=username)
+        else:
+            context = {
+                'form': form,
+                'profile': profile,
+                'posts': posts,
+            }
+            return render(request, 'user_profile.html', context)
+
 
 
 class Search(View):
