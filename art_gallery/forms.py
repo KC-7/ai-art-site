@@ -26,7 +26,7 @@ class PostForm(forms.ModelForm):
 
 class GenerateForm(forms.Form):
     prompt = forms.CharField(
-        label='Enter your prompt here', max_length=500,
+        label='Enter your prompt here', max_length=1000,  # 1000 is current max limit for API
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. "An abstract painting of a sunset"'}),
     )
 

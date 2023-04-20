@@ -177,7 +177,7 @@ class DeletePost(View):
 
 
 class UserProfile(View):
-    def get(request, username):
+    def get(self, request, username):
         user = get_object_or_404(User, username=username)
         profile = Profile.objects.get_or_create(user=user)[0]
         posts = Post.objects.filter(creator=user).order_by('-created_on')

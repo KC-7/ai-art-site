@@ -172,7 +172,6 @@ a:hover {
 .btn-custom {
     background-color: var(--col-3);
     color: var(--col-8);
-    border-radius: 10px;
 }
 
 .btn-custom:hover,

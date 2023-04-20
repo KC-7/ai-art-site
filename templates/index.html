@@ -53,10 +53,10 @@
                                     </div>
                                 </div>
                                 <h4 class="card-title">
-                                    {{ post.title }}
+                                    {{ post.title|slice:":125"|truncatewords:12  }}
                                 </h4>
                                 <p class="card-text">
-                                    {{ post.description|striptags|truncatewords:20 }}
+                                    {{ post.description|striptags|slice:":125"|truncatewords:12 }}
                                 </p>
                                 <hr />
                                 <p class="card-text text-muted h6">

@@ -7,8 +7,8 @@ STATUS = ((0, "Private"), (1, "Public"))
 
 class Post(models.Model):
     post_image = CloudinaryField('image', blank=False, null=False)
-    title = models.CharField(max_length=250, unique=True, blank=False, null=False)
-    slug = models.SlugField(max_length=250, unique=True)
+    title = models.CharField(max_length=1000, unique=True, blank=False, null=False)
+    slug = models.SlugField(max_length=1000, unique=True)
     creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name="image_posts")
     updated_on = models.DateTimeField(auto_now=True)
     description = models.TextField(blank=False, null=False)
