@@ -270,4 +270,6 @@ class EditPost(UpdateView):
         return reverse('post_detail', args=[self.object.slug])
 
 
-
+# class TermsOfUse(View):
+#     def get(self, request):
+#         return render(request, 'terms.html')
