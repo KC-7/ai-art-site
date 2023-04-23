@@ -1,8 +1,9 @@
+# Python Libraries
 import os
-import requests
-import openai
 import sys
-import cloudinary.uploader
+from io import BytesIO
+
+# Django Libraries
 from django.utils.text import slugify
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
@@ -13,13 +14,22 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
-from io import BytesIO
+
+# Third Party Libraries
+import requests
+import openai
+import cloudinary.uploader
 from PIL import Image
+
+# Local Imports
 from .utils import generate_image_from_text
 from .models import Post, Profile
 from .forms import CommentForm, PostForm, GenerateForm, ProfileForm
+
+# Environment Variables
 if os.path.isfile('env.py'):
     import env
+
 
 openai.api_key = os.environ['OPENAI_API_KEY']
 
@@ -131,7 +141,11 @@ class GenerateArt(FormView):
 
     def form_valid(self, form):
         prompt = form.cleaned_data['prompt']
-        image_url = generate_image_from_text(prompt)
+        try:
+            image_url = generate_image_from_text(prompt)
+        except ValueError:
+            messages.error(self.request, "We could not generate your requested image. This may have been due to your search terms. Please read the usage policy for unsuitable language and try again.")
+            return self.form_invalid(form)
 
         response = requests.get(image_url)
         image_io = BytesIO(response.content)

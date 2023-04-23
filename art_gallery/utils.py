@@ -11,7 +11,6 @@ def generate_image_from_text(prompt):
 
     data = """
     {
-        "model": "image-alpha-001",
         "prompt": "A large clocktower with ivy growing up its sides.",
         "num_images":1,
         "size":"1024x1024",
