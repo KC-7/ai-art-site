@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-3">
-                <img src="{{ profile.profile_picture.url }}" alt="Profile picture" class="card-img-top rounded-circle">
+                <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }}'s Profile picture" class="card-img-top rounded-circle">
                 <div class="card-body">
                     <h5 class="card-title">{{ profile.user.username }}</h5>
                     <p class="card-text">{{ profile.bio }}</p>

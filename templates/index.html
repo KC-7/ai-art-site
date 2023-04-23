@@ -15,13 +15,26 @@
     </h1>
 </div>
 
+{% if not user.is_authenticated and not page_obj.has_previous %}
+<div class="text-center bg-info">
+    <a class="nav-link" href="{% url 'account_signup' %}">
+        <h5>
+            Unleash your creativity with our advanced text-to-art image generator! Join our creative community today and
+            access a custom profile where you can showcase your unique art creations. As a member, you'll have the
+            opportunity to interact with our vibrant community by commenting and liking posts, and you'll also be able to
+            download artwork from our vast collection of user-generated images. Don't miss out on the chance to create and
+            share your own art. Sign up now and unleash your inner artist!
+        </h5>
+    </a>
+</div>
+{% endif %}
+
 <div class="col-12 mt-3 text-center">
     <form method="get" action="{% url 'search' %}">
         <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
         <input type="submit" value="Search">
     </form>
 </div>
-
 
 <div class="col-12 mt-3 text-right">
     {% with request.GET.sorting as sorting %}
@@ -49,7 +62,9 @@
                                     <img class="card-img-top" src="{{ post.post_image.url }}"
                                         alt="Image for {{ post.title }}" oncontextmenu="return false;">
                                     <div class="image-flash">
-                                        <p class="author">Created by: {{ post.creator }}</p>
+                                        <a href="{% url 'user_profile' post.creator.username %}">
+                                            <p class="author">Created by: {{ post.creator }}</p>
+                                        </a>
                                     </div>
                                 </div>
                                 <h4 class="card-title">

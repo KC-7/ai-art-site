@@ -15,7 +15,9 @@
             </div>
             <!-- Uploader & Created Date -->
             <div class="col-md-12 masthead-text">
-                <p class="post-subtitle">{{ post.creator }} | {{ post.created_on }}</p>
+                <a href="{% url 'user_profile' post.creator.username %}">
+                    <p class="post-subtitle">{{ post.creator }} | {{ post.created_on }}</p>
+                </a>
             </div>
         </div>
         <!-- Post Creater Options - Update & Delete (CRUD) -->
@@ -157,9 +159,11 @@
     deletePostForm.addEventListener('submit', function (event) {
         event.preventDefault(); // prevent form submission with user confirmation
         const confirmation = prompt(
-            "Generation of AI art is resource intensive, are you sure you want to delete this post? If so, type your username, '{{ post.creator }}' (not case sensitive), and then press OK, otherwise press CANCEL."
+            "Generation of AI art is resource intensive, are you sure you want to delete this post? If so, type your username, '{{ post.creator }}' (case sensitive), and then press OK, otherwise press CANCEL."
         );
-        if (confirmation && confirmation.toLowerCase() === '{{ post.creator }}') {
+        console.log("Confirmation: " + confirmation);
+        console.log("Creator: {{ post.creator }}");
+        if (confirmation  === '{{ post.creator }}') {
             // If the user types their username, submit the form
             deletePostForm.submit();
         } else {
@@ -168,6 +172,5 @@
         }
     });
 </script>
-
 
 {% endblock content %}
