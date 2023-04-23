@@ -209,9 +209,13 @@ class UserProfile(View):
             return render(request, 'user_profile.html', context)
 
 
-
 class Search(View):
     def get(self, request):
         query = request.GET.get('q', '')
         posts = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1).order_by('-created_on')
-        return render(request, 'search_results.html', {'posts': posts, 'query': query})
+        if posts:
+            return render(request, 'search_results.html', {'posts': posts, 'query': query})
+        else:
+            message = "There are no matches for your search result. Sounds original, why not generate a new creation?"
+            # Bug Fix: Empty 'posts' lists variable added to display 'query' when no results are available, without it it will returns empty parenthesis.
+            return render(request, 'search_results.html', {'posts': [], 'message': message, 'query': query})

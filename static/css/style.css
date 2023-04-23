@@ -172,6 +172,8 @@ a:hover {
 .btn-custom {
     background-color: var(--col-3);
     color: var(--col-8);
+    font-size: 14px;
+    padding: 6px 12px;
 }
 
 .btn-custom:hover,

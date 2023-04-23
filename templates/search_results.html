@@ -39,7 +39,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <!-- Posted Images -->
+        <!-- Message from Views.py for no search results.  -->
+        <div class="container text-center no-results">
+            <div class="no-results-message">
+                {{ message }}
+            </div>
+        </div>
+        <!-- Image Search Results -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in posts %}
@@ -119,5 +125,6 @@
     </nav>
     {% endif %}
 </div>
+
 
 {% endblock %}
