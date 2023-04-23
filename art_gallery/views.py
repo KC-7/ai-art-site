@@ -155,19 +155,55 @@ class GenerateArt(FormView):
         image.save(output_io, format="JPEG")
         output_io.seek(0)
 
-        uploaded_image = cloudinary.uploader.upload(
-            output_io,
-            public_id=f"{slugify(prompt)}",
-            format="jpg",
-        )
+        # uploaded_image = cloudinary.uploader.upload(
+        #     output_io,
+        #     public_id=f"{slugify(prompt)}",
+        #     format="jpg",
+        # )
 
         post = Post()
         post.title = f"Generation for: '{prompt}'"
+        # post.description = f"AI-generated art based on the prompt: {prompt}. Created using cre8ai.art."
+        # post.post_image = uploaded_image['public_id']  # Sets the post_image field to the public_id returned by Cloudinary
+        # post.creator = self.request.user
+        # post.status = 1  # To make the post public by default
+        # post.slug = slugify(post.title)
+        # post.save()
+        # return redirect('post_detail', slug=post.slug)
+
+        # Generate a unique title
+        base_title = f"Generation for: '{prompt}'"
+        counter = 1
+        post.title = base_title
+        while Post.objects.filter(title=post.title).exists():
+            post.title = f"{base_title} ({counter})"
+            counter += 1
+
         post.description = f"AI-generated art based on the prompt: {prompt}. Created using cre8ai.art."
-        post.post_image = uploaded_image['public_id']  # Sets the post_image field to the public_id returned by Cloudinary
+        # post.post_image = uploaded_image['public_id']  # Sets the post_image field to the public_id returned by Cloudinary
         post.creator = self.request.user
         post.status = 1  # To make the post public by default
-        post.slug = slugify(post.title)
+
+        # Generate a unique slug and public_id
+        base_slug = slugify(post.title)
+        counter = 1
+        post.slug = base_slug
+        public_id = base_slug
+        while Post.objects.filter(slug=post.slug).exists():
+            post.slug = f"{base_slug}-{counter}"
+            public_id = f"{base_slug}-{counter}"
+            counter += 1
+
+        # Upload the image with the unique public_id
+        uploaded_image = cloudinary.uploader.upload(
+            output_io,
+            public_id=public_id,
+            format="jpg",
+        )
+
+        # Sets the post_image field to the public_id returned by Cloudinary
+        post.post_image = uploaded_image['public_id'] 
+
         post.save()
         return redirect('post_detail', slug=post.slug)
 
