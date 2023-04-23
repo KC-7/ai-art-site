@@ -31,7 +31,7 @@
                     {% endif %}
                 </span>
             </div>
-            <form method="POST" action="#" class="col-md-3 text-center">
+            <form method="POST" action="{% url 'edit_post' post.slug %}" class="col-md-3 text-center">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-custom">Edit Post</button>
             </form>

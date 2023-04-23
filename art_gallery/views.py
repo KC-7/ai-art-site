@@ -7,7 +7,7 @@ from io import BytesIO
 from django.utils.text import slugify
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
 from django.db import models
 from django.db.models import Q
@@ -24,7 +24,7 @@ from PIL import Image
 # Local Imports
 from .utils import generate_image_from_text
 from .models import Post, Profile
-from .forms import CommentForm, PostForm, GenerateForm, ProfileForm
+from .forms import CommentForm, PostForm, GenerateForm, ProfileForm, EditPostForm
 
 # Environment Variables
 if os.path.isfile('env.py'):
@@ -173,13 +173,35 @@ class GenerateArt(FormView):
 
 
 class PostPrivate(View):
+
+    def get(self, request, slug, *args, **kwargs):
+        queryset = Post.objects.filter(status=0, creator=request.user)
+        post = get_object_or_404(queryset, slug=slug)
+        
+        return render(
+            request,
+            "post_private_detail.html",
+            {
+                "post": post
+            },
+        )
+
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug, creator=request.user)
         post.status = 0
         post.save()
-        messages.success(request, 'Your post has been made private.')
-        # return redirect('post_detail', slug=post.slug)
-        return redirect('home')
+        messages.warning(request, 'Your post has been made private.')
+        return redirect('post_private', slug=post.slug)
+
+
+class PostPublic(View):
+    def post(self, request, slug):
+        print(f"PostPublic - slug: {slug}")  # Debugging
+        post = get_object_or_404(Post, slug=slug, creator=request.user)
+        post.status = 1
+        post.save()
+        messages.success(request, 'Your post has been made public.')
+        return redirect('post_detail', slug=post.slug)
 
 
 class DeletePost(View):
@@ -233,3 +255,19 @@ class Search(View):
             message = "There are no matches for your search result. Sounds original, why not generate a new creation?"
             # Bug Fix: Empty 'posts' lists variable added to display 'query' when no results are available, without it it will returns empty parenthesis.
             return render(request, 'search_results.html', {'posts': [], 'message': message, 'query': query})
+
+
+class EditPost(UpdateView):
+    model = Post
+    form_class = EditPostForm
+    template_name = 'post_edit.html'
+
+    def get_object(self):
+        slug = self.kwargs.get('slug')
+        return get_object_or_404(Post, slug=slug, creator=self.request.user)
+
+    def get_success_url(self):
+        return reverse('post_detail', args=[self.object.slug])
+
+
+
