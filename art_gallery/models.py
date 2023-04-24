@@ -59,6 +59,9 @@ class Profile (models.Model):
     bio = models.TextField(max_length=500, blank=True)
     profile_picture = CloudinaryField('profile_pictures', default='images/defaultUser.png')
 
+    last_generation_timestamp = models.DateTimeField(null=True, blank=True)
+    generation_count = models.PositiveIntegerField(default=0)
+
     def __str__(self):
         return f"{self.user.username}'s Profile"
 

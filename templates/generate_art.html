@@ -12,17 +12,26 @@
     {{ form.as_p }}
     <button type="submit" class="btn btn-custom right" id="generate-art-btn">Generate Art</button>
   </form>
-  <!-- <div>
-    <strong>
-      <ul>
-        <li>Try saying xxxx.....</li>
-        <li>Try saying xxxx.....</li>
-        <li>Try saying xxxx.....</li>
-        <li>Try saying xxxx.....</li>
-        <li>Try saying xxxx.....</li>
-      </ul>
-    </strong>
-  </div> -->
+  <p>
+    The Fair Usage Policy is currently 5 Generations Per Day<br><small>*Subject to change without notice</small><br>
+    You have made {{ request.user.profile.generation_count }} generation(s) in the last 24 hours.
+  </p>
+  <div>
+    <strong>Improve your results:</strong>
+    <ul class="improve-list">
+      <li>Explore various art movements: Incorporate styles such as Impressionism, Surrealism, Cubism, or Abstract Expressionism into your prompts for diverse results.</li>
+      <li>Play with color schemes: Request specific color combinations, like warm or cool tones, complementary colors, or even monochromatic palettes.</li>
+      <li>Combine different genres: Mix elements from landscape, portraiture, and still life to create an entirely new scene.</li>
+      <li>Experiment with textures: Request the AI to apply textures like impasto, smooth gradients, or cross-hatching to enhance the visual appeal.</li>
+      <li>Integrate famous artists' techniques: Borrow inspiration from renowned artists like Van Gogh's swirling brushstrokes, Monet's delicate color blending, or Pollock's dynamic drips and splatters.</li>
+      <li>Juxtapose artistic styles: Merge contrasting styles, such as photorealism with abstract or pixel art with watercolors, to create unique compositions.</li>
+      <li>Dive into cultural art: Explore prompts inspired by various cultural art forms, such as Japanese ukiyo-e, Indian Madhubani, or Mexican muralism.</li>
+      <li>Experiment with perspective: Request unusual angles, forced perspective, or an isometric view to challenge the AI's artistic capabilities.</li>
+      <li>Play with scale and proportion: Encourage the AI to create a scene with exaggerated or altered scales and proportions for a whimsical effect.</li>
+      <li>Incorporate themes from literature, mythology, or history: Blend elements from classic stories, myths, or historical events to give your AI-generated art a narrative depth.</li>
+    </ul>
+    <p>Remember, the more you experiment and fine-tune your prompts, the more fascinating and diverse your AI-generated art will become. Embrace the creative process and let the AI be your artistic muse!</p>
+  </div>
   <div class="loading-message hide text-center">
     <img src="{% static 'images/spinner.gif' %}" alt="Loading...">
     <p>AI magic taking place 🧙‍♂️</p>
