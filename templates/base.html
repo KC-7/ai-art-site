@@ -7,23 +7,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cre8AI.art | {% block title %}
-        <!-- Page Title --> {% endblock %}</title>
-    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <!-- Page Title -->
+    <title>Cre8AI.art | {% block title %}{% endblock %}</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'favicon.ico' %}">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bootstrap Stylesheet -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="icon" type="image/png" href="{% static 'favicon.ico' %}">
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
-
+    <!-- Header Section (Nav Bar) -->
     <div class="content-wrapper">
         <header>
             {% include 'header.html' %}
         </header>
 
+        <!-- Alert Messages -->
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -37,20 +41,24 @@
             </div>
         </div>
 
+        <!-- Main Content -->
         <main class="container">
             {% block content %}{% endblock %}
         </main>
 
     </div>
 
+    <!-- Footer -->
     <footer>
         {% include 'footer.html' %}
     </footer>
 
+    <!-- Script for Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
 
+    <!-- Script for closing alert messages -->
     <script>
         setTimeout(function () {
             let messages = document.getElementById("msg");
@@ -59,22 +67,24 @@
         }, 3000);
     </script>
 
-<script>
-    // Function to adjust padding-bottom based on footer height
-    function adjustContentWrapperPadding() {
-        const footer = document.querySelector('.footer');
-        const contentWrapper = document.querySelector('.content-wrapper');
+    <!-- Script to adjust padding-bottom based on footer height -->
+    <script>
+        // Function to adjust padding-bottom based on footer height
+        function adjustContentWrapperPadding() {
+            const footer = document.querySelector('.footer');
+            const contentWrapper = document.querySelector('.content-wrapper');
 
-        const footerHeight = footer.offsetHeight;
-        contentWrapper.style.paddingBottom = footerHeight + 'px';
-    }
-    // Calls the function initially
-    adjustContentWrapperPadding();
-    // Calls the function when the window is resized
-    window.addEventListener('resize', adjustContentWrapperPadding);
-</script>
+            const footerHeight = footer.offsetHeight;
+            contentWrapper.style.paddingBottom = footerHeight + 'px';
+        }
+        // Calls the function initially
+        adjustContentWrapperPadding();
+        // Calls the function again if the window is resized
+        window.addEventListener('resize', adjustContentWrapperPadding);
+    </script>
 
-<script src="https://kit.fontawesome.com/872cb96f02.js" crossorigin="anonymous">// Font Awesome</script>
+    <!-- Script for Font Awesome -->
+    <script src="https://kit.fontawesome.com/872cb96f02.js" crossorigin="anonymous"></script>
 
 </body>
 

@@ -1,3 +1,16 @@
+"""
+This module contains all of the views for the art_gallery application.
+
+Imports:
+    - os, sys, BytesIO: Standard libraries for working with the file system and binary data.
+    - Django libraries: Libraries needed for Django views, models, forms, and more.
+    - Third party libraries: External libraries for image processing, AI, and cloud storage.
+    - Local imports: Local utilities, models, and forms.
+
+Environment Variables:
+    - OPENAI_API_KEY: The API key for OpenAI, this  is required for the AI Art Generation.
+"""
+
 # Python Libraries
 import os
 import sys
@@ -36,6 +49,9 @@ openai.api_key = os.environ['OPENAI_API_KEY']
 
 
 class PostList(generic.ListView):
+    """
+    Displays list of posts, paginates and allows sorting by most likes or most recent.
+    """
     model = Post
     template_name = 'index.html'
     paginate_by = 9  # Django will restrict 9 posts to paginate_by
@@ -54,7 +70,9 @@ class PostList(generic.ListView):
 
 
 class PostDetail(View):
-
+    """
+    Displays the image post and details. Allows and displays comments.
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
@@ -109,7 +127,9 @@ class PostDetail(View):
 
 
 class PostLike(View):
-
+    """
+    View to like / unlike posts (only once already liked).
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug)
 
@@ -122,6 +142,9 @@ class PostLike(View):
 
 
 class UploadForm(FormView):
+    """
+    Handles the form for uploading the image posts.
+    """
     template_name = 'upload_form.html'
     form_class = PostForm
 
@@ -137,6 +160,10 @@ class UploadForm(FormView):
 
 
 class GenerateArt(FormView):
+    """
+    Generates the AI artwork.
+    To avoid errors when the same prompt is used, it creates a unique Title, Slug and Public ID by adding a number to end of each duplicated search term.
+    """
     template_name = 'generate_art.html'
     form_class = GenerateForm
 
@@ -203,18 +230,20 @@ class GenerateArt(FormView):
         )
 
         # Sets the post_image field to the public_id returned by Cloudinary
-        post.post_image = uploaded_image['public_id'] 
+        post.post_image = uploaded_image['public_id']
 
         post.save()
         return redirect('post_detail', slug=post.slug)
 
 
 class PostPrivate(View):
-
+    """
+    Handles making and viewing private posts.
+    """
     def get(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=0, creator=request.user)
         post = get_object_or_404(queryset, slug=slug)
-        
+
         return render(
             request,
             "post_private_detail.html",
@@ -232,6 +261,9 @@ class PostPrivate(View):
 
 
 class PostPublic(View):
+    """
+    Allows the user to make private posts public again.
+    """
     def post(self, request, slug):
         print(f"PostPublic - slug: {slug}")  # Debugging
         post = get_object_or_404(Post, slug=slug, creator=request.user)
@@ -242,6 +274,9 @@ class PostPublic(View):
 
 
 class DeletePost(View):
+    """
+    Handles post deletion.
+    """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug, creator=request.user)
         post.delete()
@@ -250,6 +285,9 @@ class DeletePost(View):
 
 
 class UserProfile(View):
+    """
+    Displays user profile and handels user editing of Bio and Profile Picture.
+    """
     def get(self, request, username):
         user = get_object_or_404(User, username=username)
         profile = Profile.objects.get_or_create(user=user)[0]
@@ -283,6 +321,9 @@ class UserProfile(View):
 
 
 class Search(View):
+    """
+    Handles images searches.
+    """
     def get(self, request):
         query = request.GET.get('q', '')
         posts = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1).order_by('-created_on')
@@ -295,6 +336,9 @@ class Search(View):
 
 
 class EditPost(UpdateView):
+    """
+    Handles editing post details.
+    """
     model = Post
     form_class = EditPostForm
     template_name = 'post_edit.html'
@@ -313,6 +357,9 @@ class EditPost(UpdateView):
 
 
 class StaticPageView(TemplateView):
+    """
+    Handles the static pages.
+    """
     template_name = 'static_page.html'
 
     def get_context_data(self, **kwargs):
@@ -325,7 +372,11 @@ class StaticPageView(TemplateView):
 #     def get_template_names(self):
 #         return [f"art_gallery/{self.kwargs['slug']}.html"]
 
+
 class AboutView(TemplateView):
+    """
+    Handles the about page and displays  the static pages.
+    """
     template_name = 'about.html'
 
     def get_context_data(self, **kwargs):

@@ -5,7 +5,9 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-
+    """
+    Admin configuration for the images posts.
+    """
     list_display = ('title', 'slug', 'status', 'created_on', 'approved')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
@@ -19,7 +21,9 @@ class PostAdmin(SummernoteModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-
+    """
+    Admin configuration for the comments on the posts.
+    """
     list_display = ('name', 'body',  'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ['name', 'email', 'body']
@@ -31,8 +35,12 @@ class CommentAdmin(admin.ModelAdmin):
 
 admin.site.register(Profile)
 
+
 @admin.register(StaticPage)
 class StaticPageAdmin(admin.ModelAdmin):
+    """
+    Admin configuration for the static pages, displayed in About.
+    """
     list_display = ('title', 'slug', 'content', 'status')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}

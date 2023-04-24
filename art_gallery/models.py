@@ -2,10 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
+# Posted Image Status:
 STATUS = ((0, "Private"), (1, "Public"))
 
 
 class Post(models.Model):
+    """
+    A model for the image posts.
+    """
     post_image = CloudinaryField('image', blank=False, null=False)
     title = models.CharField(max_length=1000, unique=True, blank=False, null=False)
     slug = models.SlugField(max_length=1000, unique=True)
@@ -17,18 +21,22 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='image_likes', blank=True)
     approved = models.BooleanField(default=True)
 
+    # Default ordering for image posts
     class Meta:
         ordering = ['-created_on']
 
     def __str__(self):
         return self.title
 
+    # Counts image likes
     def number_of_likes(self):
         return self.likes.count()
 
 
 class Comment(models.Model):
-
+    """
+    A model for the comments on the image posts.
+    """
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -44,7 +52,9 @@ class Comment(models.Model):
 
 
 class Profile (models.Model):
-
+    """
+    A model for the user profiles.
+    """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     profile_picture = CloudinaryField('profile_pictures', default='images/defaultUser.png')
@@ -54,6 +64,9 @@ class Profile (models.Model):
 
 
 class StaticPage(models.Model):
+    """
+    A model for the admins static pages.
+    """
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     content = models.TextField()
