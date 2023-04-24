@@ -246,7 +246,7 @@ class DeletePost(View):
         post = get_object_or_404(Post, slug=slug, creator=request.user)
         post.delete()
         messages.success(request, 'Your post has been deleted.')
-        return redirect('home')
+        return redirect('user_profile', username=request.user.username)
 
 
 class UserProfile(View):

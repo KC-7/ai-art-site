@@ -30,6 +30,10 @@
     <p class="something-wrong hide">Uh oh, we are still trying but this is taking unusually long, try again!</p>
   </div>
 
+  <div class="right">
+    <a href="{% url 'home' %}" class="btn btn-custom"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('generate-art-form');

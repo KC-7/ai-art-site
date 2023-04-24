@@ -5,13 +5,30 @@
 {% block content %}
 
 <h1>About Us</h1>
+<p>Welcome to Cre8AI.art, a revolutionary platform designed to inspire and empower artists and enthusiasts alike to
+    explore the limitless possibilities of AI-generated art. Our mission is to create a vibrant and supportive community
+    that fosters creativity, collaboration, and learning.</p>
+<p>Founded in 2023, Cre8AI.art combines the power of DALL-E 2 with an intuitive interface, allowing users to easily
+    create, upload, and share their unique AI-generated artwork. Our platform encourages users to interact with other
+    artists, exchanging ideas, feedback, and appreciation through likes and comments.</p>
+<p>At Cre8AI.art, we are passionate about pushing the boundaries of artistic expression and nurturing a diverse,
+    inclusive environment. Our dedicated team continually works to improve the platform, ensuring that users have access
+    to cutting-edge technology and tools to "Unleash your inner artist."</p>
+<h2>Contact</h2>
+<p>For any inquiries, suggestions, or support, please feel free to reach out to our team at <a
+        href="mailto:contact@cre8ai.art">contact@cre8ai.art</a>. We are always here to help and listen to our valued
+    community members.</p>
 <h2>Please see below page links for further details:</h2>
 <ul>
     {% for page in public_static_pages %}
-    <li><a href="{% url 'static_page' page.slug %}">{{ page.title }}</a></li>
+    <li>
+        <h3><a href="{% url 'static_page' page.slug %}">{{ page.title }}</a></h3>
+    </li>
     {% empty %}
     <li>No public static pages found.</li>
     {% endfor %}
 </ul>
-
+<div class="right">
+    <a href="{% url 'home' %}" class="btn btn-custom"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
+</div>
 {% endblock %}
