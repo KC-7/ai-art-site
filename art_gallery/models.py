@@ -51,3 +51,18 @@ class Profile (models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
+
+
+class StaticPage(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True)
+    content = models.TextField()
+    # created_at = models.DateTimeField(auto_now_add=True)
+    # updated_at = models.DateTimeField(auto_now=True)
+    status = models.IntegerField(choices=STATUS, default=0)  # This makes it private by default
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['title']

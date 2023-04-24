@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<h1>About Us</h1>
+<h2>Please see below page links for further details:</h2>
+<ul>
+    {% for page in public_static_pages %}
+    <li><a href="{% url 'static_page' page.slug %}">{{ page.title }}</a></li>
+    {% empty %}
+    <li>No public static pages found.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -57,7 +57,9 @@
                                     <img class="card-img-top" src="{{ post.post_image.url }}"
                                         alt="Image for {{ post.title }}" oncontextmenu="return false;">
                                     <div class="image-flash">
-                                        <p class="author">Created by: {{ post.creator }}</p>
+                                        <a href="{% url 'user_profile' post.creator.username %}">
+                                            <p class="author">Created by: {{ post.creator }}</p>
+                                        </a>
                                     </div>
                                 </div>
                                 <h4 class="card-title">

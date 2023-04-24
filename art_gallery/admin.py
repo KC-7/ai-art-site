@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Profile
+from .models import Post, Comment, Profile, StaticPage
 from django_summernote.admin import SummernoteModelAdmin
 
 
@@ -30,3 +30,9 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Profile)
+
+@admin.register(StaticPage)
+class StaticPageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'content', 'status')
+    search_fields = ['title', 'content']
+    prepopulated_fields = {'slug': ('title',)}

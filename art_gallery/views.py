@@ -7,6 +7,7 @@ from io import BytesIO
 from django.utils.text import slugify
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
+from django.views.generic import TemplateView
 from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
 from django.db import models
@@ -23,7 +24,7 @@ from PIL import Image
 
 # Local Imports
 from .utils import generate_image_from_text
-from .models import Post, Profile
+from .models import Post, Profile, StaticPage
 from .forms import CommentForm, PostForm, GenerateForm, ProfileForm, EditPostForm
 
 # Environment Variables
@@ -309,3 +310,25 @@ class EditPost(UpdateView):
 # class TermsOfUse(View):
 #     def get(self, request):
 #         return render(request, 'terms.html')
+
+
+class StaticPageView(TemplateView):
+    template_name = 'static_page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page = get_object_or_404(StaticPage, slug=self.kwargs['slug'])
+        context['page'] = page
+        return context
+
+# class StaticPageView(TemplateView):
+#     def get_template_names(self):
+#         return [f"art_gallery/{self.kwargs['slug']}.html"]
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['public_static_pages'] = StaticPage.objects.filter(status=1)
+        return context
