@@ -116,6 +116,10 @@ a:hover {
 
 /* ------------------------------------------------- Text */
 
+.navbar-nav {
+    align-items: center;
+}
+
 .nav-text {
     color: var(--col-6);
 }
@@ -219,6 +223,15 @@ a:hover {
 }
 
 /* ----------------------------------------------------- cre8ai.art Logo */
+
+.logo-img {
+    align-items: center;
+}
+
+.logo-img img {
+    width: 100px;
+    height: 100px;
+}
 
 .logo-text {
     font-family: 'Pacifico', cursive;

@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Search Results{% endblock %}
 
 {% block content %}
 
 <div class="col-12 mt-3 text-center">
+    <div class="logo-img">
+        <img src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
+    </div>
     <h1>
-        <div class="logo">
+        <!-- <div class="logo">
             <span class="logo-text logo-cre">cre</span><span class="logo-text logo-eight">8</span>
             <span class="logo-text logo-ai">ai</span>
             <span class="logo-text logo-art">.art</span>
-        </div>
+        </div> -->
         Search Results
     </h1>
     <h2>
