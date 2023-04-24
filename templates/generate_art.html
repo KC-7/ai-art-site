@@ -23,7 +23,7 @@
       </ul>
     </strong>
   </div> -->
-  <div class="loading-message hide">
+  <div class="loading-message hide text-center">
     <img src="{% static 'images/spinner.gif' %}" alt="Loading...">
     <p>AI magic taking place 🧙‍♂️</p>
     <p class="longer-than-expected hide">This is taking a little longer than expected... it'll be ready shortly...</p>
@@ -31,25 +31,27 @@
   </div>
 
   <div class="right">
-    <a href="{% url 'home' %}" class="btn btn-custom"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
+    <a href="{% url 'home' %}" class="btn btn-custom" id="btn-back"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const form = document.getElementById('generate-art-form');
       const btn = document.getElementById('generate-art-btn');
+      const backBtn = document.getElementById('btn-back');
       const loadingMessage = document.querySelector('.loading-message');
       const longerThanExpected = document.querySelector('.longer-than-expected');
       const somethingWrong = document.querySelector('.something-wrong');
 
       form.addEventListener('submit', function (event) {
         btn.classList.add('hide');
+        backBtn.classList.add('hide');
         btn.disabled = true;
         loadingMessage.classList.remove('hide');
 
         setTimeout(function () {
           longerThanExpected.classList.remove('hide');
-        }, 3000);
+        }, 5000);
 
         setTimeout(function () {
           somethingWrong.classList.remove('hide');
