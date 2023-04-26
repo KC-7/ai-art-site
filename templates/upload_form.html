@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Upload Art{% endblock %}
 
 {% block content %}
-<div class="form-container-left">
+<div class="form-container text-center">
+  <img class="mb-4" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" width="72" height="72">
   <h1>Upload a New Post</h1>
   <form method="post" enctype="multipart/form-data" class="form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-custom right">Upload Post</button>
+    <button type="submit" class="btn btn-custom">Upload Post</button>
   </form>
 </div>
 <div class="right">
-  <a href="{% url 'home' %}" class="btn btn-custom"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
+  <a href="{% url 'home' %}" class="btn btn-danger"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
 </div>
 {% endblock %}

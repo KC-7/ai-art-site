@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% load i18n %}
 {% load account socialaccount %}
 
@@ -9,30 +11,33 @@
 
 <div class="form-container">
   <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
+    <div class="col-md-8 mt-3 offset-md-2 text-center">
+
+      <img class="mb-4" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" width="72" height="72">
 
       <h1>{% trans "Sign In" %}</h1>
 
       <!-- {% get_providers as socialaccount_providers %}
 
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+            {% if socialaccount_providers %}
+            <p>{% blocktrans with site.name as site_name %}Please sign in with one
+            of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+            for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-<div class="socialaccount_ballot">
+            <div class="socialaccount_ballot">
 
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
+              <ul class="socialaccount_providers">
+                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+              </ul>
 
-  <div class="login-or">{% trans 'or' %}</div>
+              <div class="login-or">{% trans 'or' %}</div>
 
-</div>
+            </div>
 
-{% include "socialaccount/snippets/login_extra.html" %}
+            {% include "socialaccount/snippets/login_extra.html" %}
 
-{% else %} -->
+            {% else %} -->
+      
       <p>{% blocktrans %}Welcome back to onlineai.art! If you have not created an account yet, then please
         <a href="{{ signup_url }}" class="link">sign up</a> first.{% endblocktrans %}</p>
       <!-- {% endif %} -->
@@ -41,8 +46,7 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
   </div>
 
   <div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
-
+    <div class="col">
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
         {{ form.as_p }}
@@ -52,9 +56,15 @@ for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
         <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
         <button class="btn btn-custom right" type="submit">{% trans "Sign In" %}</button>
       </form>
-
     </div>
+  </div>
+  <br>
+  <div class="text-center">
+    Please reach out to our support team at <a href="mailto:support@cre8ai.art">support@cre8ai.art</a><br>
+    for any account issues or to request a password reset</span>.<br>
+    We are always here to help and provide support to our valued community members.
   </div>
 </div>
 
 {% endblock %}
+

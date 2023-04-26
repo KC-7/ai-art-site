@@ -70,6 +70,11 @@ p {
     margin-bottom: 15px;
 }
 
+.errorlist {
+    list-style-type: none;
+    padding: 0;
+}
+
 /* ------------------------------------------------- Backgrounds */
 
 .light-bg {

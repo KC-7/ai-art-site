@@ -8,6 +8,7 @@
 <div class="form-container">
 
   <!-- Title, Form & Submit -->
+  <img class="mb-4" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" width="72" height="72">  
   <h1>Generate Art</h1>
   <form method="post" id="generate-art-form">
     {% csrf_token %}
@@ -25,8 +26,8 @@
   <div class="loading-message hide text-center">
     <img src="{% static 'images/spinner.gif' %}" alt="Loading...">
     <p>AI magic taking place 🧙‍♂️</p>
-    <p class="longer-than-expected hide">This is taking a little longer than expected... it'll be ready shortly...</p>
-    <p class="something-wrong hide">Uh oh, we are still trying but this is taking unusually long, try again!</p>
+    <p class="longer-than-expected hide">This is taking a little longer than expected... dont worry, it'll be ready shortly...</p>
+    <p class="something-wrong hide text-danger">Uh oh, we are still trying but this is taking unusually long, please try again!</p>
   </div>
 
   <!-- Generation Advice -->

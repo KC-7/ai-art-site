@@ -1,31 +1,28 @@
 """
 This module contains all of the views for the art_gallery application.
-
-Imports:
-    - os, sys, BytesIO: Standard libraries for working with the file system and binary data.
-    - Django libraries: Libraries needed for Django views, models, forms, and more.
-    - Third party libraries: External libraries for image processing, AI, and cloud storage.
-    - Local imports: Local utilities, models, and forms.
-
-Environment Variables:
-    - OPENAI_API_KEY: The API key for OpenAI, this  is required for the AI Art Generation.
 """
 
 # Python Libraries
 import os
 import sys
 from io import BytesIO
+from datetime import datetime, timedelta
 
 # Django Libraries
+from django.utils import timezone
 from django.utils.text import slugify
+from django.utils.decorators import method_decorator
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.db import models
 from django.db.models import Q
-from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
@@ -44,12 +41,31 @@ from .forms import CommentForm, PostForm, GenerateForm, ProfileForm, EditPostFor
 if os.path.isfile('env.py'):
     import env
 
-from datetime import datetime, timedelta
-from django.utils import timezone
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
 
 openai.api_key = os.environ['OPENAI_API_KEY']
+
+
+class RegisterUser(FormView):
+    """
+    Creates user profile after successful registration.
+    Bug Fix: This  is required to generate the art (due to the user limit check), without this
+    the user profile is created only when the user accesses their profile which was preventing
+    art generations for time new users who had not clicked on their profile yet.
+    Improvement: This View could be replaced with Django Signals in the Models file.
+    """
+    template_name = 'account/signup.html'
+    form_class = UserCreationForm
+
+    def form_valid(self, form):
+        user = form.save()
+        # Create user profile
+        Profile.objects.create(user=user)
+        # Log the user in
+        login(self.request, user)
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return '/'
 
 
 class PostList(generic.ListView):
@@ -312,7 +328,7 @@ class PostPublic(View):
     Allows the user to make private posts public again.
     """
     def post(self, request, slug):
-        print(f"PostPublic - slug: {slug}")  # Debugging
+        # print(f"PostPublic - slug: {slug}")  # Debugging
         post = get_object_or_404(Post, slug=slug, creator=request.user)
         post.status = 1
         post.save()
@@ -322,7 +338,7 @@ class PostPublic(View):
 
 class DeletePost(View):
     """
-    Handles post deletion.
+    Handles the deletion of posts.
     """
     def post(self, request, slug):
         post = get_object_or_404(Post, slug=slug, creator=request.user)
@@ -369,7 +385,7 @@ class UserProfile(View):
 
 class Search(View):
     """
-    Handles images searches.
+    Handles user images searches.
     """
     def get(self, request):
         query = request.GET.get('q', '')
@@ -398,14 +414,9 @@ class EditPost(UpdateView):
         return reverse('post_detail', args=[self.object.slug])
 
 
-# class TermsOfUse(View):
-#     def get(self, request):
-#         return render(request, 'terms.html')
-
-
 class StaticPageView(TemplateView):
     """
-    Handles the static pages.
+    Handles the static pages. These can be uploaded and updated by site admins.
     """
     template_name = 'static_page.html'
 
@@ -415,14 +426,10 @@ class StaticPageView(TemplateView):
         context['page'] = page
         return context
 
-# class StaticPageView(TemplateView):
-#     def get_template_names(self):
-#         return [f"art_gallery/{self.kwargs['slug']}.html"]
-
 
 class AboutView(TemplateView):
     """
-    Handles the about page and displays  the static pages.
+    Handles the about page and displays all of the admins static pages.
     """
     template_name = 'about.html'
 
