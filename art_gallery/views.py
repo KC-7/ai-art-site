@@ -179,123 +179,227 @@ class UploadForm(FormView):
         return reverse('post_detail', args=[self.object.slug])
 
 
-@method_decorator(login_required, name='dispatch')
 class GenerateArt(FormView):
     """
-    This view requires user authentication and uses a GenerateForm to validate input.
-    It manages the generation of the image, creation of a new Post instance, and
-    limits the number of generations a user can make per day.
-
-    Attributes:
-        template_name (str): The template used to render the view.
-        form_class (class): The form class used to validate the input.
-
-    Methods:
-        form_valid(form): Processes the form if it is valid.
+    Handles the art generation requests and then creates a public post.
     """
     template_name = 'generate_art.html'
     form_class = GenerateForm
 
     def form_valid(self, form):
         """
-        Processes the form if it is valid.
-
-        1. Checks if the user has reached the daily generation limit.
-        2. Generates an AI art image based on the user's prompt.
-        3. Creates a new Post instance for the generated image.
-        4. Increments the user's generation count.
-        5. Updates the user's last_generation_timestamp.
-
-        Args:
-            form (GenerateForm): The form instance containing the user's input.
-
-        Returns:
-            HttpResponse: Redirects to the post_detail view for the newly created post.
+        Ensure form is valid before attempting to create the post.
         """
-        user = self.request.user
-        user_profile = user.profile
+        user_profile = self.request.user.profile
+
+        if not self.can_generate(user_profile):
+            messages.error(self.request, "You have reached your daily limit of 5 AI art generations. Please try again tomorrow.")
+            return self.form_invalid(form)
+
+        prompt = form.cleaned_data['prompt']
+        image_url = self.generate_image(prompt)
+
+        if not image_url:
+            messages.error(self.request, "We could not generate your requested image. This may have been due to your search terms. Please read the usage policy for unsuitable language and try again.")
+            return self.form_invalid(form)
+
+        post = self.create_post(prompt, image_url)
+        self.update_user_generation_counter(user_profile)
+
+        return redirect('post_detail', slug=post.slug)
+
+    def can_generate(self, user_profile):
+        """
+        Ensures the user is below their daily threshold before generating.
+        """
         now = timezone.now()
 
-        # Check if the user has made any generations in the last 24 hours
         if user_profile.last_generation_timestamp:
             time_since_last_generation = now - user_profile.last_generation_timestamp
-
-            # Reset generation_count if it's been more than 24 hours since the last generation
             if time_since_last_generation > timedelta(days=1):
                 user_profile.generation_count = 0
                 user_profile.save()
 
-        # Check if the user has reached their daily limit
-        if user_profile.generation_count >= 5:
-            # If the user has reached the daily limit, display an error message and return an invalid form response
-            messages.error(self.request, "You have reached your daily limit of 5 AI art generations. Please try again tomorrow.")
-            return self.form_invalid(form)
+        return user_profile.generation_count < 5
 
-        # Retrieve the prompt from the cleaned form data
-        prompt = form.cleaned_data['prompt']
-
-        # Attempt to generate an image URL based on the given prompt
+    def generate_image(self, prompt):
+        """
+        Generates the image using "generate_image_from_text" function in the utils.py file.
+        """
         try:
-            image_url = generate_image_from_text(prompt)
+            return generate_image_from_text(prompt)
         except ValueError:
-            # If image generation fails, display an error message and return an invalid form response
-            messages.error(self.request, "We could not generate your requested image. This may have been due to your search terms. Please read the usage policy for unsuitable language and try again.")
-            return self.form_invalid(form)
+            return None
 
-        # Fetch the generated image from the URL and create an Image object
+    def create_post(self, prompt, image_url):
+        """
+        Creates the post using the generated image.
+        """
         response = requests.get(image_url)
         image_io = BytesIO(response.content)
         image = Image.open(image_io)
 
-        # Save the Image object to a BytesIO buffer in JPEG format
         output_io = BytesIO()
         image.save(output_io, format="JPEG")
         output_io.seek(0)
 
-        # Create a new Post object and set its title
         post = Post()
         post.title = f"Generation for: '{prompt[:75]}...'"
 
-        # Ensure the post title is unique by appending a counter if necessary
+        # Checks if there is an existing post with same title, if so it will add a number to the end and increment by 1 to ensure it is unique.
         counter = 1
         while Post.objects.filter(title=post.title).exists():
             post.title = f"{post.title} ({counter})"
             counter += 1
 
-        # Set the post description, creator and status
-        post.description = f"AI-generated art based on the prompt: {prompt}. Created using cre8ai.art."
+        post.description = f'AI-generated art based on the prompt: "{prompt}". Created using Cre8AI.art.'
         post.creator = self.request.user
         post.status = 1  # To make the post public by default
 
-        # Generate a unique slug and public_id
-        # base_slug = slugify(post.title)
-        shortened_prompt = prompt[:50]
-        post.slug = slugify(shortened_prompt)
-        public_id = slugify(shortened_prompt)
-        counter = 1
-        while Post.objects.filter(slug=post.slug).exists():
-            post.slug = f"{slugify(shortened_prompt)}-{counter}"
-            public_id = f"{slugify(shortened_prompt)}-{counter}"
-            counter += 1
+        post.slug, public_id = self.generate_unique_slug_and_public_id(prompt)
 
-        # Upload the image to Cloudinary with the unique public_id
         uploaded_image = cloudinary.uploader.upload(
             output_io,
             public_id=public_id,
             format="jpg",
         )
 
-        # Set the post_image field to the public_id returned by Cloudinary
         post.post_image = uploaded_image['public_id']
         post.save()
 
-        # Increment the user's generation count and update the timestamp
+        return post
+
+    def generate_unique_slug_and_public_id(self, prompt):
+        """
+        Creates a unique slug and public ID.
+        """
+        shortened_prompt = prompt[:50]
+        base_slug = slugify(shortened_prompt)
+        slug = base_slug
+        public_id = base_slug
+        counter = 1
+
+        while Post.objects.filter(slug=slug).exists():
+            slug = f"{base_slug}-{counter}"
+            public_id = f"{base_slug}-{counter}"
+            counter += 1
+
+        return slug, public_id
+
+    def update_user_generation_counter(self, user_profile):
+        """
+        Updates the users daily generation counter.
+        """
+        now = timezone.now()
         user_profile.generation_count += 1
         user_profile.last_generation_timestamp = now
         user_profile.save()
 
-        # Redirect to the post_detail view for the newly created post
-        return redirect('post_detail', slug=post.slug)
+# @method_decorator(login_required, name='dispatch')
+# class GenerateArt(FormView):
+#     """
+#     This view requires user authentication and uses a GenerateForm to validate input.
+#     It manages the generation of the image, creation of a new Post instance, and
+#     limits the number of generations a user can make per day.
+
+#     Attributes:
+#         template_name (str): The template used to render the view.
+#         form_class (class): The form class used to validate the input.
+
+#     Methods:
+#         form_valid(form): Processes the form if it is valid.
+#     """
+#     template_name = 'generate_art.html'
+#     form_class = GenerateForm
+
+#     def form_valid(self, form):
+#         """
+#         Processes the form if it is valid.
+#         """
+#         user = self.request.user
+#         user_profile = user.profile
+#         now = timezone.now()
+
+#         # Check if the user has made any generations in the last 24 hours
+#         if user_profile.last_generation_timestamp:
+#             time_since_last_generation = now - user_profile.last_generation_timestamp
+
+#             # Reset generation_count if it's been more than 24 hours since the last generation
+#             if time_since_last_generation > timedelta(days=1):
+#                 user_profile.generation_count = 0
+#                 user_profile.save()
+
+#         # Check if the user has reached their daily limit
+#         if user_profile.generation_count >= 5:
+#             # If the user has reached the daily limit, display an error message and return an invalid form response
+#             messages.error(self.request, "You have reached your daily limit of 5 AI art generations. Please try again tomorrow.")
+#             return self.form_invalid(form)
+
+#         # Retrieve the prompt from the cleaned form data
+#         prompt = form.cleaned_data['prompt']
+
+#         # Attempt to generate an image URL based on the given prompt
+#         try:
+#             image_url = generate_image_from_text(prompt)
+#         except ValueError:
+#             # If image generation fails, display an error message and return an invalid form response
+#             messages.error(self.request, "We could not generate your requested image. This may have been due to your search terms. Please read the usage policy for unsuitable language and try again.")
+#             return self.form_invalid(form)
+
+#         # Fetch the generated image from the URL and create an Image object
+#         response = requests.get(image_url)
+#         image_io = BytesIO(response.content)
+#         image = Image.open(image_io)
+
+#         # Save the Image object to a BytesIO buffer in JPEG format
+#         output_io = BytesIO()
+#         image.save(output_io, format="JPEG")
+#         output_io.seek(0)
+
+#         # Create a new Post object and set its title
+#         post = Post()
+#         post.title = f"Generation for: '{prompt[:75]}...'"
+
+#         # Ensure the post title is unique by appending a counter if necessary
+#         counter = 1
+#         while Post.objects.filter(title=post.title).exists():
+#             post.title = f"{post.title} ({counter})"
+#             counter += 1
+
+#         # Set the post description, creator and status
+#         post.description = f"AI-generated art based on the prompt: {prompt}. Created using cre8ai.art."
+#         post.creator = self.request.user
+#         post.status = 1  # To make the post public by default
+
+#         # Generate a unique slug and public_id
+#         # base_slug = slugify(post.title)
+#         shortened_prompt = prompt[:50]
+#         post.slug = slugify(shortened_prompt)
+#         public_id = slugify(shortened_prompt)
+#         counter = 1
+#         while Post.objects.filter(slug=post.slug).exists():
+#             post.slug = f"{slugify(shortened_prompt)}-{counter}"
+#             public_id = f"{slugify(shortened_prompt)}-{counter}"
+#             counter += 1
+
+#         # Upload the image to Cloudinary with the unique public_id
+#         uploaded_image = cloudinary.uploader.upload(
+#             output_io,
+#             public_id=public_id,
+#             format="jpg",
+#         )
+
+#         # Set the post_image field to the public_id returned by Cloudinary
+#         post.post_image = uploaded_image['public_id']
+#         post.save()
+
+#         # Increment the user's generation count and update the timestamp
+#         user_profile.generation_count += 1
+#         user_profile.last_generation_timestamp = now
+#         user_profile.save()
+
+#         # Redirect to the post_detail view for the newly created post
+#         return redirect('post_detail', slug=post.slug)
 
 
 class PostPrivate(View):
