@@ -72,21 +72,7 @@
         }, 3000);
     </script>
 
-    <!-- Script to adjust padding-bottom based on footer height -->
-    <script>
-        // Function to adjust padding-bottom based on footer height
-        function adjustContentWrapperPadding() {
-            const footer = document.querySelector('.footer');
-            const contentWrapper = document.querySelector('.content-wrapper');
-
-            const footerHeight = footer.offsetHeight;
-            contentWrapper.style.paddingBottom = footerHeight + 'px';
-        }
-        // Calls the function initially
-        adjustContentWrapperPadding();
-        // Calls the function again if the window is resized
-        window.addEventListener('resize', adjustContentWrapperPadding);
-    </script>
+    
 
     <!-- Script for Font Awesome -->
     <script src="https://kit.fontawesome.com/872cb96f02.js" crossorigin="anonymous"></script>
