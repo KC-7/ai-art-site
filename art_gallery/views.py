@@ -252,16 +252,14 @@ class GenerateArt(FormView):
         image.save(output_io, format="JPEG")
         output_io.seek(0)
 
-        # Create a new Post object and set its initial attributes
+        # Create a new Post object and set its title
         post = Post()
-        post.title = f"Generation for: '{prompt}'"
+        post.title = f"Generation for: '{prompt[:75]}...'"
 
         # Ensure the post title is unique by appending a counter if necessary
-        base_title = f"Generation for: '{prompt}'"
         counter = 1
-        post.title = base_title
         while Post.objects.filter(title=post.title).exists():
-            post.title = f"{base_title} ({counter})"
+            post.title = f"{post.title} ({counter})"
             counter += 1
 
         # Set the post description, creator and status
@@ -270,13 +268,14 @@ class GenerateArt(FormView):
         post.status = 1  # To make the post public by default
 
         # Generate a unique slug and public_id
-        base_slug = slugify(post.title)
+        # base_slug = slugify(post.title)
+        shortened_prompt = prompt[:50]
+        post.slug = slugify(shortened_prompt)
+        public_id = slugify(shortened_prompt)
         counter = 1
-        post.slug = base_slug
-        public_id = base_slug
         while Post.objects.filter(slug=post.slug).exists():
-            post.slug = f"{base_slug}-{counter}"
-            public_id = f"{base_slug}-{counter}"
+            post.slug = f"{slugify(shortened_prompt)}-{counter}"
+            public_id = f"{slugify(shortened_prompt)}-{counter}"
             counter += 1
 
         # Upload the image to Cloudinary with the unique public_id
