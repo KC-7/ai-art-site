@@ -30,7 +30,8 @@
             </div>
         </div>
         <div class="col-md-8">
-            <div class="text-center"><img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo"></div>
+            <div class="text-center"><img class="mb-4 small-logo" src="{% static 'images/logo.png' %}"
+                    alt="Cre8AI.art Logo"></div>
             <h3>{{ profile.user.username }}'s Cre8ions</h3>
             <div class="row">
                 {% for post in posts %}
@@ -45,14 +46,12 @@
                 <p>No posts yet.</p>
                 {% endfor %}
             </div>
-
             {% if user.is_authenticated and user == profile.user %}
             <div class="row">
                 <div class="col">
                     <hr>
                 </div>
             </div>
-
             <h3> Your Private Cre8ions</h3>
             <div class="row">
                 {% for post in posts %}
@@ -68,8 +67,6 @@
                 {% endfor %}
             </div>
             {% endif %}
-
-
         </div>
     </div>
 </div>

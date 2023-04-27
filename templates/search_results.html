@@ -8,28 +8,21 @@
 
 <div class="col-12 mt-3 text-center">
     <div class="logo-img">
-        <img src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
+        <img src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" class="small-logo">
     </div>
     <h1>
-        <!-- <div class="logo">
-            <span class="logo-text logo-cre">cre</span><span class="logo-text logo-eight">8</span>
-            <span class="logo-text logo-ai">ai</span>
-            <span class="logo-text logo-art">.art</span>
-        </div> -->
         Search Results
     </h1>
     <h2>
         for: <em>"{{ query }}"</em>
     </h2>
 </div>
-
 <div class="col-12 mt-3 text-center">
     <form method="get" action="{% url 'search' %}">
         <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
         <input type="submit" value="Search">
     </form>
 </div>
-
 <div class="col-12 mt-3">
     {% with request.GET.sorting as sorting %}
     <form method="get" class="sorting-form">
@@ -41,7 +34,6 @@
     </form>
     {% endwith %}
 </div>
-
 <div class="container-fluid">
     <div class="row">
         <!-- Message from Views.py for no search results.  -->
@@ -88,7 +80,6 @@
                 {% endif %}
                 {% endfor %}
             </div>
-
         </div>
     </div>
     {% if is_paginated %}
@@ -132,6 +123,5 @@
     </nav>
     {% endif %}
 </div>
-
 
 {% endblock %}

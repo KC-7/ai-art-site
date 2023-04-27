@@ -53,7 +53,6 @@
     </div>
 </div>
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 card mb-4 mt-3 left top">
@@ -112,11 +111,13 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col">
         <hr>
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-8 card mb-4 mt-3 ">
         <h3>Comments:</h3>
@@ -163,7 +164,7 @@
         );
         console.log("Confirmation: " + confirmation);
         console.log("Creator: {{ post.creator }}");
-        if (confirmation  === '{{ post.creator }}') {
+        if (confirmation === '{{ post.creator }}') {
             // If the user types their username, submit the form
             deletePostForm.submit();
         } else {
