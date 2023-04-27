@@ -5,11 +5,9 @@ from .models import Comment, Post, Profile
 
 
 def validate_file_size(value):
-    print("Validating file size...")
     limit = 5 * 1024 * 1024  # 5 MB
     if value.size > limit:
         raise ValidationError('File size must not exceed 5 MB.')
-    print(f"File size: {value.size}")
 
 
 class CommentForm(forms.ModelForm):
@@ -25,7 +23,7 @@ class PostForm(forms.ModelForm):
     """
     Form for creating image posts.
     """
-    post_image = forms.ImageField(validators=[validate_file_size], required=False)
+    post_image = forms.ImageField(validators=[validate_file_size], required=False)  # Validates image is below 5mb
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
@@ -60,7 +58,7 @@ class ProfileForm(forms.ModelForm):
     """
     Form for editing user profile.
     """
-    profile_picture = forms.ImageField(validators=[validate_file_size], required=False)
+    profile_picture = forms.ImageField(validators=[validate_file_size], required=False)  # Validates image is below 5mb
 
     class Meta:
         model = Profile
