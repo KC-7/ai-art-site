@@ -40,7 +40,7 @@ class CommentAdmin(admin.ModelAdmin):
     Admin configuration for the comments on the posts.
     """
     list_display = ('body', 'name', 'post', 'created_on')
-    list_filter = ('name',  'post', 'created_on')
+    list_filter = ('name', 'created_on')
     search_fields = ['name', 'email', 'body']
 
 
@@ -51,7 +51,6 @@ class ProfileAdmin(admin.ModelAdmin):
     """
     list_display = ('user', 'profile_picture', 'total_posts', 'bio', 'last_generation_timestamp', 'generation_count')
     search_fields = ('user__username', 'bio')
-    list_filter = ('last_generation_timestamp',)
     actions = ['reset_profile_pictures', 'reset_generation_count']
 
     def reset_profile_pictures(self, request, queryset):
