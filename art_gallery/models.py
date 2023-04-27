@@ -57,7 +57,7 @@ class Profile (models.Model):
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True, default='Cre8AI.art User')
-    profile_picture = CloudinaryField('profile_pictures', default='images/defaultUser.png')
+    profile_picture = CloudinaryField('profile_pictures', default='v1682601722/defaultUser_eqbmfo.png')
 
     last_generation_timestamp = models.DateTimeField(null=True, blank=True)
     generation_count = models.PositiveIntegerField(default=0)

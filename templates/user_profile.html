@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load cloudinary %}
+
 {% block title %} {{ profile.user }} {% endblock %}
 
 {% block content %}
@@ -12,7 +14,7 @@
                 <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }}'s Profile picture"
                     class="card-img-top rounded-circle">
                 <div class="card-body">
-                    <h5 class="card-title">{{ profile.user.username }}</h5>
+                    <h5 class="card-title"><strong>{{ profile.user.username }}</strong></h5>
                     <p class="card-text">{{ profile.bio }}</p>
                     <p><strong>Total Posts:</strong> {{ posts.count }}</p>
                     {% if user == profile.user %}
@@ -28,7 +30,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <div class="text-center"><img class="mb-4" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" width="72" height="72"></div>
+            <div class="text-center"><img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo"></div>
             <h3>{{ profile.user.username }}'s Cre8ions</h3>
             <div class="row">
                 {% for post in posts %}

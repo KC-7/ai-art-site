@@ -11,7 +11,7 @@
 <div class="form-container">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2 text-center">
-      <img class="mb-4" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" width="72" height="72">
+      <img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
       <h3>{% trans "Sign Up" %}</h3>
       <p>{% blocktrans %}Welcome to onlineai.art! Do you already have an account? Then please <a class="link"
           href="{{ login_url }}">sign in</a> instead, otherwise, register here.{% endblocktrans %}</p>
@@ -26,14 +26,14 @@
           {{ field.label_tag }}<br>
           {{ field }}
           {% if field.errors %}
-            <ul class="errorlist text-danger">
+          <ul class="errorlist text-danger">
             {% for error in field.errors %}
-              <li>{{ error }}</li>
+            <li>{{ error }}</li>
             {% endfor %}
-            </ul>
+          </ul>
           {% endif %}
         </div>
-      {% endfor %}
+        {% endfor %}
         <button class="btn btn-custom right" type="submit">{% trans "Sign Up" %} &raquo;</button>
       </form>
     </div>

@@ -93,7 +93,7 @@ p {
     background-color: var(--col-8);
 }
 
-/* ------------------------------------------------- Imange & Containers */
+/* ------------------------------------------------- Image & Containers */
 
 .card {
     border: none;
@@ -125,7 +125,10 @@ p {
     left: -2px;
     background-color: var(--col-1);
     opacity: 0.7;
+}
 
+.card-img-top {
+    padding: 10%;
 }
 
 /* ------------------------------------------------- Text */
@@ -246,6 +249,12 @@ p {
 .logo-img img {
     width: 100px;
     height: 100px;
+}
+
+.small-logo {
+    width: 75px;
+    height: 75px;
+    margin-top: 25px;
 }
 
 .logo-text {

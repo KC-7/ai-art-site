@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="form-container text-center">
-  <img class="mb-4" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" width="72" height="72">
+  <img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
   <h1>Upload a New Post</h1>
   <form method="post" enctype="multipart/form-data" class="form">
     {% csrf_token %}
