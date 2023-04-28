@@ -38,7 +38,7 @@
                 {% if post.status == 1 %}
                 <div class="col-md-4 mb-3">
                     <a href="{% url 'post_detail' post.slug %}">
-                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail">
+                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail" oncontextmenu="return false;">
                     </a>
                 </div>
                 {% endif %}

@@ -196,6 +196,11 @@ Link: https://docs.djangoproject.com/en/4.2/ref/contrib/messages/
 Link2: https://django-messages.readthedocs.io/en/latest/
 
 
+### Updating Admin Portal Text: 
+
+Link: https://books.agiliq.com/projects/django-admin-cookbook/en/latest/change_text.html
+
+
 
 ---
 
