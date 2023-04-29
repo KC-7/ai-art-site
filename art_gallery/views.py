@@ -17,7 +17,7 @@ from django.views import generic, View
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
@@ -178,8 +178,7 @@ class UploadForm(FormView):
         return reverse('post_detail', args=[self.object.slug])
 
 
-@method_decorator(login_required, name='dispatch')
-class GenerateArt(FormView):
+class GenerateArt(FormView, LoginRequiredMixin):
     """
     Handles the art generation requests and then creates a public post.
     """
