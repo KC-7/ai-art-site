@@ -4,7 +4,7 @@ This module contains all of the views for the art_gallery application.
 
 # Python Libraries
 import os
-import sys
+# import sys
 from io import BytesIO
 from datetime import datetime, timedelta
 
@@ -14,7 +14,7 @@ from django.utils.text import slugify
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic, View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import FormView, UpdateView
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -68,7 +68,7 @@ class RegisterUser(FormView):
         return '/'
 
 
-class PostList(generic.ListView):
+class PostList(ListView):
     """
     Displays list of posts, paginates and allows sorting by most likes or most recent.
     """
@@ -77,7 +77,8 @@ class PostList(generic.ListView):
     paginate_by = 9  # Django will restrict 9 posts to paginate_by
 
     def get_queryset(self):
-        queryset = Post.objects.filter(status=1)
+        query = self.request.GET.get('q', '')
+        queryset = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1)
         sorting = self.request.GET.get('sorting', 'newest')
 
         if sorting == 'most_likes':
@@ -216,10 +217,16 @@ class GenerateArt(FormView, LoginRequiredMixin):
         if user_profile.last_generation_timestamp:
             time_since_last_generation = now - user_profile.last_generation_timestamp
             if time_since_last_generation > timedelta(days=1):
-                user_profile.generation_count = 0
-                user_profile.save()
+                self.reset_generation_counter(user_profile)
 
         return user_profile.generation_count < 5
+
+    def reset_generation_counter(self, user_profile):
+        """
+        Resets the user's generation counter and saves the profile.
+        """
+        user_profile.generation_count = 0
+        user_profile.save()
 
     def generate_image(self, prompt):
         """
@@ -229,6 +236,7 @@ class GenerateArt(FormView, LoginRequiredMixin):
             return generate_image_from_text(prompt)
         except ValueError:
             return None
+
 
     def create_post(self, prompt, image_url):
         """
@@ -248,10 +256,10 @@ class GenerateArt(FormView, LoginRequiredMixin):
         # Check if there is an existing post with same title, if so add a number to the end and increment by 1 to ensure it is unique.
         counter = 1
         while Post.objects.filter(title=post.title).exists():
-            post.title = f"{post.title} ({counter})"
             counter += 1
+            post.title = f"Generation for: '{prompt[:75]}...' ({counter})"
 
-        post.description = f'AI-generated art based on the prompt: "{prompt}". Created using Cre8AI.art.'
+        post.description = f'AI-generated art based on the prompt: "{prompt}". \n Created using Cre8AI.art.'
         post.creator = self.request.user
         post.status = 1  # Make the post public by default
 
@@ -378,19 +386,30 @@ class UserProfile(View):
             return render(request, 'user_profile.html', context)
 
 
-class Search(View):
+class Search(PostList):
     """
-    Handles user images searches.
+    Handles user image searches.
     """
-    def get(self, request):
-        query = request.GET.get('q', '')
-        posts = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1).order_by('-created_on')
-        if posts:
-            return render(request, 'search_results.html', {'posts': posts, 'query': query})
+    def get_queryset(self):
+        query = self.request.GET.get('q', '')
+        sorting = self.request.GET.get('sorting', 'newest')
+        queryset = Post.objects.filter(
+            Q(title__icontains=query) | Q(description__icontains=query), status=1
+        )
+
+        if sorting == 'most_likes':
+            queryset = queryset.annotate(
+                likes_count=models.Count('likes')
+            ).order_by('-likes_count', '-created_on')
         else:
-            message = "There are no matches for your search result. Sounds original, why not generate a new creation?"
-            # Bug Fix: Empty 'posts' lists variable added to display 'query' when no results are available, without it it will returns empty parenthesis.
-            return render(request, 'search_results.html', {'posts': [], 'message': message, 'query': query})
+            queryset = queryset.order_by('-created_on')
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q', '')
+        return context
 
 
 class EditPost(UpdateView):

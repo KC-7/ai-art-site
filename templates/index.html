@@ -46,6 +46,7 @@
 <div class="col-12 mt-3 text-right">
     {% with request.GET.sorting as sorting %}
     <form method="get" class="sorting-form">
+        <input type="hidden" name="q" value="{{ query }}">
         <label for="sorting">Sort by:</label>
         <select name="sorting" id="sorting" onchange="this.form.submit()">
             <option value="newest" {% if sorting == 'newest' %}selected{% endif %}>Newest</option>
