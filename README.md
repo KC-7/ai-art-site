@@ -29,28 +29,34 @@ This web application allows users to create custom AI generated artwork using th
 
 ---
 
+## Technologies Used
+
+TBC
+
+---
+
 ## Coding Overview
 
 ### URLs
 
 The following URLs are used in the project:
 
-| URL | Description |
-| --- | --- |
-| / | Home page, displays list of image posts |
-| /accounts/signup/ | User registration page |
-| /upload/ | Form for uploading new image posts |
-| /generate_art/ | Form for generating art from text |
-| /search/ | Search page for image posts |
-| /about/ | About page, displays list of static pages |
-| /<slug:slug>/ | Detail page for a specific image post |
-| /like/<slug:slug>/ | Endpoint for liking/unliking a post |
-| /private/<slug:slug>/ | Endpoint for making a post private |
-| /public/<slug:slug>/ | Endpoint for making a private post public again |
-| /delete/<slug:slug>/ | Endpoint for deleting a post |
-| /profile/<str:username>/ | User profile page |
-| /post_edit/<slug:slug>/ | Form for editing a posted image's description |
-| /about/<slug:slug>/ | Detail page for a specific static page |
+| URL                         | Description                                        |
+| ---                         | ---                                                |
+| /                           | Home page, displays list of image posts            |
+| /accounts/signup/           | User registration page                             |
+| /upload/                    | Form for uploading new image posts                 |
+| /generate_art/              | Form for generating art from text                  |
+| /search/                    | Search page for image posts                        |
+| /about/                     | About page, displays list of static pages          |
+| /<slug:slug>/               | Detail page for a specific image post              |
+| /like/<slug:slug>/          | Endpoint for liking/unliking a post                |
+| /private/<slug:slug>/       | Endpoint for making a post private                 |
+| /public/<slug:slug>/        | Endpoint for making a private post public again    |
+| /delete/<slug:slug>/        | Endpoint for deleting a post                       |
+| /profile/<str:username>/    | User profile page                                  |
+| /post_edit/<slug:slug>/     | Form for editing a posted image's description      |
+| /about/<slug:slug>/         | Detail page for a specific static page             |
 
 ### Models
 
@@ -120,10 +126,6 @@ The following URLs are used in the project:
 
 ---
 
-
-
----
-
 ## Local Set Up Guide
 
 - Clone the repository.
@@ -189,7 +191,7 @@ The following URLs are used in the project:
 
 ---
 
-## Bugs:
+## Bugs
 
 ### Resolved Bugs
 
@@ -202,6 +204,62 @@ The following URLs are used in the project:
 | Bug | Comments |
 | --- | --- |
 | When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after. |
+
+---
+
+## Testing
+
+### Manual Testing
+
+#### User Expectation Testing
+
+| Test Case                                                  | Expected Result                                                                                     | Result |
+|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| Load the homepage                                          | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
+| Register a new user                                        | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
+| Log in an existing user                                    | Logs in the user and redirects to the homepage                                                      | ✅    |
+| Upload a new post                                          | Displays the uploaded post in detail                                                                | ✅    |
+| Generate AI art                                            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
+| Search for posts                                           | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
+| View a user's profile                                      | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
+| Edit a post                                                | Displays the updated post in detail                                                                 | ✅    |
+| Like/unlike a post                                         | Updates the post's like count                                                                       | ✅    |
+| Make a post private                                        | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
+| Make a post public                                         | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
+| Delete a post                                              | Removes the post and redirects to the user's profile                                                | ✅    |
+| View the about page                                        | Displays the about page with a list of admin-created static pages                                   | ✅    |
+| View a static page                                         | Displays the content of the static page                                                             | ✅    |
+
+#### Functionality/Input-Validation
+
+| Test Case                                                  | Expected Result                                                                                     | Result |
+|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| Register a new user with invalid input                     | Displays an error message and does not create a user profile                                        | ✅    |
+| Log in with invalid credentials                            | Displays an error message and does not log in the user                                              | ✅    |
+| Upload a post without required  input                      | Displays an error message and does not create the post                                              | ✅    |
+| Generate AI art with invalid input                         | Displays an error message and does not generate the art                                             | ✅    |
+| Generate more than the limit for AI art                    | Displays an error message and does not generate the art                                             | ✅    |
+| Empty comment on a post                                    | Displays an error message and does not create the comment                                           | ✅    |
+| Edit a post with empty input                               | Displays an error message and does not update the post                                              | ✅    |
+| Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
+
+---
+
+## Deployment
+
+TBC
+
+---
+
+## Future Development
+
+TBC
+
+---
+
+## Contact
+
+TBC
 
 ---
 
