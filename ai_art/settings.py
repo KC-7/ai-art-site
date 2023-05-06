@@ -33,7 +33,7 @@ DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-ALLOWED_HOSTS = ['ai-art-site.herokuapp.com', 'cre8ai.art', 'localhost']
+ALLOWED_HOSTS = ['ai-art-site.herokuapp.com', 'www.cre8ai.art', 'localhost']
 
 
 # Application definition
