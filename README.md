@@ -31,7 +31,21 @@ This web application allows users to create custom AI generated artwork using th
 
 ## Technologies Used
 
-TBC
+- Django
+
+- Python
+
+- HTML
+
+- CSS
+
+- Javascript
+
+- Cloudinary
+
+- ElephantSQL
+
+- OpenAI API
 
 ---
 
@@ -184,7 +198,7 @@ The following URLs are used in the project:
 ### Sprint 7
 - Update & Delete Posts + Make Private
 
-#### ADITIONAL TO BE UPDATED: 
+#### ADITIONAL TO BE UPDATED ABOVE: 
 - Image generation limit
 - Disable image downloads for unregistered users
 - Admin portal features
@@ -198,12 +212,14 @@ The following URLs are used in the project:
 | Bug | Fix |
 | --- | --- |
 | HTML code being displayed on the post previews | I used the striptags filter to remove the code tags before truncating it (restricting the amount of words that are displayed on image preview) |
+| Site went down and stopped working after deployment | After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
 
 ### Outstanding Bugs
 
 | Bug | Comments |
 | --- | --- |
 | When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after. |
+| Unable to access via the custom namecheap domain | Still testing and trying to resolve.................. |
 
 ---
 
@@ -253,13 +269,33 @@ TBC
 
 ## Future Development
 
-TBC
+I would have liked to implement some of the below features but was unable to due to timing restraints, these can be planned for development at a later stage:
 
----
+- Set up additional sign up information as a requirement, such as email address, etc. 
 
-## Contact
+- Set up password resets for user
 
-TBC
+- Set up print on demand products below each of the posts and payment processing for same
+
+- Set up user private messaging system
+
+- Set up comments section on user profiles
+
+- Set up pagination on user profiles
+
+- Set up a "Following" section and allow users to follow other creators
+
+- Set up social sign up and login
+
+- Set up a social share feature that allows users to share their generations easily on social media
+
+- Set up automatic likes for users own posts
+
+- Set up advertising on the site to generate revenue
+
+- Set up subscription tiers: Free, Paid Plan and Supreme Plan. Restrict daily generations based on tier and amount of adverts displayed etc.
+
+- Set up additional site analytics on the admin panel
 
 ---
 
@@ -297,3 +333,24 @@ TBC
 | [Aesthetically Pleasing Icons](https://fontawesome.com/search?q=next&o=r&m=free) | Font Awesome icons for use in the project |
 | [Allow Only Registered Users to Download Images](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/) | Django documentation for restricting access to registered users |
 | [Disable Right Click on Images](https://www.dotnettricks.com/learn/aspnet/disable-right-click-on-web-page-and-images) | Tutorial on disabling right-click on images for added protection |
+
+
+## Credits
+
+In addition to the above documentation, I would like to give credit to the following resources: 
+
+- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project. 
+
+- __Mentor__ - I found my three calls with my Code Institute mentor, Rohit, exceptionally valuable and useful.
+
+- __ChatGPT__ - ChatGPT is relativly new technolgoy and needs to be used with a mountain of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross check information provided by ChatGPT with reputable resources to ensure the data being provided is reliable.
+
+- __YouTube__ - I watached many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, etc. 
+
+---
+
+## Contact
+
+I can be contacted directly at the following email address: 
+
+- Kieran@KC-7.com
