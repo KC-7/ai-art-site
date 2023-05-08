@@ -79,6 +79,10 @@ class PostList(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q', '')
         queryset = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1)
+
+        # Bug Fix - Filter out posts without a slug value
+        queryset = queryset.filter(~Q(slug=''))
+
         sorting = self.request.GET.get('sorting', 'newest')
 
         if sorting == 'most_likes':
