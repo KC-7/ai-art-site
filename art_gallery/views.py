@@ -206,6 +206,7 @@ class GenerateArt(FormView, LoginRequiredMixin):
             return self.form_invalid(form)
 
         prompt = form.cleaned_data['prompt']
+        prompt = prompt.replace('"', '')  # replaces quotation marks with empty string
         image_url = self.generate_image(prompt)
 
         if not image_url:

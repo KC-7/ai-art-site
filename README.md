@@ -12,7 +12,46 @@ This web application allows users to create custom AI generated artwork using th
 
 ## Table of Contents 📖
 
-XXXXX
+- [Live Links: 🚀 🌐](#live-links-------)
+- [Description 📝](#description---)
+- [Table of Contents 📖](#table-of-contents---)
+- [Main Features 🎨](#main-features---)
+- [Technologies & Services Used 💻 🌎](#technologies---services-used------)
+- [Coding Overview 🖥️ 🖱️](#coding-overview--------)
+  * [URLs 🌐](#urls---)
+  * [Models 📄](#models---)
+  * [Views 👀](#views---)
+  * [Forms 📝](#forms---)
+  * [Utilities 🛠️](#utilities----)
+  * [Admin 👥](#admin---)
+- [Local Set Up Guide 🖥️ 🛠️](#local-set-up-guide--------)
+- [Agile Sprint List 📅 🏃‍♂️💨](#agile-sprint-list-----------)
+  * [1️⃣ Sprint 1](#1---sprint-1)
+  * [2️⃣ Sprint 2](#2---sprint-2)
+  * [3️⃣ Sprint 3](#3---sprint-3)
+  * [4️⃣ Sprint 4](#4---sprint-4)
+  * [5️⃣ Sprint 5](#5---sprint-5)
+  * [6️⃣ Sprint 6](#6---sprint-6)
+  * [7️⃣ Sprint 7](#7---sprint-7)
+    + [ADITIONAL TO BE UPDATED ABOVE: (8️⃣ 9️⃣ 0️⃣)](#aditional-to-be-updated-above---8---9---0---)
+- [Bugs 🐛 🐌 🕷️](#bugs----------)
+  * [Resolved Bugs ✅ 🐞](#resolved-bugs-----)
+  * [Outstanding Bugs ❌ 🤔](#outstanding-bugs-----)
+- [Testing 🕵️ 💻](#testing-------)
+  * [Manual Testing 🔎](#manual-testing---)
+    + [User Expectation Testing 👩‍🦰‍👦](#user-expectation-testing---------)
+    + [Functionality/Input-Validation 🛠️ 🔧](#functionality-input-validation-------)
+- [Deployment (Prior to Completing Project) 🚀](#deployment--prior-to-completing-project----)
+  * [Step 1: Setting up the Django Project 🛠️ 1️⃣](#step-1--setting-up-the-django-project-----1--)
+  * [Step 2: Deploying App to Heroku 🚀 2️⃣](#step-2--deploying-app-to-heroku----2--)
+- [Final Deployment (Post Completion of Project)](#final-deployment--post-completion-of-project-)
+- [Custom Web Domain 💻 🌐](#custom-web-domain------)
+- [Custom Email Domain 📨 🌐](#custom-email-domain------)
+- [Future Development 💭 💡](#future-development------)
+- [Summary of Charges](#summary-of-charges)
+- [Useful Links & Documentation 📎📖](#useful-links---documentation-----)
+- [Credits 👏 🙌](#credits------)
+- [Contact 📨 📫](#contact------)
 
 ---
 
@@ -63,6 +102,8 @@ XXXXX
 - Gitpod (Cloud Based Development Environment)
 
 - Cloudflare (Security Network / SSL Cert)
+
+- NameCheap (Domain Name Registrar)
 
 ---
 
@@ -476,7 +517,7 @@ The following URLs are used in the project:
     - CNAME, XXXX, XXXX, XXX
     - URL Redirect , XXX, XXX, XXX
 
-**On [DNS Checker (.org)](https://dnschecker.org/):**
+**On [DNS Checker (.org)](https://dnschecker.org/#A/cre8ai.art):**
 
 - Search domain name to see if it has propegated (this can take 24 to 48 hours)
 
@@ -542,6 +583,20 @@ I would have liked to implement some of the below features but was unable to due
 
 - Consider changing the admin static about pages from HTML to a standard text entry format so that the admins will not need to enter the data using any code.
 
+- I briefly set up a function to generate keywords automatically for each of the generated images using GPT3 (OpenAI) but decided not to implement this feature to keep API charges to a minimum, this could be added back in future.
+
+---
+
+## Summary of Charges
+
+I have spent less than 5 euro creating this project as most of the third party tecnologies used in this project are on free accounts (eg. Cloudflare, The Heroku Dyno, Cloudinary, ElephantSQL, etc) however the following items are charged for: 
+
+- **OpenAI API Calls** - The only OpenAI model used for this project is DALLE 2, each API call (at the time of writing) is charged at 2 cent. OpenAI comes with 20 dollars free credits which expire after 3 months, the free credits will cover 1,000 image generations (a few months ago it was 60cent per generation).
+
+- **NameCheap Domain Registration** - The total price for the domain, including privacy, was $3.88 for the first year.
+
+**Note:** the free accounts may come with limitations which may need to be monitored, example, cloudinary provides 25 credits per month, after 100s of image generations, I have only used the following: `Credit Usage For Last 30 Days = 1.61 of 25 (6.44% used)`
+
 ---
 
 ## Useful Links & Documentation 📎📖
@@ -580,16 +635,18 @@ I would have liked to implement some of the below features but was unable to due
 | [Disable Right Click on Images](https://www.dotnettricks.com/learn/aspnet/disable-right-click-on-web-page-and-images) | Tutorial on disabling right-click on images for added protection |
 | [Youtube: Setting Up Free SSL with CloudFlare](https://www.youtube.com/watch?v=Y4iHXhRkpO4) | Video tutorial on setting up CloudFlare for free SSL cert |
 | [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Video tutorial on setting up a custom domain on gmail, note the following required changes since this video was uploaded as described by Wiyre: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
+| [Markdown Table of Contents Generator](http://ecotrust-canada.github.io/markdown-toc/) | Table of contents generated with markdown-toc |
+| [Wix Logo Maker](https://www.wix.com/logo/maker) | The Logo was made using Wix's Free Logo Maker |
 
 ## Credits 👏 🙌
 
-In addition to the above documentation, I would like to give credit to the following resources: 
+I would like to give credit to the all of the content creators and developers of the above documentation and listed resources. In addition to this, I would like to give a lot of credit to the following resources: 
 
-- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project and expanded from there. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiteratted in the Deployment section above.
+- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project and expanded on from there. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiteratted in the Deployment section above.
 
 - __Mentor__ - I found my three calls with my Code Institute mentor, Rohit, exceptionally valuable and useful.
 
-- __ChatGPT__ - ChatGPT is relativly new technolgoy and needs to be used with a mountain of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross check information provided by ChatGPT with reputable resources to ensure the data being provided is reliable.
+- __ChatGPT__ - ChatGPT is relativly new technolgoy and needs to be used with a **mountain** of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross checked any information provided by ChatGPT with reputable resources to ensure the data being provided is reliable and accurate.
 
 - __YouTube__ - I watched many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, set up free SSL cert, set up free custom email domains, etc. 
 
