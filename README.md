@@ -1,38 +1,44 @@
-# [Cre8AI.art](https://www.cre8ai.art/)
+# [Cre8AI.art 🎨](https://www.cre8ai.art/)
 
-Live Links:
+## Live Links: 🚀 🌐
 - Custom Domain: https://www.cre8ai.art/
 - Heroku Link: https://ai-art-site.herokuapp.com/
 
-## Description
+## Description 📝
 
 This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required. 
 
 ---
 
-## Main Features
+## Table of Contents 📖
 
-- User registration and authentication
-
-- Image generation based on the user's text prompts
-
-- Image upload and management
-
-- User profile with bio and profile picture
-
-- Post liking and commenting
-
-- Public and private post visibility options
-
-- Search and sort functionality
-
-- Static pages for additional content
-
-- Admin panel for managing posts, comments, user profiles, and static pages
+XXXXX
 
 ---
 
-## Technologies & Services Used
+## Main Features 🎨
+
+- User registration and authentication 📝
+
+- Image generation based on the user's text prompts 🎨
+
+- Image upload and management 🖼️
+
+- User profile with bio and profile picture 👤
+
+- Post liking and commenting ❤️ 💬
+
+- Public and private post visibility options 🔓 🔒
+
+- Search and sort functionality 🔍
+
+- Static about pages for additional content ⚡️
+
+- Admin panel for managing posts, comments, user profiles, and static pages 👥
+
+---
+
+## Technologies & Services Used 💻 🌎
 
 - Django (Python Web Framework using Model, Template, Views Architectural Pattern)
 
@@ -60,9 +66,9 @@ This web application allows users to create custom AI generated artwork using th
 
 ---
 
-## Coding Overview
+## Coding Overview 🖥️ 🖱️
 
-### URLs
+### URLs 🌐
 
 The following URLs are used in the project:
 
@@ -83,7 +89,7 @@ The following URLs are used in the project:
 | `/post_edit/<slug:slug>/`   | Form for editing a posted image's description      |
 | `/about/<slug:slug>/`       | Detail page for a specific static page             |
 
-### Models
+### Models 📄
 
 - **Post**: A model for image posts, which includes fields for the image, title, slug, creator, timestamps, description, status (private/public), likes, and approval status.
 
@@ -93,7 +99,7 @@ The following URLs are used in the project:
 
 - **StaticPage**: A model for admin-created static pages, which includes fields for the title, slug, content, and status (private/public).
 
-### Views
+### Views 👀
 
 - **RegisterUser**: Handles user registration and creates a profile for the registered user.
 
@@ -123,7 +129,7 @@ The following URLs are used in the project:
 
 - **AboutView**: Handles the about page and displays all of the admins' static pages.
 
-### Forms
+### Forms 📝
 
 - **CommentForm**: A form for adding comments to posts.
 
@@ -135,11 +141,11 @@ The following URLs are used in the project:
 
 - **EditPostForm**: A form for editing posted images' descriptions.
 
-### Utilities
+### Utilities 🛠️
 
 - **generate_image_from_text(prompt)**: A function that generates an image from a text prompt using OpenAI's API. Takes a string 'prompt' as an argument and returns the URL of the generated image. Raises a ValueError if the API request is not successful.
 
-### Admin
+### Admin 👥
 
 - **PostAdmin**: Admin configuration for the image posts, including list display, search fields, prepopulated fields, list filters, and custom actions such as making posts private and liking posts.
 
@@ -151,7 +157,7 @@ The following URLs are used in the project:
 
 ---
 
-## Local Set Up Guide
+## Local Set Up Guide 🖥️ 🛠️
 
 - Clone the repository.
 
@@ -171,54 +177,54 @@ The following URLs are used in the project:
 
 ---
 
-## Agile Sprint List
+## Agile Sprint List 📅 🏃‍♂️💨
 
-### Sprint 1
+### 1️⃣ Sprint 1
 - Create & Moderate Posts
 - Moderate Posts
 - Private Posts
 
-### Sprint 2
+### 2️⃣ Sprint 2
 - Site Pagination
 - View Posts
 - View Likes
 - View Comments
 
-### Sprint 3
+### 3️⃣ Sprint 3
 - Open Images
 - Register Account
 - Login
 - Log out
 
-### Sprint 4
+### 4️⃣ Sprint 4
 - Comment on posts
 - Like Posts
 - User Uploads
 - Upload Redirection
 
-### Sprint 5
+### 5️⃣ Sprint 5
 - AI Art Generation
 - Image Downloads
 - Total Number of Pages
 
-### Sprint 6
+### 6️⃣ Sprint 6
 - Search Images
 - Filter Posted Images
 - Account Page
 
-### Sprint 7
+### 7️⃣ Sprint 7
 - Update & Delete Posts + Make Private
 
-#### ADITIONAL TO BE UPDATED ABOVE: 
+#### ADITIONAL TO BE UPDATED ABOVE: (8️⃣ 9️⃣ 0️⃣)
 - Image generation limit
 - Disable image downloads for unregistered users
 - Admin portal features
 
 ---
 
-## Bugs
+## Bugs 🐛 🐌 🕷️
 
-### Resolved Bugs
+### Resolved Bugs ✅ 🐞
 
 | Bug | Fix |
 | --- | --- |
@@ -226,7 +232,7 @@ The following URLs are used in the project:
 | Site went down and stopped working after deployment | After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
 | Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
 
-### Outstanding Bugs
+### Outstanding Bugs ❌ 🤔
 
 | Bug | Comments |
 | --- | --- |
@@ -235,11 +241,11 @@ The following URLs are used in the project:
 
 ---
 
-## Testing
+## Testing 🕵️ 💻
 
-### Manual Testing
+### Manual Testing 🔎
 
-#### User Expectation Testing
+#### User Expectation Testing 👩‍🦰‍👦
 
 | Test Case                                                  | Expected Result                                                                                     | Result |
 |------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
@@ -258,7 +264,7 @@ The following URLs are used in the project:
 | View the about page                                        | Displays the about page with a list of admin-created static pages                                   | ✅    |
 | View a static page                                         | Displays the content of the static page                                                             | ✅    |
 
-#### Functionality/Input-Validation
+#### Functionality/Input-Validation 🛠️ 🔧
 
 | Test Case                                                  | Expected Result                                                                                     | Result |
 |------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
@@ -273,9 +279,9 @@ The following URLs are used in the project:
 
 ---
 
-## Deployment (Prior to Completing Project)
+## Deployment (Prior to Completing Project) 🚀
 
-### Step 1: Setting up the Django Project
+### Step 1: Setting up the Django Project 🛠️ 1️⃣
 
 **On Gipod:**
 
@@ -297,7 +303,7 @@ The following URLs are used in the project:
         python3 manage.py migrate  # This migrates the changes.
         python3 manage.py runserver  # This runs the server, test it works.
 
-### Step 2: Deploying App to Heroku
+### Step 2: Deploying App to Heroku 🚀 2️⃣
 
 **On ElephantSQL:**
 
@@ -433,7 +439,7 @@ The following URLs are used in the project:
 
 ---
 
-## Custom Web Domain
+## Custom Web Domain 💻 🌐
 
 **On Gitpod:**
 
@@ -490,14 +496,14 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ---
 
-## Custom Email Domain
+## Custom Email Domain 📨 🌐
 
 Set up Custom Email Domain (for free) using Gmail:
 - xxxxx
 
 ---
 
-## Future Development
+## Future Development 💭 💡
 
 I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage:
 
@@ -538,7 +544,7 @@ I would have liked to implement some of the below features but was unable to due
 
 ---
 
-## Useful Links & Documentation
+## Useful Links & Documentation 📎📖
 
 | Link | Description |
 | ---- | ----------- |
@@ -572,13 +578,14 @@ I would have liked to implement some of the below features but was unable to due
 | [Aesthetically Pleasing Icons](https://fontawesome.com/search?q=next&o=r&m=free) | Font Awesome icons for use in the project |
 | [Allow Only Registered Users to Download Images](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/) | Django documentation for restricting access to registered users |
 | [Disable Right Click on Images](https://www.dotnettricks.com/learn/aspnet/disable-right-click-on-web-page-and-images) | Tutorial on disabling right-click on images for added protection |
+| [Youtube: Setting Up Free SSL with CloudFlare](https://www.youtube.com/watch?v=Y4iHXhRkpO4) | Video tutorial on setting up CloudFlare for free SSL cert |
+| [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Video tutorial on setting up a custom domain on gmail, note the following required changes since this video was uploaded as described by Wiyre: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
 
-
-## Credits
+## Credits 👏 🙌
 
 In addition to the above documentation, I would like to give credit to the following resources: 
 
-- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiteratted in the Deployment section above.
+- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project and expanded from there. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiteratted in the Deployment section above.
 
 - __Mentor__ - I found my three calls with my Code Institute mentor, Rohit, exceptionally valuable and useful.
 
@@ -588,7 +595,7 @@ In addition to the above documentation, I would like to give credit to the follo
 
 ---
 
-## Contact
+## Contact 📨 📫
 
 I can be contacted directly at the following email address: 
 
