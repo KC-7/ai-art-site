@@ -7,7 +7,7 @@ This web application allows users to create custom AI generated artwork using th
 
 ---
 
-## Features
+## Main Features
 
 - User registration and authentication
 
@@ -29,23 +29,31 @@ This web application allows users to create custom AI generated artwork using th
 
 ---
 
-## Technologies Used
+## Technologies & Services Used
 
-- Django
+- Django (Python Web Framework using Model, Template, Views Architectural Pattern)
 
-- Python
+- Python (High level, general purpose coding language)
 
-- HTML
+- HTML (Programming Language for Structure)
 
-- CSS
+- CSS (Programming Language for Styling)
 
-- Javascript
+- Javascript (Programming Language for Interactivity)
 
-- Cloudinary
+- Cloudinary (Cloud based image and video hosting service)
 
-- ElephantSQL
+- ElephantSQL (PostgreSQL Database Hosting Service)
 
-- OpenAI API
+- OpenAI API (API for AI Text to Image Generations)
+
+- Git (Version Control)
+
+- Github (Web based hosting repository)
+
+- Gitpod (Cloud Based Development Environment)
+
+- Cloudflare (Security Network / SSL Cert)
 
 ---
 
@@ -57,20 +65,20 @@ The following URLs are used in the project:
 
 | URL                         | Description                                        |
 | ---                         | ---                                                |
-| /                           | Home page, displays list of image posts            |
-| /accounts/signup/           | User registration page                             |
-| /upload/                    | Form for uploading new image posts                 |
-| /generate_art/              | Form for generating art from text                  |
-| /search/                    | Search page for image posts                        |
-| /about/                     | About page, displays list of static pages          |
-| /<slug:slug>/               | Detail page for a specific image post              |
-| /like/<slug:slug>/          | Endpoint for liking/unliking a post                |
-| /private/<slug:slug>/       | Endpoint for making a post private                 |
-| /public/<slug:slug>/        | Endpoint for making a private post public again    |
-| /delete/<slug:slug>/        | Endpoint for deleting a post                       |
-| /profile/<str:username>/    | User profile page                                  |
-| /post_edit/<slug:slug>/     | Form for editing a posted image's description      |
-| /about/<slug:slug>/         | Detail page for a specific static page             |
+| `/`                         | Home page, displays list of image posts            |
+| `/accounts/signup/`         | User registration page                             |
+| `/upload/`                  | Form for uploading new image posts                 |
+| `/generate_art/`            | Form for generating art from text                  |
+| `/search/`                  | Search page for image posts                        |
+| `/about/`                   | About page, displays list of static pages          |
+| `/<slug:slug>/`             | Detail page for a specific image post              |
+| `/like/<slug:slug>/`        | Endpoint for liking/unliking a post                |
+| `/private/<slug:slug>/`     | Endpoint for making a post private                 |
+| `/public/<slug:slug>/`      | Endpoint for making a private post public again    |
+| `/delete/<slug:slug>/`      | Endpoint for deleting a post                       |
+| `/profile/<str:username>/`  | User profile page                                  |
+| `/post_edit/<slug:slug>/`   | Form for editing a posted image's description      |
+| `/about/<slug:slug>/`       | Detail page for a specific static page             |
 
 ### Models
 
@@ -261,15 +269,231 @@ The following URLs are used in the project:
 
 ---
 
-## Deployment
+## Deployment (Prior to Completing Project)
 
-TBC
+### Step 1: Setting up the Django Project
+
+Enter the following Terminal Commands:
+
+        pip3 install 'django<4' gunicorn  # This installs the latest version of Django, lower than version 4. It also installs the Gunicorn web server.
+        pip3 install dj_database_url==0.5.0 psycopg2  # This installs DJ Database, a package to utilise URL database and Pyscopg2, a PostgreSQL adapter for Python to communicate with the database.
+        pip3 install dj3-cloudinary-storage  # This installs Cloudinary.
+        pip3 freeze --local > requirements.txt  # This saves the requirments to a txt file.
+        django-admin startproject ai_art .  # This is the project name.
+        python3 manage.py startapp art_gallery  # This is the app name.
+
+Add the app name to the settings.py file and save:
+
+        INSTALLED_APPS = [..., 'art_gallery', ...]
+
+Enter the following Terminal Command:
+
+        python3 manage.py migrate  # This migrates the changes.
+        python3 manage.py runserver  # This runs the server, test it works.
+
+### Step 2: Deploying App to Heroku
+
+On ElephantSQL:
+
+- Create account / login
+- Create a new instance
+- Set up plan: Select name, Select Tiny Turtle Free Plan and leave Tags blank
+- Select Region (Europe)
+- Review and create instance
+- Return to dashboard and select the instance
+- Copy the ElephantSQL database URL
+
+On Heroku: 
+
+- Create account / login
+- Create new app
+- Open settings tab and reveal config vars
+- Add a config var called `DATABASE_URL` and paste the ElephantSQL database URL as the value
+
+On Gitpod:
+
+- Create a env.py file in the top level directory and add the following: 
+        import os
+        os.environ["DATABASE_URL"] = "<ElephantSQL Database URL>"
+        os.environ["SECRET_KEY"] = "<YourOwnRandomSecretKey>"
+
+On Heroku: 
+
+- Add the above SECRET_KEY (YourOwnRandomSecretKey) to the config vars
+
+On Gitpod, in the settings.py file: 
+
+- Add the following: 
+        from pathlib import Path
+        import os
+        import dj_database_url
+
+        if os.path.isfile("env.py"):
+        import env
+
+- Remove the insecure secret key and replace with following to link to the SECRET_KEY variable:
+        SECRET_KEY = os.environ.get('SECRET_KEY')
+
+- Comment out the database section:
+        # DATABASES = {
+        #     'default': {
+        #         'ENGINE': 'django.db.backends.sqlite3',
+        #         'NAME': BASE_DIR / 'db.sqlite3',
+        #     }
+        # }
+
+- Add new Databases section to link to the DATABASE_URL: 
+        DATABASES = {
+            'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        }
+
+On Gitpod, in the terminal:
+
+- Save and then migrate files: 
+        python3 manage.py migrate
+
+On Cloudinary: 
+
+- Create account / login
+- Copy your CLOUDINARY_URL from the dashboard
+
+On Gitpod, in the env.py file: 
+
+- Add the CLOUDINARY_URL:
+        os.environ["CLOUDINARY_URL"] = "cloudinary://************************"
+
+On Heroku: 
+
+- Add "CLOUDINARY_URL" to Heroku Config Vars using your cloudinary URL
+- Add "DISABLE_COLLECTSTATIC" to confiv vars with a value of "1"
+
+On Gitpod, in settings.py:
+
+- Add the Cloudinary Libraries to INSTALLED_APPS (note, order is important): 
+        INSTALLED_APPS = [
+            …,
+            'cloudinary_storage',
+            'django.contrib.staticfiles',
+            'cloudinary',
+            …,
+        ]
+
+- Add the following under Static Files to tell Django to use Cloudinary to store static media and files: 
+        STATIC_URL = '/static/'
+
+        STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+        STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+        MEDIA_URL = '/media/'
+        DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+- Link file to the templates directory in Heroku, place under the BASE_DIR line:
+        TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+- Change the templates directory to TEMPLATES_DIR, place within the TEMPLATES array:
+        TEMPLATES = [
+            {
+                …,
+                'DIRS': [TEMPLATES_DIR],
+            …,
+                    ],
+                },
+            },
+        ]
+
+- Add Heroku Hostname to ALLOWED_HOSTS (ex: "HEROKU-PROJECT-NAME.herokuapp.com"):
+        ALLOWED_HOSTS = ["ai-art-site.herokuapp.com", "localhost"]
+
+On Gitpod: 
+
+- Add 3 new folders in top level directory: media, static, templates
+- Create a "Procfile" in the top level directory and add the following code (ai_art is the Django Project Name):
+        web: gunicorn ai_art.wsgi
+- In the terminal, add commit and push: 
+        git add .
+        git commit -m “Deployment Commit”
+        git push
+
+On Heroku:
+
+- Deploy content manually, I used the GitHub deployment method on main branch.
+
+## Final Deployment (Post Completion of Project)
+
+On Gitpod: ------ settings.py, change debug to false. etc etc remove DISABLE_COLLECTSTATIC from settings.py
+
+On Heroku: ----- Manually Deploy etc.... remove DISABLE_COLLECTSTATIC from config vars
+
+---
+
+## Custom Web Domain
+
+On Gitpod:
+
+- Add the custom domain name to ALLOWED_HOSTS (ex: "custom-domain.com"):
+        ALLOWED_HOSTS = [... "cre8ai.art", ".cre8ai.art", "www.cre8ai.art" ...]
+- Migrate changes as per previous
+- Git add, commit and push changes
+
+On Heroku: 
+
+- Deploy manually
+
+On Namecheap (or alternative Domain Registrar):
+
+- Set up account / login
+- Select suitable domain name and purchase (for reference, this domain cost about 3 euro)
+- 
+
+On Heroku:
+
+- Link to the custom domain etc etc
+- Set up authorisation token
+
+On Gitpod: 
+
+- In the terminal login to Heroku by entering the following: 
+        heroku login -i
+- Enter your Heroku Login details and use the heroku authorisation token as the password - your heroku password or code from authenticaor will not work.
+
+On NameCheap: 
+
+- Configure the custom domain using Advanced DNS settings:
+  - Set up the CNAME and URL Redirect as follows:
+    - CNAME, XXXX, XXXX, XXX
+    - URL Redirect , XXX, XXX, XXX
+
+On [DNS Checker (.org)](https://dnschecker.org/):
+
+- Search domain name to see if it has propegated (this can take 24 to 48 hours)
+
+On Cloudflare: 
+
+- Set up free account
+- Link to website
+- Set up redirect to HTTPS to ensure secure connection
+- ETC
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+---
+
+## Custom Email Domain
+
+Set up Custom Email Domain (for free) using Gmail:
+- xxxxx
 
 ---
 
 ## Future Development
 
-I would have liked to implement some of the below features but was unable to due to timing restraints, these can be planned for development at a later stage:
+I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage:
 
 - Set up additional sign up information as a requirement, such as email address, etc. 
 
@@ -339,13 +563,13 @@ I would have liked to implement some of the below features but was unable to due
 
 In addition to the above documentation, I would like to give credit to the following resources: 
 
-- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project. 
+- __Code Institute__ - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiteratted in the Deployment section above.
 
 - __Mentor__ - I found my three calls with my Code Institute mentor, Rohit, exceptionally valuable and useful.
 
 - __ChatGPT__ - ChatGPT is relativly new technolgoy and needs to be used with a mountain of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross check information provided by ChatGPT with reputable resources to ensure the data being provided is reliable.
 
-- __YouTube__ - I watached many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, etc. 
+- __YouTube__ - I watched many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, set up free SSL cert, set up free custom email domains, etc. 
 
 ---
 
