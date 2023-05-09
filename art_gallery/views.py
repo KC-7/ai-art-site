@@ -27,9 +27,12 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
 # Third Party Libraries
-import requests
-import openai
-import cloudinary.uploader
+# import requests
+from requests import get
+# import openai
+from openai import api_key
+# import cloudinary.uploader
+from cloudinary import uploader
 from PIL import Image
 
 # Local Imports
@@ -42,7 +45,9 @@ if os.path.isfile('env.py'):
     import env
 
 
-openai.api_key = os.environ['OPENAI_API_KEY']
+# OpenAI API Key
+# openai.api_key = os.environ['OPENAI_API_KEY']
+api_key = os.environ['OPENAI_API_KEY']
 
 
 class RegisterUser(FormView):
@@ -230,6 +235,7 @@ class GenerateArt(FormView, LoginRequiredMixin):
         Resets the user's generation counter and saves the profile.
         """
         user_profile.generation_count = 0
+        user_profile.last_generation_timestamp = timezone.now()
         user_profile.save()
 
     def generate_image(self, prompt):
@@ -246,7 +252,8 @@ class GenerateArt(FormView, LoginRequiredMixin):
         """
         Creates the post using the generated image.
         """
-        response = requests.get(image_url)
+        # response = requests.get(image_url)
+        response = get(image_url)
         image_io = BytesIO(response.content)
         image = Image.open(image_io)
 
@@ -269,7 +276,13 @@ class GenerateArt(FormView, LoginRequiredMixin):
 
         post.slug, public_id = self.generate_unique_slug_and_public_id(prompt)
 
-        uploaded_image = cloudinary.uploader.upload(
+        # uploaded_image = cloudinary.uploader.upload(
+        #     output_io,
+        #     public_id=public_id,
+        #     format="jpg",
+        # )
+
+        uploaded_image = uploader.upload(
             output_io,
             public_id=public_id,
             format="jpg",

@@ -1,7 +1,10 @@
-# Cre8AI.art
-Live Link: https://ai-art-site.herokuapp.com/
+# [Cre8AI.art](https://www.cre8ai.art/)
 
-Custom Domain Link: Cre8AI.art
+Live Links:
+- Custom Domain: https://www.cre8ai.art/
+- Heroku Link: https://ai-art-site.herokuapp.com/
+
+## Description
 
 This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required. 
 
@@ -221,6 +224,7 @@ The following URLs are used in the project:
 | --- | --- |
 | HTML code being displayed on the post previews | I used the striptags filter to remove the code tags before truncating it (restricting the amount of words that are displayed on image preview) |
 | Site went down and stopped working after deployment | After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
+| Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
 
 ### Outstanding Bugs
 
@@ -273,7 +277,9 @@ The following URLs are used in the project:
 
 ### Step 1: Setting up the Django Project
 
-Enter the following Terminal Commands:
+**On Gipod:**
+
+- Enter the following Terminal Commands:
 
         pip3 install 'django<4' gunicorn  # This installs the latest version of Django, lower than version 4. It also installs the Gunicorn web server.
         pip3 install dj_database_url==0.5.0 psycopg2  # This installs DJ Database, a package to utilise URL database and Pyscopg2, a PostgreSQL adapter for Python to communicate with the database.
@@ -282,18 +288,18 @@ Enter the following Terminal Commands:
         django-admin startproject ai_art .  # This is the project name.
         python3 manage.py startapp art_gallery  # This is the app name.
 
-Add the app name to the settings.py file and save:
+- Add the app name to the settings.py file and save:
 
         INSTALLED_APPS = [..., 'art_gallery', ...]
 
-Enter the following Terminal Command:
+- Enter the following Terminal Command:
 
         python3 manage.py migrate  # This migrates the changes.
         python3 manage.py runserver  # This runs the server, test it works.
 
 ### Step 2: Deploying App to Heroku
 
-On ElephantSQL:
+**On ElephantSQL:**
 
 - Create account / login
 - Create a new instance
@@ -303,25 +309,25 @@ On ElephantSQL:
 - Return to dashboard and select the instance
 - Copy the ElephantSQL database URL
 
-On Heroku: 
+**On Heroku:** 
 
 - Create account / login
 - Create new app
 - Open settings tab and reveal config vars
 - Add a config var called `DATABASE_URL` and paste the ElephantSQL database URL as the value
 
-On Gitpod:
+**On Gitpod:**
 
 - Create a env.py file in the top level directory and add the following: 
         import os
         os.environ["DATABASE_URL"] = "<ElephantSQL Database URL>"
         os.environ["SECRET_KEY"] = "<YourOwnRandomSecretKey>"
 
-On Heroku: 
+**On Heroku:**
 
 - Add the above SECRET_KEY (YourOwnRandomSecretKey) to the config vars
 
-On Gitpod, in the settings.py file: 
+**On Gitpod, in the settings.py file:**
 
 - Add the following: 
         from pathlib import Path
@@ -347,27 +353,27 @@ On Gitpod, in the settings.py file:
             'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
         }
 
-On Gitpod, in the terminal:
+**On Gitpod, in the terminal:**
 
 - Save and then migrate files: 
         python3 manage.py migrate
 
-On Cloudinary: 
+**On Cloudinary:**
 
 - Create account / login
 - Copy your CLOUDINARY_URL from the dashboard
 
-On Gitpod, in the env.py file: 
+**On Gitpod:**
 
-- Add the CLOUDINARY_URL:
+- Add the CLOUDINARY_URL to the env.py file:
         os.environ["CLOUDINARY_URL"] = "cloudinary://************************"
 
-On Heroku: 
+**On Heroku:**
 
 - Add "CLOUDINARY_URL" to Heroku Config Vars using your cloudinary URL
 - Add "DISABLE_COLLECTSTATIC" to confiv vars with a value of "1"
 
-On Gitpod, in settings.py:
+**On Gitpod, in settings.py:**
 
 - Add the Cloudinary Libraries to INSTALLED_APPS (note, order is important): 
         INSTALLED_APPS = [
@@ -405,7 +411,7 @@ On Gitpod, in settings.py:
 - Add Heroku Hostname to ALLOWED_HOSTS (ex: "HEROKU-PROJECT-NAME.herokuapp.com"):
         ALLOWED_HOSTS = ["ai-art-site.herokuapp.com", "localhost"]
 
-On Gitpod: 
+**On Gitpod:**
 
 - Add 3 new folders in top level directory: media, static, templates
 - Create a "Procfile" in the top level directory and add the following code (ai_art is the Django Project Name):
@@ -415,60 +421,60 @@ On Gitpod:
         git commit -m “Deployment Commit”
         git push
 
-On Heroku:
+**On Heroku:**
 
 - Deploy content manually, I used the GitHub deployment method on main branch.
 
 ## Final Deployment (Post Completion of Project)
 
-On Gitpod: ------ settings.py, change debug to false. etc etc remove DISABLE_COLLECTSTATIC from settings.py
+**On Gitpod:** ------ settings.py, change debug to false. etc etc remove DISABLE_COLLECTSTATIC from settings.py
 
-On Heroku: ----- Manually Deploy etc.... remove DISABLE_COLLECTSTATIC from config vars
+**On Heroku:** ----- Manually Deploy etc.... remove DISABLE_COLLECTSTATIC from config vars
 
 ---
 
 ## Custom Web Domain
 
-On Gitpod:
+**On Gitpod:**
 
 - Add the custom domain name to ALLOWED_HOSTS (ex: "custom-domain.com"):
         ALLOWED_HOSTS = [... "cre8ai.art", ".cre8ai.art", "www.cre8ai.art" ...]
 - Migrate changes as per previous
 - Git add, commit and push changes
 
-On Heroku: 
+**On Heroku:**
 
 - Deploy manually
 
-On Namecheap (or alternative Domain Registrar):
+**On Namecheap (or alternative Domain Registrar):**
 
 - Set up account / login
 - Select suitable domain name and purchase (for reference, this domain cost about 3 euro)
 - 
 
-On Heroku:
+**On Heroku:**
 
 - Link to the custom domain etc etc
 - Set up authorisation token
 
-On Gitpod: 
+**On Gitpod:**
 
 - In the terminal login to Heroku by entering the following: 
         heroku login -i
 - Enter your Heroku Login details and use the heroku authorisation token as the password - your heroku password or code from authenticaor will not work.
 
-On NameCheap: 
+**On NameCheap:**
 
 - Configure the custom domain using Advanced DNS settings:
   - Set up the CNAME and URL Redirect as follows:
     - CNAME, XXXX, XXXX, XXX
     - URL Redirect , XXX, XXX, XXX
 
-On [DNS Checker (.org)](https://dnschecker.org/):
+**On [DNS Checker (.org)](https://dnschecker.org/):**
 
 - Search domain name to see if it has propegated (this can take 24 to 48 hours)
 
-On Cloudflare: 
+**On Cloudflare:** 
 
 - Set up free account
 - Link to website
@@ -520,6 +526,15 @@ I would have liked to implement some of the below features but was unable to due
 - Set up subscription tiers: Free, Paid Plan and Supreme Plan. Restrict daily generations based on tier and amount of adverts displayed etc.
 
 - Set up additional site analytics on the admin panel
+
+- Improve on the search feature, for example, if you search "car" it will also show results for "cartoon" but it will not show keyword with car models like "Lamborghini"
+
+- Set up social media accounts
+
+- Set up a prompt generator using ChatGPT API. The user will be asked a series of questions, ChatGPT will use the users input to create a more detailed text prompt that would then be passed through the the DALLE API to create the image, this will help the user create more detailed prompts for the text to art generations instead of simple user inputs like "A painting of a sunset". Example of detailed prompt below: 
+    - "Create a surrealistic artwork of a futuristic cityscape with flying cars and neon lights. The city should be situated on a giant floating platform that hovers over an endless abyss. In the foreground, there should be a mysterious figure wearing a hooded cloak, holding a glowing orb. The overall aesthetic should be cyberpunk with a touch of magic and mystery. The artwork should be bold and dynamic, with a strong use of contrasting colors and dramatic lighting. Let your imagination run wild and create a stunning visual representation of this futuristic world."
+
+- Consider changing the admin static about pages from HTML to a standard text entry format so that the admins will not need to enter the data using any code.
 
 ---
 

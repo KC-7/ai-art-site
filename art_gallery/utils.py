@@ -1,7 +1,9 @@
-import requests
-from requests.structures import CaseInsensitiveDict
-import json
+# import requests
 import os
+from requests import post
+from requests.structures import CaseInsensitiveDict
+# import json
+from json import loads
 
 
 def generate_image_from_text(prompt):
@@ -30,12 +32,14 @@ def generate_image_from_text(prompt):
     data = data.replace("A large clocktower with ivy growing up its sides.", prompt)
 
     # Makes the API request by sending the updated data
-    resp = requests.post("https://api.openai.com/v1/images/generations", headers=headers, data=data)
+    # resp = requests.post("https://api.openai.com/v1/images/generations", headers=headers, data=data)
+    resp = post("https://api.openai.com/v1/images/generations", headers=headers, data=data)
 
     # Checks if request is successful, if not it raises a ValueError
     if resp.status_code != 200:
         raise ValueError("Failed to generate image")
 
     # Extracts the image url from the response if successful
-    response_text = json.loads(resp.text)
+    # response_text = json.loads(resp.text)
+    response_text = loads(resp.text)
     return response_text['data'][0]['url']
