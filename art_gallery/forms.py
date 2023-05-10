@@ -23,7 +23,9 @@ class PostForm(forms.ModelForm):
     """
     Form for creating image posts.
     """
-    post_image = forms.ImageField(validators=[validate_file_size], required=False)  # Validates image is below 5mb
+    # Validate image is below 5mb
+    post_image = forms.ImageField(
+        validators=[validate_file_size], required=False)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
@@ -46,8 +48,11 @@ class GenerateForm(forms.Form):
     Form for text to image art generations.
     """
     prompt = forms.CharField(
-        label='Enter your prompt here', max_length=1000,  # 1000 is current max limit for API
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'e.g. "An abstract painting of a sunset"'}),
+        label='Enter your prompt here', max_length=1000,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'e.g. "Paint a futuristic city with flying cars"'
+        })
     )
 
     def __init__(self, *args, **kwargs):
@@ -58,7 +63,9 @@ class ProfileForm(forms.ModelForm):
     """
     Form for editing user profile.
     """
-    profile_picture = forms.ImageField(validators=[validate_file_size], required=False)  # Validates image is below 5mb
+    profile_picture = forms.ImageField(
+        validators=[validate_file_size],
+        required=False)  # Validates image is below 5mb
 
     class Meta:
         model = Profile

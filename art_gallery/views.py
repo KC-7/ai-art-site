@@ -4,7 +4,6 @@ This module contains all of the views for the art_gallery application.
 
 # Python Libraries
 import os
-# import sys
 from io import BytesIO
 from datetime import datetime, timedelta
 
@@ -29,16 +28,15 @@ from django.urls import reverse_lazy, reverse
 # Third Party Libraries
 # import requests
 from requests import get
-# import openai
 from openai import api_key
-# import cloudinary.uploader
 from cloudinary import uploader
 from PIL import Image
 
 # Local Imports
 from .utils import generate_image_from_text
 from .models import Post, Profile, StaticPage
-from .forms import CommentForm, PostForm, GenerateForm, ProfileForm, EditPostForm
+from .forms import CommentForm, PostForm, GenerateForm
+from .forms import ProfileForm, EditPostForm  # Line split as too long
 
 # Environment Variables
 if os.path.isfile('env.py'):
@@ -46,17 +44,18 @@ if os.path.isfile('env.py'):
 
 
 # OpenAI API Key
-# openai.api_key = os.environ['OPENAI_API_KEY']
 api_key = os.environ['OPENAI_API_KEY']
 
 
 class RegisterUser(FormView):
     """
     Creates user profile after successful registration.
-    Bug Fix: This  is required to generate the art (due to the user limit check), without this
-    the user profile is created only when the user accesses their profile which was preventing
-    art generations for time new users who had not clicked on their profile yet.
-    Improvement: This View could be replaced with Django Signals in the Models file.
+    Bug Fix: This  is required to generate the art (due to the
+    user limit check), without this the user profile is created
+    only when the user accesses their profile which was preventing
+    art generations for time new users who had not clicked on their
+    profile yet. Improvement: This View could be replaced with
+    Django Signals in the Models file.
     """
     template_name = 'account/signup.html'
     form_class = UserCreationForm
@@ -75,7 +74,8 @@ class RegisterUser(FormView):
 
 class PostList(ListView):
     """
-    Displays list of posts, paginates and allows sorting by most likes or most recent.
+    Displays list of posts, paginates and allows
+    sorting by most likes or most recent.
     """
     model = Post
     template_name = 'index.html'
@@ -83,7 +83,11 @@ class PostList(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q', '')
-        queryset = Post.objects.filter(Q(title__icontains=query) | Q(description__icontains=query), status=1)
+        queryset = Post.objects.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query),
+            status=1
+        )
 
         # Bug Fix - Filter out posts without a slug value
         queryset = queryset.filter(~Q(slug=''))
@@ -91,7 +95,9 @@ class PostList(ListView):
         sorting = self.request.GET.get('sorting', 'newest')
 
         if sorting == 'most_likes':
-            queryset = queryset.annotate(likes_count=models.Count('likes')).order_by('-likes_count', '-created_on')
+            queryset = queryset.annotate(
+                likes_count=models.Count('likes')
+            ).order_by('-likes_count', '-created_on')
         else:
             queryset = queryset.order_by('-created_on')
 
@@ -138,7 +144,8 @@ class PostDetail(View):
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
-            messages.success(request, 'Your comment has been submitted successfully')
+            messages.success(
+                request, 'Your comment has been submitted successfully')
         else:
             comment_form = CommentForm()
 
@@ -202,15 +209,24 @@ class GenerateArt(FormView, LoginRequiredMixin):
         user_profile = self.request.user.profile
 
         if not self.can_generate(user_profile):
-            messages.error(self.request, "You have reached your daily limit of 5 AI art generations. Please try again tomorrow.")
+            messages.error(
+                self.request,
+                ("You have reached your daily limit of 5 AI art generations."
+                 "Please try again tomorrow.")
+            )
             return self.form_invalid(form)
 
         prompt = form.cleaned_data['prompt']
-        prompt = prompt.replace('"', '')  # replaces quotation marks with empty string
+        prompt = prompt.replace('"', '')  # replace " with empty string
         image_url = self.generate_image(prompt)
 
         if not image_url:
-            messages.error(self.request, "We could not generate your requested image. This may have been due to your search terms. Please read the usage policy for unsuitable language and try again.")
+            messages.error(
+                self.request,
+                ("We could not generate your requested image."
+                 "This may have been due to your search terms."
+                 "Please read the usage policy and try again.")
+            )
             return self.form_invalid(form)
 
         post = self.create_post(prompt, image_url)
@@ -225,8 +241,8 @@ class GenerateArt(FormView, LoginRequiredMixin):
         now = timezone.now()
 
         if user_profile.last_generation_timestamp:
-            time_since_last_generation = now - user_profile.last_generation_timestamp
-            if time_since_last_generation > timedelta(days=1):
+            time_since_last_gen = now - user_profile.last_generation_timestamp
+            if time_since_last_gen > timedelta(days=1):
                 self.reset_generation_counter(user_profile)
 
         return user_profile.generation_count < 5
@@ -241,13 +257,13 @@ class GenerateArt(FormView, LoginRequiredMixin):
 
     def generate_image(self, prompt):
         """
-        Generates the image using "generate_image_from_text" function in the utils.py file.
+        Generates the image using "generate_image_from_text"
+        function in the utils.py file.
         """
         try:
             return generate_image_from_text(prompt)
         except ValueError:
             return None
-
 
     def create_post(self, prompt, image_url):
         """
@@ -265,23 +281,21 @@ class GenerateArt(FormView, LoginRequiredMixin):
         post = Post()
         post.title = f"Generation for: '{prompt[:75]}...'"
 
-        # Check if there is an existing post with same title, if so add a number to the end and increment by 1 to ensure it is unique.
+        # Check if there is an existing post with same title,
+        # if so add a number to the end and increment by 1
+        # to ensure it is unique.
         counter = 1
         while Post.objects.filter(title=post.title).exists():
             counter += 1
             post.title = f"Generation for: '{prompt[:75]}...' ({counter})"
 
-        post.description = f'AI-generated art based on the prompt: "{prompt}". \n Created using Cre8AI.art.'
+        post.description = ('AI-generated art based on the prompt: '
+                            F'"{prompt}". \n'
+                            'Created using Cre8AI.art.')
         post.creator = self.request.user
         post.status = 1  # Make the post public by default
 
         post.slug, public_id = self.generate_unique_slug_and_public_id(prompt)
-
-        # uploaded_image = cloudinary.uploader.upload(
-        #     output_io,
-        #     public_id=public_id,
-        #     format="jpg",
-        # )
 
         uploaded_image = uploader.upload(
             output_io,
@@ -412,7 +426,8 @@ class Search(PostList):
         query = self.request.GET.get('q', '')
         sorting = self.request.GET.get('sorting', 'newest')
         queryset = Post.objects.filter(
-            Q(title__icontains=query) | Q(description__icontains=query), status=1
+            Q(title__icontains=query) | Q(description__icontains=query),
+            status=1
         )
 
         if sorting == 'most_likes':

@@ -8,7 +8,9 @@ class PostAdmin(SummernoteModelAdmin):
     """
     Admin configuration for the images posts.
     """
-    list_display = ('title', 'creator', 'number_of_likes', 'status', 'created_on')
+    list_display = (
+        'title', 'creator', 'number_of_likes', 'status', 'created_on'
+    )
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
@@ -49,22 +51,31 @@ class ProfileAdmin(admin.ModelAdmin):
     """
     Admin configuration for the Users Profile.
     """
-    list_display = ('user', 'profile_picture', 'total_posts', 'bio', 'last_generation_timestamp', 'generation_count')
+    list_display = (
+        'user', 'profile_picture', 'total_posts', 'bio',
+        'last_generation_timestamp', 'generation_count'
+    )
     search_fields = ('user__username', 'bio')
     actions = ['reset_profile_pictures', 'reset_generation_count']
 
     def reset_profile_pictures(self, request, queryset):
         default_image = 'v1682601722/defaultUser_eqbmfo.png'
         queryset.update(profile_picture=default_image)
-        self.message_user(request, "Selected profile pictures have been reset to the default image.")
+        self.message_user(
+            request,
+            "Selected profile pictures have been reset to the default image."
+        )
 
-    reset_profile_pictures.short_description = "Reset profile pictures to default"
+    reset_profile_pictures.short_description = "Reset profile images (default)"
 
     def reset_generation_count(self, request, queryset):
         queryset.update(generation_count=0)
-        self.message_user(request, "Selected users' daily generation count has been reset to 0.")
+        self.message_user(
+            request,
+            "Selected users' daily generation count has been reset to 0."
+        )
 
-    reset_generation_count.short_description = "Reset daily generation count to 0"
+    reset_generation_count.short_description = "Reset daily generations to 0"
 
     def total_posts(self, obj):
         return obj.user.image_posts.count()
@@ -84,6 +95,8 @@ class StaticPageAdmin(admin.ModelAdmin):
 
     def make_private(self, request, queryset):
         queryset.update(status=0)
-        self.message_user(request, "Selected static pages have been set to private.")
+        self.message_user(
+            request, "Selected static pages have been set to private."
+        )
 
     make_private.short_description = "Make static pages private"
