@@ -162,7 +162,7 @@ class PostDetail(View):
         )
 
 
-class PostLike(View):
+class PostLike(LoginRequiredMixin, View):
     """
     View to like / unlike posts (only once already liked).
     """
@@ -177,7 +177,7 @@ class PostLike(View):
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
-class UploadForm(FormView):
+class UploadForm(LoginRequiredMixin, FormView):
     """
     Handles the form for uploading the image posts.
     """
@@ -195,7 +195,7 @@ class UploadForm(FormView):
         return reverse('post_detail', args=[self.object.slug])
 
 
-class GenerateArt(FormView, LoginRequiredMixin):
+class GenerateArt(LoginRequiredMixin, FormView):
     """
     Handles the art generation requests and then creates a public post.
     """
@@ -335,7 +335,7 @@ class GenerateArt(FormView, LoginRequiredMixin):
         user_profile.save()
 
 
-class PostPrivate(View):
+class PostPrivate(LoginRequiredMixin, View):
     """
     Handles making and viewing private posts.
     """
@@ -359,7 +359,7 @@ class PostPrivate(View):
         return redirect('post_private', slug=post.slug)
 
 
-class PostPublic(View):
+class PostPublic(LoginRequiredMixin, View):
     """
     Allows the user to make private posts public again.
     """
@@ -371,7 +371,7 @@ class PostPublic(View):
         return redirect('post_detail', slug=post.slug)
 
 
-class DeletePost(View):
+class DeletePost(LoginRequiredMixin, View):
     """
     Handles the deletion of posts.
     """
@@ -445,7 +445,7 @@ class Search(PostList):
         return context
 
 
-class EditPost(UpdateView):
+class EditPost(LoginRequiredMixin, UpdateView):
     """
     Handles editing post details.
     """
