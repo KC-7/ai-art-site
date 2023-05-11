@@ -269,9 +269,15 @@ The following URLs are used in the project:
 
 | Bug | Fix |
 | --- | --- |
-| HTML code being displayed on the post previews | I used the striptags filter to remove the code tags before truncating it (restricting the amount of words that are displayed on image preview) |
+| HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
+| Post titles and slugs too long | I set up truncating to reduce the length. |
+| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrimating by 1. |
 | Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
 | Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
+| LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
+| Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
+| Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
+
 
 ### Outstanding Bugs ❌ 🤔
 

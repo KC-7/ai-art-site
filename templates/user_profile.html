@@ -22,7 +22,7 @@
                     <form id="edit-profile-form" method="post" enctype="multipart/form-data" class="d-none">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">Update Profile</button>
+                        <button type="submit" class="btn btn-success">Update</button>
                         <button type="button" id="cancel-edit-btn" class="btn btn-danger">Cancel</button>
                     </form>
                     {% endif %}

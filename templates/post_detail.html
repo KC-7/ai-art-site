@@ -22,7 +22,7 @@
         </div>
         <!-- Post Creater Options - Update & Delete (CRUD) -->
         {% if user == post.creator %}
-        <div class="row d-flex align-items-center">
+        <div class="row d-flex align-items-center button-container">
             <div class="col-md-3 text-center">
                 <span>Your post is </span>
                 <span>
@@ -39,9 +39,7 @@
             </form>
             <form method="POST" action="{% url 'post_private' slug=post.slug %}" class="col-md-3 text-center">
                 {% csrf_token %}
-                <div class="form-check">
-                    <button type="submit" class="btn btn-custom">Make Private</button>
-                </div>
+                <button type="submit" class="btn btn-custom">Make Private</button>
             </form>
             <form method="POST" action="{% url 'delete_post' slug=post.slug %}" class="col-md-3 text-center"
                 id="delete-post-form">

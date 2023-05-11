@@ -80,6 +80,10 @@ p {
     padding: 0;
 }
 
+textarea {
+    max-width: 100%;
+}
+
 /* ------------------------------------------------- Backgrounds */
 
 .light-bg {
@@ -113,6 +117,7 @@ p {
     width: 100%;
     max-width: 75vh;
     margin: 0 auto;
+    text-align: center;
 }
 
 .posted-image {
