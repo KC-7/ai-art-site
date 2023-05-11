@@ -325,6 +325,7 @@ The following URLs are used in the project:
 | LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
 | Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
 | Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
+| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding an if statement before the JS code to check it exists |
 
 ### Outstanding Bugs ❌ 🤔
 

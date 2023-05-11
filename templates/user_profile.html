@@ -72,15 +72,29 @@
 </div>
 
 <script>
-    document.getElementById("edit-profile-btn").addEventListener("click", function () {
-        this.classList.add("d-none");
-        document.getElementById("edit-profile-form").classList.remove("d-none");
-    });
+    const editProfileBtn = document.getElementById("edit-profile-btn");
+    const editProfileForm = document.getElementById("edit-profile-form");
+    const cancelEditBtn = document.getElementById("cancel-edit-btn");
 
-    document.getElementById("cancel-edit-btn").addEventListener("click", function () {
-        document.getElementById("edit-profile-form").classList.add("d-none");
-        document.getElementById("edit-profile-btn").classList.remove("d-none");
-    });
+    if (editProfileBtn) {
+        editProfileBtn.addEventListener("click", function () {
+            this.classList.add("d-none");
+            if (editProfileForm) {
+                editProfileForm.classList.remove("d-none");
+            }
+        });
+    }
+
+    if (cancelEditBtn) {
+        cancelEditBtn.addEventListener("click", function () {
+            if (editProfileForm) {
+                editProfileForm.classList.add("d-none");
+            }
+            if (editProfileBtn) {
+                editProfileBtn.classList.remove("d-none");
+            }
+        });
+    }
 </script>
 
 {% endblock %}

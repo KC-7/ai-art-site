@@ -26,7 +26,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
 # Third Party Libraries
-# import requests
 from requests import get
 from openai import api_key
 from cloudinary import uploader
