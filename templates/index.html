@@ -11,29 +11,24 @@
         <img src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" class="small-logo">
     </div>
     <h1>
-        <!-- <div class="logo">
-            <span class="logo-text logo-cre">cre</span><span class="logo-text logo-eight">8</span>
-            <span class="logo-text logo-ai">ai</span>
-            <span class="logo-text logo-art">.art</span>
-        </div> -->
         AI Art Gallery
     </h1>
 </div>
 
 {% if not user.is_authenticated and not page_obj.has_previous %}
-<div class="text-center bg-info">
-    <a class="nav-link" href="{% url 'account_signup' %}">
-        <h5>
-            Unleash your creativity with our advanced text-to-art image generator! Join our creative community today and
-            access a custom profile where you can showcase your unique art creations. As a member, you'll have the
-            opportunity to interact with our vibrant community by commenting and liking posts, and you'll also be able
-            to
-            download artwork from our vast collection of user-generated images. Don't miss out on the chance to create
-            and
-            share your own art. Sign up now and unleash your inner artist!
-        </h5>
-    </a>
-</div>
+<a class="logged-out-message" href="{% url 'account_signup' %}">
+    <div class="text-center bg-message">
+        <h5>Welcome to Cre8AI.art!</h5>
+
+        <p>Unleash your creativity with our advanced text-to-art image generator powered by DALLE-2. Transform your
+            textual prompts into stunning and unique artwork .Join our vibrant creative community today! Showcase your
+            art in a personalized profile, connect with fellow artists, and receive valuable feedback and support.</p>
+
+        <p>Engage with our global community by liking and commenting on inspiring posts. Explore our user-generated
+            image collection and fuel your imagination. Sign up now and unleash your inner artist! Let's create,
+            inspire, and make art that transcends boundaries together.</p>
+    </div>
+</a>
 {% endif %}
 
 <div class="col-12 mt-3 text-center">
@@ -97,8 +92,8 @@
                 {% if forloop.counter|divisibleby:3 and not forloop.last %}
                 {% endif %}
                 {% endfor %}
-                </div>
-                <div class="row">
+            </div>
+            <div class="row">
             </div>
         </div>
     </div>

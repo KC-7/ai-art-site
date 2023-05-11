@@ -84,6 +84,16 @@ textarea {
     max-width: 100%;
 }
 
+.bg-message {
+    background-color: var(--col-3);
+    padding: 10px;
+    color: white;
+}
+
+.bg-message:hover {
+    background-color: var(--col-2);
+}
+
 /* ------------------------------------------------- Backgrounds */
 
 .light-bg {
