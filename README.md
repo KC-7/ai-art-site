@@ -79,6 +79,8 @@ This web application allows users to create custom AI generated artwork using th
 
 ## Technologies & Services Used 💻 🌎
 
+### Main Technologies and Services
+
 - Django (Python Web Framework using Model, Template, Views Architectural Pattern)
 
 - Python (High level, general purpose coding language)
@@ -104,6 +106,52 @@ This web application allows users to create custom AI generated artwork using th
 - Cloudflare (Security Network / SSL Cert)
 
 - NameCheap (Domain Name Registrar)
+
+### Imports and Libraries
+
+| Import | Description | File(s) |
+|---|---|---|
+| `os` | Miscellaneous operating system interfaces | `views.py`, `utils.py` |
+| `from io import BytesIO` | Read and write bytes in memory | `views.py` |
+| `from datetime import datetime, timedelta` | Basic date and time types | `views.py` |
+| `from django.utils import timezone` | Django utilities for handling timezones | `views.py` |
+| `from django.utils.text import slugify` | Django utility to create URL slugs | `views.py`, `forms.py` |
+| `from django.utils.decorators import method_decorator` | Decorator for class-based views | `views.py` |
+| `from django.shortcuts import render, get_object_or_404, reverse, redirect` | Django shortcuts for common view tasks | `views.py` |
+| `from django.views import generic, View` | Base classes for Django views | `views.py` |
+| `from django.views.generic import TemplateView, ListView` | Django generic class-based views | `views.py` |
+| `from django.views.generic.edit import FormView, UpdateView` | Django generic class-based views for forms and updates | `views.py` |
+| `from django.contrib import messages` | Django framework for temporary messages | `views.py` |
+| `from django.contrib.auth.mixins import LoginRequiredMixin` | Mixin for class-based views that checks login | `views.py` |
+| `from django.contrib.auth.models import User` | Django user model | `views.py`, `models.py` |
+| `from django.contrib.auth.forms import UserCreationForm` | Django form for creating new users | `views.py` |
+| `from django.contrib.auth import login` | Django function for logging in users | `views.py` |
+| `from django.db import models` | Django's database models | `views.py`, `models.py` |
+| `from django.db.models import Q` | Django's database query class | `views.py` |
+| `from django.http import HttpResponseRedirect` | Django's HTTP response for redirects | `views.py` |
+| `from django.urls import reverse_lazy, reverse` | Django function for URL routing | `views.py` |
+| `from requests import get` | Function to send HTTP GET request | `views.py` |
+| `from openai import api_key` | OpenAI's API key | `views.py` |
+| `from cloudinary import uploader` | Cloudinary's uploader function | `views.py` |
+| `from PIL import Image` | Python's Imaging Library | `views.py` |
+| `from .utils import generate_image_from_text` | Local function to generate image from text | `views.py` |
+| `from .models import Post, Profile, StaticPage` | Local Django models | `views.py`, `admin.py` |
+| `from .forms import CommentForm, PostForm, GenerateForm` | Local Django forms | `views.py` |
+| `from .forms import ProfileForm, EditPostForm` | Local Django forms | `views.py` |
+| `import env` | Local environment variables | `views.py` |
+| `from requests import post` | Function to send HTTP POST request | `utils.py` |
+| `from requests.structures import CaseInsensitiveDict` | Case insensitive dictionary structure | `utils.py` |
+| `from json import loads` | Function to parse a JSON string | `utils.py` |
+| `from . import views` | Local Django views | `urls.py`, `art_gallery/urls.py` |
+| `from django.urls import path` | Function for URL routing | `urls.py`, `ai_art/urls.py`, `art_gallery/urls.py` |
+| `from django import forms` | Django's form system | `forms.py` |
+| `from django.core.exceptions import ValidationError` | Django's validation error class | `forms.py` |
+| `from .models import Comment, Post, Profile` | Local Django models | `forms.py` |
+| `from django.contrib import admin` | Django's admin interface | `admin.py`, `ai_art/urls.py` |
+| `from django_summernote.admin import SummernoteModelAdmin` | Django Summernote's rich text editor for the admin interface | `admin.py` |
+| `from django.apps import AppConfig` | Django's application configuration | `apps.py` |
+| `from django.urls import include` | Function for including other URL configurations | `ai_art/urls.py` |
+| `from cloudinary.models import CloudinaryField` | Cloudinary's model field for storing images | `models.py` |
 
 ---
 
@@ -277,7 +325,6 @@ The following URLs are used in the project:
 | LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
 | Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
 | Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
-
 
 ### Outstanding Bugs ❌ 🤔
 
@@ -652,7 +699,7 @@ I would like to give credit to the all of the content creators and developers of
 
 - **CI Mentor** - I found my three calls with my Code Institute mentor, Rohit, exceptionally valuable and useful.
 
-- **ChatGPT** - ChatGPT is relativly new technolgoy and needs to be used with a **mountain** of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross checked any information provided by ChatGPT with reputable resources to ensure the data being provided is reliable and accurate.
+- **ChatGPT** - ChatGPT is relativly new technolgoy and needs to be used with a **mountain** of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross checked any information provided by ChatGPT with reputable resources to ensure the data being provided is reliable and accurate. I used ChatGPT to create the table for the libraries used above.
 
 - **YouTube** - I watched many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, set up free SSL cert, set up free custom email domains, etc, most of which have been listed above. I enjoy visual learning and find watching tutorials very useful.
 

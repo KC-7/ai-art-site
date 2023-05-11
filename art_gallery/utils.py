@@ -1,4 +1,3 @@
-# import requests
 import os
 from requests import post
 from requests.structures import CaseInsensitiveDict
