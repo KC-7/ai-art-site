@@ -210,7 +210,7 @@ class GenerateArt(LoginRequiredMixin, FormView):
         if not self.can_generate(user_profile):
             messages.error(
                 self.request,
-                ("You have reached your daily limit of 5 AI art generations."
+                ("You have reached your daily limit of 5 AI art generations. "
                  "Please try again tomorrow.")
             )
             return self.form_invalid(form)
@@ -222,8 +222,8 @@ class GenerateArt(LoginRequiredMixin, FormView):
         if not image_url:
             messages.error(
                 self.request,
-                ("We could not generate your requested image."
-                 "This may have been due to your search terms."
+                ("We could not generate your requested image. "
+                 "This may have been due to your search terms. "
                  "Please read the usage policy and try again.")
             )
             return self.form_invalid(form)

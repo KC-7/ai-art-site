@@ -32,7 +32,7 @@
 {% endif %}
 
 <div class="col-12 mt-3 text-center">
-    <form method="get" action="{% url 'search' %}">
+    <form method="get" action="{% url 'search' %}" id="search_form">
         <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
         <input type="submit" value="Search">
     </form>

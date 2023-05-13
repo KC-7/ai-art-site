@@ -81,7 +81,11 @@ p {
 }
 
 textarea {
-    max-width: 100%;
+    width: 100%;
+}
+
+.upload_form textarea {
+    width: 75%;
 }
 
 .bg-message {
@@ -92,6 +96,10 @@ textarea {
 
 .bg-message:hover {
     background-color: var(--col-2);
+}
+
+.edit-container {
+    padding: 28px;
 }
 
 /* ------------------------------------------------- Backgrounds */
@@ -331,7 +339,10 @@ textarea {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
+}
+
+#generate-form-container {
+    padding-top: 25px;
 }
 
 .form-container h1,

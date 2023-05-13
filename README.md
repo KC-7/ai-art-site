@@ -57,23 +57,25 @@ This web application allows users to create custom AI generated artwork using th
 
 ## Main Features 🎨
 
-- User registration and authentication 📝
+<details> <summary>User registration and authentication 📝</summary> <img src="readme_images/features/signUp.png" style="max-width: 66%;"> </details>
 
-- Image generation based on the user's text prompts 🎨
+<details> <summary>Image generation based on the user's text prompts 🎨</summary> <img src="readme_images/features/generateArt.png" style="max-width: 66%;"> </details>
 
-- Image upload and management 🖼️
+<details> <summary>Image upload and management 🖼️</summary> <img src="readme_images/features/uploadPost.png" style="max-width: 66%;"> </details>
 
-- User profile with bio and profile picture 👤
+<details> <summary>User profile with bio and profile picture 👤</summary> <img src="readme_images/features/userProfile.png" style="max-width: 66%;"> </details>
 
-- Post liking and commenting ❤️ 💬
+<details> <summary>Post liking and commenting ❤️ 💬</summary> <img src="readme_images/features/postLikeComment.png" style="max-width: 66%;"> </details>
 
-- Public and private post visibility options 🔓 🔒
+<details> <summary>Public and private post visibility options 🔓 🔒</summary> <img src="readme_images/features/profilePrivatePublic.png" style="max-width: 66%;"> </details>
 
-- Search and sort functionality 🔍
+<details> <summary>Delete Posts 🗑️</summary> <img src="readme_images/features/deletePost.png" style="max-width: 66%;"> </details>
 
-- Static about pages for additional content ⚡️
+<details> <summary>Search and sort functionality 🔍</summary> <img src="readme_images/features/searchFilter.png" style="max-width: 66%;"> </details>
 
-- Admin panel for managing posts, comments, user profiles, and static pages 👥
+<details> <summary>Static about pages for additional content ⚡️</summary> <img src="readme_images/features/staticPageExample.png" style="max-width: 66%;"> </details>
+
+<details> <summary>Admin panel for managing posts, comments, user profiles, and static pages 👥</summary> <img src="readme_images/features/adminPortal.png" style="max-width: 66%;"> </details>
 
 ---
 
@@ -325,7 +327,7 @@ The following URLs are used in the project:
 | LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
 | Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
 | Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
-| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding an if statement before the JS code to check it exists |
+| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
 
 ### Outstanding Bugs ❌ 🤔
 
@@ -342,22 +344,22 @@ The following URLs are used in the project:
 
 #### User Expectation Testing 👩‍🦰‍👦
 
-| Test Case                                                  | Expected Result                                                                                     | Result |
-|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
-| Load the homepage                                          | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
-| Register a new user                                        | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
-| Log in an existing user                                    | Logs in the user and redirects to the homepage                                                      | ✅    |
-| Upload a new post                                          | Displays the uploaded post in detail                                                                | ✅    |
-| Generate AI art                                            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
-| Search for posts                                           | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
-| View a user's profile                                      | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
-| Edit a post                                                | Displays the updated post in detail                                                                 | ✅    |
-| Like/unlike a post                                         | Updates the post's like count                                                                       | ✅    |
-| Make a post private                                        | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
-| Make a post public                                         | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
-| Delete a post                                              | Removes the post and redirects to the user's profile                                                | ✅    |
-| View the about page                                        | Displays the about page with a list of admin-created static pages                                   | ✅    |
-| View a static page                                         | Displays the content of the static page                                                             | ✅    |
+| Test Case                                                                                                                | Expected Result                                                                                     | Result |
+|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| <details> <summary>Load the homepage</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
+| <details> <summary>Register a new user</summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
+| <details> <summary>Log in an existing user</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage                                                      | ✅    |
+| <details> <summary>Upload a new post</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post in detail                                                                | ✅    |
+| <details> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
+| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
+| <details> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
+| <details> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
+| <details> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
+| <details> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
+| <details> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
+| <details> <summary>Delete a post</summary> <img src="readme_images/screenshots/delete.png"> </details>                   | Removes the post and redirects to the user's profile                                                | ✅    |
+| <details> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
+| <details> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
 
 #### Functionality/Input-Validation 🛠️ 🔧
 
@@ -638,6 +640,8 @@ I would have liked to implement some of the below features but was unable to due
 - Consider changing the admin static about pages from HTML to a standard text entry format so that the admins will not need to enter the data using any code.
 
 - I briefly set up a function to generate keywords automatically for each of the generated images using GPT3 (OpenAI) but decided not to implement this feature to keep API charges to a minimum, this could be added back in future.
+
+- I chose not to add a watermark to the generated images but this could be added in future.
 
 ---
 
