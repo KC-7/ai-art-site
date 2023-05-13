@@ -268,7 +268,9 @@ The following URLs are used in the project:
 
 ---
 
-## Agile Sprint List 📅 🏃‍♂️💨
+## [Agile Sprint List 📅 🏃‍♂️💨](https://github.com/users/KC-7/projects/4/views/1)
+
+<details> <summary>Click Here to see an image of the Agile Planning Board</summary> <img src="readme_images/screenshots/userStories.png" style="max-width: 66%;"> </details>
 
 ### 1️⃣ Sprint 1
 - Create & Moderate Posts
@@ -553,11 +555,10 @@ The following URLs are used in the project:
 
 - Set up account / login
 - Select suitable domain name and purchase (for reference, this domain cost about 3 euro)
-- 
 
 **On Heroku:**
 
-- Link to the custom domain etc etc
+- Link to the custom domain etc
 - Set up authorisation token
 
 **On Gitpod:**
@@ -591,12 +592,29 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+**Deployment Images**
+
+<details> <summary>Clouflare DNS</summary> <img src="readme_images/setup/cloudflareDNS.png" style="max-width: 66%;"> </details>
+<details> <summary>Clouflare SSL 1</summary> <img src="readme_images/setup/cloudflareSSLTLS.png" style="max-width: 66%;"> </details>
+<details> <summary>Clouflare SSL 2</summary> <img src="readme_images/setup/cloudflareSSLTLS2.png" style="max-width: 66%;"> </details>
+<details> <summary>Clouflare Compression</summary> <img src="readme_images/setup/cloudflareCompression.png" style="max-width: 66%;"> </details>
+<details> <summary>Clouflare Overview</summary> <img src="readme_images/setup/cloudflareOverview.png" style="max-width: 66%;"> </details>
+<details> <summary>Clouflare SpeedTest</summary> <img src="readme_images/setup/cloudflareSpeedTest.png" style="max-width: 66%;"> </details>
+<details> <summary>ElephantSQL</summary> <img src="readme_images/setup/elephantSQL.png" style="max-width: 66%;"> </details>
+<details> <summary>Heroku Deployment</summary> <img src="readme_images/setup/herokuDeploy.png" style="max-width: 66%;"> </details>
+<details> <summary>Heroku Settings</summary> <img src="readme_images/setup/herokuSettings.png" style="max-width: 66%;"> </details>
+<details> <summary>NameCheap Domain</summary> <img src="readme_images/setup/namecheapDomain.png" style="max-width: 66%;"> </details>
+<details> <summary>NameCheap Nameservers</summary> <img src="readme_images/setup/namecheapNameservers.png" style="max-width: 66%;"> </details>
+<details> <summary>Clouflare Overview</summary> <img src="readme_images/setup/cloudflareOverview.png" style="max-width: 66%;"> </details>
+
 ---
 
 ## Custom Email Domain 📨 🌐
 
-Set up Custom Email Domain (for free) using Gmail:
-- xxxxx
+To avoid paying to use my custom web domain as an email domain, I found and followed the instructions in the following tutorial which explained how to set it up on Gmail for free: 
+| Link | Additional Set Up Requirements |
+| ---- | ------------------------------ |
+| [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Note the following required changes since this video was uploaded as described by Wiyre, the video uploader: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
 
 ---
 
@@ -655,6 +673,13 @@ I have spent less than 5 euro creating this project as most of the third party t
 
 **Note:** the free accounts may come with limitations which may need to be monitored, example, cloudinary provides 25 credits per month, after 100s of image generations, I have only used the following: `Credit Usage For Last 30 Days = 1.61 of 25 (6.44% used)`
 
+**Images:**
+
+<details> <summary>NameCheap SSL Pricing</summary> <img src="readme_images/setup/namecheapSSLPrices.png" style="max-width: 66%;"> </details>
+<details> <summary>NameCheap Email Pricing</summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
+<details> <summary>OpenAI Usage</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
+<details> <summary>OpenAI API Keys</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
+
 ---
 
 ## Useful Links & Documentation 📎📖
@@ -692,7 +717,7 @@ I have spent less than 5 euro creating this project as most of the third party t
 | [Allow Only Registered Users to Download Images](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/) | Django documentation for restricting access to registered users |
 | [Disable Right Click on Images](https://www.dotnettricks.com/learn/aspnet/disable-right-click-on-web-page-and-images) | Tutorial on disabling right-click on images for added protection |
 | [Youtube: Setting Up Free SSL with CloudFlare](https://www.youtube.com/watch?v=Y4iHXhRkpO4) | Video tutorial on setting up CloudFlare for free SSL cert |
-| [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Video tutorial on setting up a custom domain on gmail, note the following required changes since this video was uploaded as described by Wiyre: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
+| [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Video tutorial on setting up a custom domain on gmail, note additional requirements for set up are noted above |
 | [Markdown Table of Contents Generator](http://ecotrust-canada.github.io/markdown-toc/) | Table of contents generated with markdown-toc |
 | [Wix Logo Maker](https://www.wix.com/logo/maker) | The Logo was made using Wix's Free Logo Maker |
 
@@ -712,6 +737,6 @@ I would like to give credit to the all of the content creators and developers of
 
 ## Contact 📨 📫
 
-I can be contacted directly at the following email address: 
+Thanks for getting this far! If you would like to reach out to me, I can be contacted directly at the following email address: 
 
-- Kieran@KC-7.com
+- <a href="mailto:Kieran@KC-7.com">Kieran@KC-7.com</a>
