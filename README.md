@@ -12,46 +12,46 @@ This web application allows users to create custom AI generated artwork using th
 
 ## Table of Contents 📖
 
-- [Live Links: 🚀 🌐](#live-links-------)
-- [Description 📝](#description---)
-- [Table of Contents 📖](#table-of-contents---)
-- [Main Features 🎨](#main-features---)
-- [Technologies & Services Used 💻 🌎](#technologies---services-used------)
-- [Coding Overview 🖥️ 🖱️](#coding-overview--------)
-  * [URLs 🌐](#urls---)
-  * [Models 📄](#models---)
-  * [Views 👀](#views---)
-  * [Forms 📝](#forms---)
-  * [Utilities 🛠️](#utilities----)
-  * [Admin 👥](#admin---)
-- [Local Set Up Guide 🖥️ 🛠️](#local-set-up-guide--------)
-- [Agile Sprint List 📅 🏃‍♂️💨](#agile-sprint-list-----------)
-  * [1️⃣ Sprint 1](#1---sprint-1)
-  * [2️⃣ Sprint 2](#2---sprint-2)
-  * [3️⃣ Sprint 3](#3---sprint-3)
-  * [4️⃣ Sprint 4](#4---sprint-4)
-  * [5️⃣ Sprint 5](#5---sprint-5)
-  * [6️⃣ Sprint 6](#6---sprint-6)
-  * [7️⃣ Sprint 7](#7---sprint-7)
-    + [ADITIONAL TO BE UPDATED ABOVE: (8️⃣ 9️⃣ 0️⃣)](#aditional-to-be-updated-above---8---9---0---)
-- [Bugs 🐛 🐌 🕷️](#bugs----------)
-  * [Resolved Bugs ✅ 🐞](#resolved-bugs-----)
-  * [Outstanding Bugs ❌ 🤔](#outstanding-bugs-----)
-- [Testing 🕵️ 💻](#testing-------)
-  * [Manual Testing 🔎](#manual-testing---)
-    + [User Expectation Testing 👩‍🦰‍👦](#user-expectation-testing---------)
-    + [Functionality/Input-Validation 🛠️ 🔧](#functionality-input-validation-------)
-- [Deployment (Prior to Completing Project) 🚀](#deployment--prior-to-completing-project----)
-  * [Step 1: Setting up the Django Project 🛠️ 1️⃣](#step-1--setting-up-the-django-project-----1--)
-  * [Step 2: Deploying App to Heroku 🚀 2️⃣](#step-2--deploying-app-to-heroku----2--)
-- [Final Deployment (Post Completion of Project)](#final-deployment--post-completion-of-project-)
-- [Custom Web Domain 💻 🌐](#custom-web-domain------)
-- [Custom Email Domain 📨 🌐](#custom-email-domain------)
-- [Future Development 💭 💡](#future-development------)
+- [Live Links: 🚀 🌐](#live-links)
+- [Description 📝](#description)
+- [Main Features 🎨](#main-features)
+- [Technologies & Services Used 💻 🌎](#technologies--services-used)
+  - [Main Technologies and Services](#main-technologies-and-services)
+  - [Imports and Libraries](#imports-and-libraries)
+- [Coding Overview 🖥️ 🖱️](#coding-overview)
+  - [URLs 🌐](#urls)
+  - [Models 📄](#models)
+  - [Views 👀](#views)
+  - [Forms 📝](#forms)
+  - [Utilities 🛠️](#utilities)
+  - [Admin 👥](#admin)
+- [Agile Sprint List 📅 🏃‍♂️💨](#agile-sprint-list)
+  - [1️⃣ Sprint 1](#1-sprint-1)
+  - [2️⃣ Sprint 2](#2-sprint-2)
+  - [3️⃣ Sprint 3](#3-sprint-3)
+  - [4️⃣ Sprint 4](#4-sprint-4)
+  - [5️⃣ Sprint 5](#5-sprint-5)
+  - [6️⃣ Sprint 6](#6-sprint-6)
+  - [7️⃣ Sprint 7](#7-sprint-7)
+- [Deployment (Prior to Completing Project) 🚀](#deployment-prior-to-completing-project)
+  - [Step 1: Setting up the Django Project 🛠️ 1️⃣](#step-1-setting-up-the-django-project-1)
+  - [Step 2: Deploying App to Heroku 🚀 2️⃣](#step-2-deploying-app-to-heroku-2)
+- [Final Deployment (Post Completion of Project) 🚀](#final-deployment-post-completion-of-project)
+- [Custom Web Domain 💻 🌐](#custom-web-domain)
+- [Custom Email Domain 📨 🌐](#custom-email-domain)
+- [Bugs 🐛 🐌 🕷️](#bugs)
+  - [Resolved Bugs ✅ 🐞](#resolved-bugs)
+  - [Outstanding Bugs ❌ 🤔](#outstanding-bugs)
+- [Testing 🕵️ 💻](#testing)
+  - [Manual Testing 🔎](#manual-testing)
+    - [User Expectation Testing 👩‍🦰‍👦](#user-expectation-testing)
+    - [Functionality/Input-Validation 🛠️ 🔧](#functionality-input-validation)
+- [Future Development 💭 💡](#future-development)
 - [Summary of Charges](#summary-of-charges)
-- [Useful Links & Documentation 📎📖](#useful-links---documentation-----)
-- [Credits 👏 🙌](#credits------)
-- [Contact 📨 📫](#contact------)
+- [Local Set Up Guide 🖥️ 🛠️](#local-set-up-guide)
+- [Useful Links & Documentation 📎📖](#useful-links--documentation)
+- [Credits 👏 🙌](#credits)
+- [Contact 📨 📫](#contact)
 
 ---
 
@@ -111,6 +111,9 @@ This web application allows users to create custom AI generated artwork using th
 
 ### Imports and Libraries
 
+<details> 
+<summary> Click here to see a table of the Imports and Libraries used in the Project </summary>
+
 | Import | Description | File(s) |
 |---|---|---|
 | `os` | Miscellaneous operating system interfaces | `views.py`, `utils.py` |
@@ -154,6 +157,8 @@ This web application allows users to create custom AI generated artwork using th
 | `from django.apps import AppConfig` | Django's application configuration | `apps.py` |
 | `from django.urls import include` | Function for including other URL configurations | `ai_art/urls.py` |
 | `from cloudinary.models import CloudinaryField` | Cloudinary's model field for storing images | `models.py` |
+
+</details>
 
 ---
 
@@ -248,26 +253,6 @@ The following URLs are used in the project:
 
 ---
 
-## Local Set Up Guide 🖥️ 🛠️
-
-- Clone the repository.
-
-- Set up a virtual environment and install the required dependencies.
-
-- Set up cloudinary and openai account.
-
-- Create a .env file with the required environment variables:
-    - "DATABASE_URL"
-    - "SECRET_KEY"
-    - "CLOUDINARY_URL"
-    - "OPENAI_API_KEY"
-
-- Apply database migrations and create a superuser account.
-
-- Run the Django development server.
-
----
-
 ## [Agile Sprint List 📅 🏃‍♂️💨](https://github.com/users/KC-7/projects/4/views/1)
 
 <details> <summary>Click Here to see an image of the Agile Planning Board</summary> <img src="readme_images/screenshots/userStories.png" style="max-width: 66%;"> </details>
@@ -308,73 +293,11 @@ The following URLs are used in the project:
 ### 7️⃣ Sprint 7
 - Update & Delete Posts + Make Private
 
-#### ADITIONAL TO BE UPDATED ABOVE: (8️⃣ 9️⃣ 0️⃣)
+**Note, I carried out the below tasks in addition to the above documented Sprints**
 - Image generation limit
 - Disable image downloads for unregistered users
 - Admin portal features
-
----
-
-## Bugs 🐛 🐌 🕷️
-
-### Resolved Bugs ✅ 🐞
-
-| Bug | Fix |
-| --- | --- |
-| HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
-| Post titles and slugs too long | I set up truncating to reduce the length. |
-| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrimating by 1. |
-| Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
-| Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
-| LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
-| Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
-| Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
-| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
-
-### Outstanding Bugs ❌ 🤔
-
-| Bug | Comments |
-| --- | --- |
-| When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after. |
-| Unable to access via the custom namecheap domain | Still testing and trying to resolve.................. |
-
----
-
-## Testing 🕵️ 💻
-
-### Manual Testing 🔎
-
-#### User Expectation Testing 👩‍🦰‍👦
-
-| Test Case                                                                                                                | Expected Result                                                                                     | Result |
-|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
-| <details> <summary>Load the homepage</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
-| <details> <summary>Register a new user</summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
-| <details> <summary>Log in an existing user</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage                                                      | ✅    |
-| <details> <summary>Upload a new post</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post in detail                                                                | ✅    |
-| <details> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
-| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
-| <details> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
-| <details> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
-| <details> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
-| <details> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
-| <details> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
-| <details> <summary>Delete a post</summary> <img src="readme_images/screenshots/delete.png"> </details>                   | Removes the post and redirects to the user's profile                                                | ✅    |
-| <details> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
-| <details> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
-
-#### Functionality/Input-Validation 🛠️ 🔧
-
-| Test Case                                                  | Expected Result                                                                                     | Result |
-|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
-| Register a new user with invalid input                     | Displays an error message and does not create a user profile                                        | ✅    |
-| Log in with invalid credentials                            | Displays an error message and does not log in the user                                              | ✅    |
-| Upload a post without required  input                      | Displays an error message and does not create the post                                              | ✅    |
-| Generate AI art with invalid input                         | Displays an error message and does not generate the art                                             | ✅    |
-| Generate more than the limit for AI art                    | Displays an error message and does not generate the art                                             | ✅    |
-| Empty comment on a post                                    | Displays an error message and does not create the comment                                           | ✅    |
-| Edit a post with empty input                               | Displays an error message and does not update the post                                              | ✅    |
-| Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
+- etc
 
 ---
 
@@ -530,11 +453,16 @@ The following URLs are used in the project:
 
 - Deploy content manually, I used the GitHub deployment method on main branch.
 
-## Final Deployment (Post Completion of Project)
+## Final Deployment (Post Completion of Project) 🚀
 
-**On Gitpod:** ------ settings.py, change debug to false. etc etc remove DISABLE_COLLECTSTATIC from settings.py
+**On Gitpod:**
+- Within settings.py, ensure the 'DEBUG' value is set to 'False'.
+- Remove 'DISABLE_COLLECTSTATIC' from settings.py to ensure static files are collected correctly.
 
-**On Heroku:** ----- Manually Deploy etc.... remove DISABLE_COLLECTSTATIC from config vars
+**On Heroku:** 
+
+- Remove 'DISABLE_COLLECTSTATIC' from the config vars.
+- Trigger a manual deployment in the Deployment Section for the project.
 
 ---
 
@@ -558,7 +486,7 @@ The following URLs are used in the project:
 
 **On Heroku:**
 
-- Link to the custom domain etc
+- Link to the custom domain
 - Set up authorisation token
 
 **On Gitpod:**
@@ -570,9 +498,7 @@ The following URLs are used in the project:
 **On NameCheap:**
 
 - Configure the custom domain using Advanced DNS settings:
-  - Set up the CNAME and URL Redirect as follows:
-    - CNAME, XXXX, XXXX, XXX
-    - URL Redirect , XXX, XXX, XXX
+  - Set up the CNAME and URL Redirect.
 
 **On [DNS Checker (.org)](https://dnschecker.org/#A/cre8ai.art):**
 
@@ -583,14 +509,6 @@ The following URLs are used in the project:
 - Set up free account
 - Link to website
 - Set up redirect to HTTPS to ensure secure connection
-- ETC
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 **Deployment Images**
 
@@ -615,6 +533,71 @@ To avoid paying to use my custom web domain as an email domain, I found and foll
 | Link | Additional Set Up Requirements |
 | ---- | ------------------------------ |
 | [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Note the following required changes since this video was uploaded as described by Wiyre, the video uploader: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
+
+---
+
+
+## Bugs 🐛 🐌 🕷️
+
+### Resolved Bugs ✅ 🐞
+
+| Bug | Fix |
+| --- | --- |
+| HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
+| Post titles and slugs too long | I set up truncating to reduce the length. |
+| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrimating by 1. |
+| Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
+| Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
+| LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
+| Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
+| Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
+| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
+
+### Outstanding Bugs ❌ 🤔
+
+| Bug | Comments |
+| --- | --- |
+| When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after so I have left the bug present for now until I have more time to resolve. |
+
+---
+
+## Testing 🕵️ 💻
+
+### Manual Testing 🔎
+
+#### User Expectation Testing 👩‍🦰‍👦
+
+| Test Case                                                                                                                | Expected Result                                                                                     | Result |
+|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| <details> <summary>Load the homepage</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
+| <details> <summary>Register a new user</summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
+| <details> <summary>Log in an existing user</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage                                                      | ✅    |
+| <details> <summary>Upload a new post</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post in detail                                                                | ✅    |
+| <details> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
+| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
+| <details> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
+| <details> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
+| <details> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
+| <details> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
+| <details> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
+| <details> <summary>Delete a post</summary> <img src="readme_images/features/delete.png"> </details>                      | Removes the post and redirects to the user's profile                                                | ✅    |
+| <details> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
+| <details> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
+
+#### Functionality/Input-Validation 🛠️ 🔧
+
+| Test Case                                                  | Expected Result                                                                                     | Result |
+|------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| Register a new user with invalid input                     | Displays an error message and does not create a user profile                                        | ✅    |
+| Log in with invalid credentials                            | Displays an error message and does not log in the user                                              | ✅    |
+| Upload a post without required  input                      | Displays an error message and does not create the post                                              | ✅    |
+| Generate AI art with invalid input                         | Displays an error message and does not generate the art                                             | ✅    |
+| Generate more than the limit for AI art                    | Displays an error message and does not generate the art                                             | ✅    |
+| Empty comment on a post                                    | Displays an error message and does not create the comment                                           | ✅    |
+| Edit a post with empty input                               | Displays an error message and does not update the post                                              | ✅    |
+| Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
+
+<details> <summary>Click here to see an example of an Error Message</summary> <img src="readme_images/features/errorMessage.png"> </details>
 
 ---
 
@@ -679,6 +662,26 @@ I have spent less than 5 euro creating this project as most of the third party t
 <details> <summary>NameCheap Email Pricing</summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
 <details> <summary>OpenAI Usage</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 <details> <summary>OpenAI API Keys</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
+
+---
+
+## Local Set Up Guide 🖥️ 🛠️
+
+- Clone the repository.
+
+- Set up a virtual environment and install the required dependencies.
+
+- Set up cloudinary and openai account.
+
+- Create a .env file with the required environment variables:
+    - "DATABASE_URL"
+    - "SECRET_KEY"
+    - "CLOUDINARY_URL"
+    - "OPENAI_API_KEY"
+
+- Apply database migrations and create a superuser account.
+
+- Run the Django development server.
 
 ---
 
