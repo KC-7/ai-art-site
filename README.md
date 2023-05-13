@@ -1,57 +1,58 @@
 # [Cre8AI.art 🎨](https://www.cre8ai.art/)
 
-## Live Links: 🚀 🌐
+## Live Links 🚀 🌐
 - Custom Domain: https://www.cre8ai.art/
 - Heroku Link: https://ai-art-site.herokuapp.com/
 
+
 ## Description 📝
 
-This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required. 
+This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required.
+
+<details> <summary>Click here to see a preview of the homepage</summary> <img src="readme_images/screenshots/homeFull.png" style="max-width: 66%;"> </details>
 
 ---
 
 ## Table of Contents 📖
 
-- [Live Links: 🚀 🌐](#live-links)
-- [Description 📝](#description)
-- [Main Features 🎨](#main-features)
-- [Technologies & Services Used 💻 🌎](#technologies--services-used)
-  - [Main Technologies and Services](#main-technologies-and-services)
-  - [Imports and Libraries](#imports-and-libraries)
-- [Coding Overview 🖥️ 🖱️](#coding-overview)
-  - [URLs 🌐](#urls)
-  - [Models 📄](#models)
-  - [Views 👀](#views)
-  - [Forms 📝](#forms)
-  - [Utilities 🛠️](#utilities)
-  - [Admin 👥](#admin)
-- [Agile Sprint List 📅 🏃‍♂️💨](#agile-sprint-list)
-  - [1️⃣ Sprint 1](#1-sprint-1)
-  - [2️⃣ Sprint 2](#2-sprint-2)
-  - [3️⃣ Sprint 3](#3-sprint-3)
-  - [4️⃣ Sprint 4](#4-sprint-4)
-  - [5️⃣ Sprint 5](#5-sprint-5)
-  - [6️⃣ Sprint 6](#6-sprint-6)
-  - [7️⃣ Sprint 7](#7-sprint-7)
-- [Deployment (Prior to Completing Project) 🚀](#deployment-prior-to-completing-project)
-  - [Step 1: Setting up the Django Project 🛠️ 1️⃣](#step-1-setting-up-the-django-project-1)
-  - [Step 2: Deploying App to Heroku 🚀 2️⃣](#step-2-deploying-app-to-heroku-2)
-- [Final Deployment (Post Completion of Project) 🚀](#final-deployment-post-completion-of-project)
-- [Custom Web Domain 💻 🌐](#custom-web-domain)
-- [Custom Email Domain 📨 🌐](#custom-email-domain)
-- [Bugs 🐛 🐌 🕷️](#bugs)
-  - [Resolved Bugs ✅ 🐞](#resolved-bugs)
-  - [Outstanding Bugs ❌ 🤔](#outstanding-bugs)
-- [Testing 🕵️ 💻](#testing)
-  - [Manual Testing 🔎](#manual-testing)
-    - [User Expectation Testing 👩‍🦰‍👦](#user-expectation-testing)
-    - [Functionality/Input-Validation 🛠️ 🔧](#functionality-input-validation)
-- [Future Development 💭 💡](#future-development)
+- [Live Links 🚀 🌐](#live-links------)
+- [Description 📝](#description---)
+- [Table of Contents 📖](#table-of-contents---)
+- [Main Features 🎨](#main-features---)
+- [Technologies & Services Used 💻 🌎](#technologies---services-used------)
+  * [Main Technologies and Services](#main-technologies-and-services)
+  * [Imports and Libraries](#imports-and-libraries)
+- [Planning & Wireframes](#planning---wireframes)
+- [Agile Sprint List 📅 🏃‍♂️💨](#agile-sprint-list-----------)
+- [Coding Overview 🖥️ 🖱️](#coding-overview--------)
+  * [URLs 🌐](#urls---)
+  * [Models 📄](#models---)
+  * [Views 👀](#views---)
+  * [Forms 📝](#forms---)
+  * [Utilities 🛠️](#utilities----)
+  * [Admin 👥](#admin---)
+- [OpenAI Dall-E 2](#openai-dall-e-2)
+- [Deployment (Prior to Completing Project) 🚀](#deployment--prior-to-completing-project----)
+  * [Step 1: Setting up the Django Project 🛠️ 1️⃣](#step-1--setting-up-the-django-project-----1--)
+  * [Step 2: Deploying App to Heroku 🚀 2️⃣](#step-2--deploying-app-to-heroku----2--)
+- [Final Deployment (Post Completion of Project) 🚀](#final-deployment--post-completion-of-project----)
+  * [Final Deployment to Heroku](#final-deployment-to-heroku)
+  * [Custom Web Domain & SSL 💻 🌐](#custom-web-domain---ssl------)
+  * [Custom Email Domain 📨 🌐](#custom-email-domain------)
+- [Bugs 🐛 🐌 🕷️](#bugs----------)
+  * [Resolved Bugs ✅ 🐞](#resolved-bugs-----)
+  * [Outstanding Bugs ❌ 🤔](#outstanding-bugs-----)
+- [Testing 🕵️ 💻](#testing-------)
+  * [Manual Testing 🔎](#manual-testing---)
+    + [User Expectation Testing 👩‍🦰‍👦](#user-expectation-testing---------)
+    + [Functionality/Input-Validation 🛠️ 🔧](#functionality-input-validation-------)
+- [Future Development 💭 💡](#future-development------)
 - [Summary of Charges](#summary-of-charges)
-- [Local Set Up Guide 🖥️ 🛠️](#local-set-up-guide)
-- [Useful Links & Documentation 📎📖](#useful-links--documentation)
-- [Credits 👏 🙌](#credits)
-- [Contact 📨 📫](#contact)
+- [Local Set Up Guide 🖥️ 🛠️](#local-set-up-guide--------)
+- [Useful Links & Documentation 📎📖](#useful-links---documentation-----)
+- [Credits 👏 🙌](#credits------)
+- [Contact 📨 📫](#contact------)
+
 
 ---
 
@@ -162,6 +163,68 @@ This web application allows users to create custom AI generated artwork using th
 
 ---
 
+## Planning & Wireframes
+
+I created the following wireframe sketches prior to creating the project. I wanted a clean, simple, user-friendly layout for the site. 
+
+<details> <summary>Home Page Plan</summary> <img src="readme_images/setup/homePlan.jpg" style="max-width: 66%;"> </details>
+
+<details> <summary>Post Page Plan</summary> <img src="readme_images/setup/postPlan.jpg" style="max-width: 66%;"> </details>
+
+My initial goal was to set up a site that allows users to post generations from other resources then to implement additional features such as the AI Art Generations if I had time.
+
+---
+
+## Agile Sprint List 📅 🏃‍♂️💨
+
+[Click Here to see the Agile Planning Board on GitHub](https://github.com/users/KC-7/projects/4/views/1)
+
+<details> <summary>Or click here to see an image of the Agile Planning Board</summary> <img src="readme_images/screenshots/userStories.png" style="max-width: 66%;"> </details>
+
+**1️⃣ Sprint 1**
+- Create & Moderate Posts
+- Moderate Posts
+- Private Posts
+
+**2️⃣ Sprint 2**
+- Site Pagination
+- View Posts
+- View Likes
+- View Comments
+
+**3️⃣ Sprint 3**
+- Open Images
+- Register Account
+- Login
+- Log out
+
+**4️⃣ Sprint 4**
+- Comment on posts
+- Like Posts
+- User Uploads
+- Upload Redirection
+
+**5️⃣ Sprint 5**
+- AI Art Generation
+- Image Downloads
+- Total Number of Pages
+
+**6️⃣ Sprint 6**
+- Search Images
+- Filter Posted Images
+- Account Page
+
+**7️⃣ Sprint 7**
+- Update & Delete Posts + Make Private
+
+**Note: I carried out the below tasks in addition to the above documented Sprints, all functions are documented in the Coding Overview**
+- Image generation limit
+- Disable image downloads for unregistered users
+- Admin portal features
+- etc
+
+---
+
 ## Coding Overview 🖥️ 🖱️
 
 ### URLs 🌐
@@ -253,51 +316,17 @@ The following URLs are used in the project:
 
 ---
 
-## [Agile Sprint List 📅 🏃‍♂️💨](https://github.com/users/KC-7/projects/4/views/1)
+## OpenAI DALL-E 2
 
-<details> <summary>Click Here to see an image of the Agile Planning Board</summary> <img src="readme_images/screenshots/userStories.png" style="max-width: 66%;"> </details>
+The images are generated using OpenAI's Dall-E 2, [you can view their easy to follow instructions here](https://beta.openai.com/docs/api-reference/introduction).
 
-### 1️⃣ Sprint 1
-- Create & Moderate Posts
-- Moderate Posts
-- Private Posts
+<details> <summary>Or click here to see an image of the above instructions</summary> <img src="readme_images/setup/openaiImageGeneration.png" style="max-width: 66%;"> </details>
 
-### 2️⃣ Sprint 2
-- Site Pagination
-- View Posts
-- View Likes
-- View Comments
+<details> <summary>Once registered, you can set up an API key in the API section of their site</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
 
-### 3️⃣ Sprint 3
-- Open Images
-- Register Account
-- Login
-- Log out
+You will need to import OpenAI and add the API key to your project. 
 
-### 4️⃣ Sprint 4
-- Comment on posts
-- Like Posts
-- User Uploads
-- Upload Redirection
-
-### 5️⃣ Sprint 5
-- AI Art Generation
-- Image Downloads
-- Total Number of Pages
-
-### 6️⃣ Sprint 6
-- Search Images
-- Filter Posted Images
-- Account Page
-
-### 7️⃣ Sprint 7
-- Update & Delete Posts + Make Private
-
-**Note, I carried out the below tasks in addition to the above documented Sprints**
-- Image generation limit
-- Disable image downloads for unregistered users
-- Admin portal features
-- etc
+<details> <summary>The free account currently comes with $18 dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 
 ---
 
@@ -455,6 +484,8 @@ The following URLs are used in the project:
 
 ## Final Deployment (Post Completion of Project) 🚀
 
+### Final Deployment to Heroku
+
 **On Gitpod:**
 - Within settings.py, ensure the 'DEBUG' value is set to 'False'.
 - Remove 'DISABLE_COLLECTSTATIC' from settings.py to ensure static files are collected correctly.
@@ -464,9 +495,7 @@ The following URLs are used in the project:
 - Remove 'DISABLE_COLLECTSTATIC' from the config vars.
 - Trigger a manual deployment in the Deployment Section for the project.
 
----
-
-## Custom Web Domain 💻 🌐
+### Custom Web Domain & SSL 💻 🌐
 
 **On Gitpod:**
 
@@ -506,6 +535,11 @@ The following URLs are used in the project:
 
 **On Cloudflare:** 
 
+<details> 
+<summary>SSL certs are free on the Standard Heroku Domain but both Heroku and Namecheap charge for SSL certification for custom domains so I set it up for free with Clourflare.</summary> 
+<img src="readme_images/setup/namecheapSSLPrices.png" style="max-width: 66%;">
+</details>
+
 - Set up free account
 - Link to website
 - Set up redirect to HTTPS to ensure secure connection
@@ -527,15 +561,15 @@ The following URLs are used in the project:
 
 ---
 
-## Custom Email Domain 📨 🌐
+### Custom Email Domain 📨 🌐
 
-To avoid paying to use my custom web domain as an email domain, I found and followed the instructions in the following tutorial which explained how to set it up on Gmail for free: 
+<details> <summary>To avoid paying to use my custom web domain as an email domain, I found and followed the instructions in the following tutorial which explained how to set it up on Gmail for free: </summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
+
 | Link | Additional Set Up Requirements |
 | ---- | ------------------------------ |
 | [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Note the following required changes since this video was uploaded as described by Wiyre, the video uploader: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
 
 ---
-
 
 ## Bugs 🐛 🐌 🕷️
 
