@@ -324,7 +324,7 @@ The images are generated using OpenAI's Dall-E 2, [you can view their easy to fo
 
 <details> <summary>Once registered, you can set up an API key in the API section of their site</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
 
-You will need to import OpenAI and add the API key to your project. 
+You will need to import OpenAI and add the API key to your project.
 
 <details> <summary>The free account currently comes with $18 dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 
@@ -847,7 +847,7 @@ I would have liked to implement some of the below features but was unable to due
 
 ## Summary of Charges
 
-I have spent less than 5 euro creating this project as most of the third party tecnologies used in this project are on free accounts (eg. Cloudflare, The Heroku Dyno, Cloudinary, ElephantSQL, etc) however the following items are charged for: 
+As mentioned above, I have avoided subscriptions and costs where possible. I have spent less than 5 euro creating this project as most of the third party tecnologies used in this project are on free accounts (eg. Cloudflare, The Heroku Dyno, Cloudinary, ElephantSQL, etc) however the following items are charged for: 
 
 - **OpenAI API Calls** - The only OpenAI model used for this project is DALLE 2, each API call (at the time of writing) is charged at 2 cent. OpenAI comes with 20 dollars free credits which expire after 3 months, the free credits will cover 1,000 image generations (a few months ago it was 60cent per generation).
 
@@ -860,7 +860,6 @@ I have spent less than 5 euro creating this project as most of the third party t
 <details> <summary>NameCheap SSL Pricing</summary> <img src="readme_images/setup/namecheapSSLPrices.png" style="max-width: 66%;"> </details>
 <details> <summary>NameCheap Email Pricing</summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
 <details> <summary>OpenAI Usage</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
-<details> <summary>OpenAI API Keys</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
 
 ---
 
