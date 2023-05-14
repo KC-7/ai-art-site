@@ -1,5 +1,5 @@
 {% load static %}
-
+<!-- Nave Bar -->
 <nav class="navbar navbar-expand-lg navbar-light medium-bg">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -9,39 +9,42 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+                    <a class="nav-link active" href="{% url 'home' %}" aria-label="Home Page">
                         <img src="{% static 'images/logo_transparent.png' %}" alt="Cre8AI.art Logo" width="40"
                             height="40"><span class="nav-item"> Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'about' %}">About</a>
+                    <a class="nav-link" href="{% url 'about' %}" aria-label="About Us">About</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'generate_art' %}">Generate Art</a>
+                    <a class="nav-link" href="{% url 'generate_art' %}" aria-label="Generate AI Art">Generate Art</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'upload_form' %}">Upload</a>
+                    <a class="nav-link" href="{% url 'upload_form' %}" aria-label="Upload a Post">Upload</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'user_profile' request.user.username %}">Profile</a>
+                    <a class="nav-link" href="{% url 'user_profile' request.user.username %}"
+                        aria-label="View your user profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'account_logout' %}" aria-label="Logout of your account">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'account_login' %}" aria-label="Login to your account">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'account_signup' %}"><strong>Register</strong></a>
+                    <a class="nav-link" href="{% url 'account_signup' %}"
+                        aria-label="Sign up to create an account"><strong>Register</strong></a>
                 </li>
                 {% endif %}
             </ul>
         </div>
         <span class="nav-text">
-            Unleash your inner artist <a class="navbar-logo no-underline" href="{% url 'home' %}"></a>
+            Unleash your inner artist <a href="{% url 'home' %}" class="navbar-logo no-underline"
+                aria-label="Go to home page"></a>
         </span>
     </div>
 </nav>

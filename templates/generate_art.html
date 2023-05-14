@@ -14,7 +14,8 @@
   <form method="post" id="generate-art-form">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-custom right" id="generate-art-btn">Generate Art</button>
+    <button type="submit" class="btn btn-custom right" id="generate-art-btn" aria-label="Generate the image">Generate
+      Art</button>
   </form>
 
   <!-- Fair Usage & Daily Tracker -->
@@ -27,9 +28,9 @@
   <div class="loading-message hide text-center">
     <img src="{% static 'images/spinner.gif' %}" alt="Loading...">
     <p>AI magic taking place 🧙‍♂️</p>
-    <p class="longer-than-expected hide">Dont worry, we are still working on it, it'll be ready shortly...</p>
-    <p class="something-wrong hide text-danger">Uh oh, we are still trying but this is taking unusually long, please try
-      again!</p>
+    <p class="longer-than-expected hide">Dont worry, we are still working on it, the best art takes time! 🎨</p>
+    <p class="something-wrong hide text-danger">Uh oh, this is taking unusually long, please try
+      again! ❌</p>
   </div>
 
   <!-- Generation Advice -->
@@ -63,7 +64,8 @@
 
   <!-- Back Home Button -->
   <div class="right">
-    <a href="{% url 'home' %}" class="btn btn-custom" id="btn-back"><i class="fa-solid fa-hand-point-left"></i> Back to
+    <a href="{% url 'home' %}" class="btn btn-custom" id="btn-back" aria-label="Go to home page"><i
+        class="fa-solid fa-hand-point-left"></i> Back to
       Home</a>
   </div>
 

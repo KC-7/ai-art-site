@@ -5,7 +5,7 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
-
+<!-- Posts heading and controls -->
 <div class="masthead">
     <div class="container-fluid">
         <div class="row g-0">
@@ -33,24 +33,24 @@
             </div>
             <form method="POST" action="{% url 'edit_post' post.slug %}" class="col-md-3 text-center">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-custom">Edit Post</button>
+                <button type="submit" class="btn btn-custom" aria-label="Edit the Post">Edit Post</button>
             </form>
             <form method="POST" action="{% url 'post_public' slug=post.slug %}" class="col-md-3 text-center">
                 {% csrf_token %}
                 <div class="form-check">
-                    <button type="submit" class="btn btn-custom">Make Public</button>
+                    <button type="submit" class="btn btn-custom" aria-label="Make Public">Make Public</button>
                 </div>
             </form>
             <form method="POST" action="{% url 'delete_post' slug=post.slug %}" class="col-md-3 text-center"
                 id="delete-post-form">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete Post</button>
+                <button type="submit" class="btn btn-danger" aria-label="Delete the Post">Delete Post</button>
             </form>
         </div>
         {% endif %}
     </div>
 </div>
-
+<!-- Post -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 card mb-4 mt-3 left top">
@@ -64,10 +64,11 @@
                 <div class="text-right download-image">
                     {% if user.is_authenticated %}
                     <a href="{{ post.post_image.url }}" download="{{ post.title }}" class="btn btn-custom"
-                        target="_blank">Download Image</a>
+                        target="_blank" aria-label="Download the Image">Download Image</a>
                     {% else %}
-                    <p>Please <a href="{% url 'account_login' %}">log in</a> or <a
-                            href="{% url 'account_signup' %}">sign up</a> to download this image in high quality for
+                    <p>Please <a href="{% url 'account_login' %}" aria-label="Go to signin page">log in</a> or <a
+                            href="{% url 'account_signup' %}" aria-label="Go to signup page">sign up</a> to download
+                        this image in high quality for
                         free!</p>
                     {% endif %}
                 </div>

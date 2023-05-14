@@ -20,13 +20,13 @@
     to cutting-edge technology and tools to "Unleash your inner artist."</p>
 <h2>Contact</h2>
 <p>For any inquiries, suggestions, or support, please feel free to reach out to our team at <a
-        href="mailto:contact@cre8ai.art">contact@cre8ai.art</a>. We are always here to help and listen to our valued
-    community members.</p>
+        href="mailto:contact@cre8ai.art" aria-label="Send an email">contact@cre8ai.art</a>. We are always here to help
+    and listen to our valued community members.</p>
 <h2>Please see below page links for further details:</h2>
 <ul>
     {% for page in public_static_pages %}
     <li>
-        <h3><a href="{% url 'static_page' page.slug %}">{{ page.title }}</a></h3>
+        <h3><a href="{% url 'static_page' page.slug %}" aria-label="Go to {{ page.title }}">{{ page.title }}</a></h3>
     </li>
     {% empty %}
     <li>No public static pages found.</li>

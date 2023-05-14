@@ -5,7 +5,7 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-
+<!-- Logo & Title -->
 <div class="col-12 mt-3 text-center">
     <div class="logo-img">
         <img src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo" class="small-logo">
@@ -14,9 +14,9 @@
         AI Art Gallery
     </h1>
 </div>
-
+<!-- Welcome Message for Logged Out Users -->
 {% if not user.is_authenticated and not page_obj.has_previous %}
-<a class="logged-out-message" href="{% url 'account_signup' %}">
+<a class="logged-out-message" href="{% url 'account_signup' %}" aria-label="Go to signup page">
     <div class="text-center bg-message">
         <h5>Welcome to Cre8AI.art!</h5>
 
@@ -30,14 +30,14 @@
     </div>
 </a>
 {% endif %}
-
+<!-- Search Posts -->
 <div class="col-12 mt-3 text-center">
     <form method="get" action="{% url 'search' %}" id="search_form">
         <input type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
-        <input type="submit" value="Search">
+        <input type="submit" value="Search" aria-label="Search Posts">
     </form>
 </div>
-
+<!-- Sort posts -->
 <div class="col-12 mt-3 text-right">
     {% with request.GET.sorting as sorting %}
     <form method="get" class="sorting-form">
@@ -50,7 +50,7 @@
     </form>
     {% endwith %}
 </div>
-
+<!-- Display Posts -->
 <div class="container-fluid">
     <div class="row">
         <!-- Posted Images -->
@@ -97,20 +97,22 @@
             </div>
         </div>
     </div>
+    <!-- Post Pagination -->
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.number|add:"-2" > 0 %}
             <li>
-                <a href="?page=1" class="page-button">
+                <a href="?page=1" class="page-button" aria-label="Go to first page">
                     <i class="fa-solid fa-backward-fast"></i>
                 </a>
             </li>
             {% endif %}
             {% if page_obj.has_previous %}
             <li>
-                <a href="?page={{ page_obj.previous_page_number }}" class="page-button">
-                    <i class="fa-solid fa-backward-step"></i>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-button"
+                    aria-label="Go to previous page"></a>>
+                <i class="fa-solid fa-backward-step"></i>
                 </a>
             </li>
             {% endif %}
@@ -122,14 +124,14 @@
             </li>
             {% if page_obj.has_next %}
             <li>
-                <a href="?page={{ page_obj.next_page_number }}" class="page-button">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-button" aria-label="Go to next page">
                     <i class="fa-solid fa-forward-step"></i>
                 </a>
             </li>
             {% endif %}
             {% if paginator.num_pages|add:"-1" > page_obj.number %}
             <li>
-                <a href="?page={{ paginator.num_pages }}" class="page-button">
+                <a href="?page={{ paginator.num_pages }}" class="page-button" aria-label="Go to last page">
                     <i class="fa-solid fa-forward-fast"></i>
                 </a>
             </li>

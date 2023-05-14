@@ -84,10 +84,6 @@ textarea {
     width: 100%;
 }
 
-.upload_form textarea {
-    width: 75%;
-}
-
 .bg-message {
     background-color: var(--col-3);
     padding: 10px;
@@ -327,7 +323,7 @@ textarea {
 }
 
 .logo-art {
-    color: var(--col-2);
+    color: var(--col-5);
     font-weight: bold;
     transform: rotate(-20deg) translate(-6px, 1px);
 }
@@ -370,4 +366,12 @@ textarea {
 .form-container-left .btn-custom {
     margin-top: 1rem;
     float: left;
+}
+
+#submit-comment {
+    margin-top: 1em;
+}
+
+.upload_form textarea {
+    width: 75%;
 }

@@ -5,7 +5,7 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
-
+<!-- Post Heading and Controls -->
 <div class="masthead">
     <div class="container-fluid">
         <div class="row g-0">
@@ -15,7 +15,8 @@
             </div>
             <!-- Uploader & Created Date -->
             <div class="col-md-12 masthead-text">
-                <a href="{% url 'user_profile' post.creator.username %}">
+                <a href="{% url 'user_profile' post.creator.username %}"
+                    aria-label="Go to the post creator's profile page">
                     <p class="post-subtitle">{{ post.creator }} | {{ post.created_on }}</p>
                 </a>
             </div>
@@ -35,22 +36,22 @@
             </div>
             <form method="POST" action="{% url 'edit_post' post.slug %}" class="col-md-3 text-center">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-custom">Edit Post</button>
+                <button type="submit" class="btn btn-custom" aria-label="Edit the post">Edit Post</button>
             </form>
             <form method="POST" action="{% url 'post_private' slug=post.slug %}" class="col-md-3 text-center">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-custom">Make Private</button>
+                <button type="submit" class="btn btn-custom" aria-label="Make the post private">Make Private</button>
             </form>
             <form method="POST" action="{% url 'delete_post' slug=post.slug %}" class="col-md-3 text-center"
                 id="delete-post-form">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Delete Post</button>
+                <button type="submit" class="btn btn-danger" aria-label="Delete the post">Delete Post</button>
             </form>
         </div>
         {% endif %}
     </div>
 </div>
-
+<!-- Post -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 card mb-4 mt-3 left top">
@@ -70,11 +71,13 @@
                                     <form action="{% url 'post_like' post.slug %}" class="d-line" method="POST">
                                         {% csrf_token %}
                                         {% if liked %}
-                                        <button class="btn-like" type="submit" name="blogpost_id" value="{{post.slug}}">
+                                        <button class="btn-like" type="submit" name="blogpost_id" value="{{post.slug}}"
+                                            aria-label="Click to Unlike the Post">
                                             <i class="fas fa-heart"></i>
                                         </button>
                                         {% else %}
-                                        <button class="btn-like" type="submit" name="blogpost_id" value="{{post.slug}}">
+                                        <button class="btn-like" type="submit" name="blogpost_id" value="{{post.slug}}"
+                                            aria-label="Click to Like the Post">
                                             <i class="far fa-heart"></i>
                                         </button>
                                         {% endif %}
@@ -97,10 +100,11 @@
                     <div class="col-6 text-right download-image">
                         {% if user.is_authenticated %}
                         <a href="{{ post.post_image.url }}" download="{{ post.title }}" class="btn btn-custom"
-                            target="_blank">Download Image</a>
+                            target="_blank" aria-label="Download the image">Download Image</a>
                         {% else %}
-                        <p>Please <a href="{% url 'account_login' %}">log in</a> or <a
-                                href="{% url 'account_signup' %}">sign up</a> to download this image in high quality for
+                        <p>Please <a href="{% url 'account_login' %}" aria-label="Go to signin page">log in</a> or <a
+                                href="{% url 'account_signup' %}" aria-label="Go to signup page">sign up</a> to download
+                            this image in high quality for
                             free!</p>
                         {% endif %}
                     </div>
@@ -109,18 +113,17 @@
         </div>
     </div>
 </div>
-
 <div class="row">
     <div class="col">
         <hr>
     </div>
 </div>
-
+<!-- Comments -->
 <div class="row">
     <div class="col-md-8 card mb-4 mt-3 ">
         <h3>Comments:</h3>
         <div class="card-body">
-            <!-- Comments -->
+            <!-- Comments on Post-->
             {% for comment in comments %}
             <div class="comments" style="padding: 10px;">
                 <p class="font-weight-bold">
@@ -137,6 +140,7 @@
             {% endfor %}
         </div>
     </div>
+    <!-- Comment Box -->
     <div class="col-md-4 card mb-4 mt-3 ">
         <div class="card-body">
             {% if user.is_authenticated %}
@@ -145,7 +149,8 @@
             <form method="post" style="margin-top: 1.3em;">
                 {{ comment_form | crispy }}
                 {% csrf_token %}
-                <button type="submit" class="btn btn-custom btn-lg right" style="margin-top: 1em;">Submit</button>
+                <button type="submit" class="btn btn-custom btn-lg right" id="submit-comment"
+                    aria-label="Submit the comment">Submit</button>
             </form>
             {% endif %}
         </div>
@@ -155,7 +160,7 @@
 <script>
     // Prevent users from deleting content without typing their username
     const deletePostForm = document.getElementById('delete-post-form');
-    if (deletePostForm) {  // Check if the form exists (only available for the creator)
+    if (deletePostForm) { // Check if the form exists (only available for the creator)
         deletePostForm.addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent form submission without user confirmation
             const confirmation = prompt(

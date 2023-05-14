@@ -7,28 +7,35 @@
 {% block title %} {{ profile.user }} {% endblock %}
 
 {% block content %}
+<!-- User Profile -->
 <div class="container">
     <div class="row">
         <div class="col-md-4">
             <div class="card mb-3">
+                <!-- Profile Picture -->
                 <img src="{{ profile.profile_picture.url }}" alt="{{ profile.user.username }}'s Profile picture"
                     class="image-padding rounded-circle">
                 <div class="card-body">
+                    <!-- Profile Username and Bio -->
                     <h5 class="card-title"><strong>{{ profile.user.username }}</strong></h5>
                     <p class="card-text">{{ profile.bio }}</p>
                     <p><strong>Total Posts:</strong> {{ posts.count }}</p>
+                    <!-- Edit Profile -->
                     {% if user == profile.user %}
-                    <button id="edit-profile-btn" class="btn btn-custom">Edit Profile</button>
+                    <button id="edit-profile-btn" class="btn btn-custom" aria-label="Edit your profile">Edit
+                        Profile</button>
                     <form id="edit-profile-form" method="post" enctype="multipart/form-data" class="d-none">
                         {% csrf_token %}
                         {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">Update</button>
-                        <button type="button" id="cancel-edit-btn" class="btn btn-danger">Cancel</button>
+                        <button type="submit" class="btn btn-success" aria-label="Update profile">Update</button>
+                        <button type="button" id="cancel-edit-btn" class="btn btn-danger"
+                            aria-label="Cancel">Cancel</button>
                     </form>
                     {% endif %}
                 </div>
             </div>
         </div>
+        <!-- Profile Posts -->
         <div class="col-md-8">
             <div class="text-center"><img class="mb-4 small-logo" src="{% static 'images/logo.png' %}"
                     alt="Cre8AI.art Logo"></div>
@@ -38,7 +45,8 @@
                 {% if post.status == 1 %}
                 <div class="col-md-4 mb-3">
                     <a href="{% url 'post_detail' post.slug %}">
-                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail" oncontextmenu="return false;">
+                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail"
+                            oncontextmenu="return false;" aria-label="Go to {{ post.title }}">
                     </a>
                 </div>
                 {% endif %}
@@ -46,6 +54,7 @@
                 <p>No posts yet.</p>
                 {% endfor %}
             </div>
+            <!-- Private Posts -->
             {% if user.is_authenticated and user == profile.user %}
             <div class="row">
                 <div class="col">
@@ -58,7 +67,8 @@
                 {% if post.status == 0 %}
                 <div class="col-md-4 mb-3">
                     <a href="{% url 'post_private' post.slug %}">
-                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail">
+                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail"
+                            oncontextmenu="return false;" aria-label="Go to {{ post.title }}">
                     </a>
                 </div>
                 {% endif %}

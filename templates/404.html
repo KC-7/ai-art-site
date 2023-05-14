@@ -5,15 +5,12 @@
 {% block title %}404{% endblock %}
 
 {% block content %}
-
-<div class="text-center"><img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo"></div>
-
+<!-- 404 -->
+<div class="text-center"><img src="{% static 'images/logo.png' %}" class="mb-4 small-logo" alt="Cre8AI.art Logo"></div>
 <div class="container text-center">
-    <h1>Uh oh... something went wrong!</h1>
-
+    <h1>Uh oh... something went wrong! (404)</h1>
     <div>
-        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Go Back Home</a>
+        <a href="{% url 'home' %}" class="nav-link active" aria-current="page" aria-label="Go to home page">Go Back Home</a>
     </div>
-
 </div>
 {% endblock %}

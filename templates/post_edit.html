@@ -5,7 +5,7 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
-
+<!-- Edit Post Heading -->
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
@@ -14,14 +14,14 @@
                 <h1 class="post-title">Edit Description</h1>
                 <h3 class="post-title">{{ post.title }}</h3>
             </div>
-            <!-- Uploader & Created Date -->
+            <!-- Created Date -->
             <div class="col-md-12 masthead-text">
                 <p class="post-subtitle">{{ post.created_on }}</p>
             </div>
         </div>
     </div>
 </div>
-
+<!-- Post -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 card mb-4 mt-3 left top">
@@ -30,20 +30,20 @@
                 <img src="{{ post.post_image.url }}" class="posted-image" oncontextmenu="return false;">
             </div>
             <div class="card-body">
-                <!-- Image Description -->
+                <!-- Current Post Description -->
                 <h3 class="card-text ">Current Description:</h3>
                 <p class="card-text ">{{ post.description | safe }}</p>
             </div>
         </div>
     </div>
 </div>
-
+<!-- New Description -->
 <div class="container edit-container">
     <h3>New Description:</h3>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-custom right">Save</button>
+        <button type="submit" class="btn btn-custom right" aria-label="Save Changes">Save</button>
     </form>
 </div>
 
