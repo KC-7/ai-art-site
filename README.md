@@ -607,7 +607,7 @@ You will need to import OpenAI and add the API key to your project.
 | <details> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
 | <details> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
 | <details> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
-| <details> <summary>Delete a post</summary> <img src="readme_images/features/delete.png"> </details>                      | Removes the post and redirects to the user's profile                                                | ✅    |
+| <details> <summary>Delete a post</summary> <img src="readme_images/features/deletePost.png"> </details>                      | Removes the post and redirects to the user's profile                                            | ✅    |
 | <details> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
 | <details> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
 
@@ -633,6 +633,9 @@ You will need to import OpenAI and add the API key to your project.
 
 I found no remaining console error during final testing.
 
+<details> 
+        <summary>Click here to view the results</summary>
+
 | **Page**     | **Picture**                                                                     |
 |--------------|---------------------------------------------------------------------------------|
 | **Home**     | ![Home](readme_images/tests/console/home.png)                                   |
@@ -644,6 +647,7 @@ I found no remaining console error during final testing.
 | **Sign Up**  | ![SignUp](readme_images/tests/console/signUp.png)                               |
 | **Upload**   | ![Upload](readme_images/tests/console/upload.png)                               |
 
+</details>
 
 ### Lighthouse Tests
 
@@ -668,6 +672,9 @@ Note, I made further updates to the Sign In, Sign Out and Sign Up pages to impro
 
 The W3C testing highlighed minor errors such as acouple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
 
+<details> 
+        <summary>Click here to view the results</summary>
+
 | **Page**     | **Picture**                                                                 |
 |--------------|-----------------------------------------------------------------------------|
 | **Home**     | ![Home](readme_images/tests/w3c/home.png)                                   |
@@ -677,6 +684,8 @@ The W3C testing highlighed minor errors such as acouple of missing alt tags and 
 | **Sign In**  | ![SignIn](readme_images/tests/w3c/signIn.png)                               |
 | **Sign Up**  | ![SignUp](readme_images/tests/w3c/signUp.png)                               |
 | **Post**     | ![Post](readme_images/tests/w3c/post.png)                                   |
+
+</details>
 
 ### Responsiveness Testing
 
