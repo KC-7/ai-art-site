@@ -7,15 +7,17 @@
 {% block title %}Sign Out{% endblock %}
 
 {% block content %}
-
+<!-- Sign Out Container -->
 <div class="form-container text-center">
   <div class="row">
+    <!-- Sign Out Heading -->
     <div class="col-md-8 mt-3 offset-md-2">
       <img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
       <h1>{% trans "Sign Out" %}</h1>
       <p>{% trans 'Are you sure you want to sign out?' %}</p>
     </div>
   </div>
+  <!-- Sign Out Form -->
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
       <form method="post" action="{% url 'account_logout' %}">
@@ -23,10 +25,10 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
+        <button class="btn btn-danger" type="submit" aria-label="Sign Out Button">{% trans 'Sign Out' %}</button>
       </form>
       <div>
-        <a href="{% url 'home' %}" class="btn btn-custom"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
+        <a href="{% url 'home' %}" class="btn btn-custom" aria-label="Go to Home Page"><i class="fa-solid fa-hand-point-left"></i> Back to Home</a>
       </div>
     </div>
   </div>

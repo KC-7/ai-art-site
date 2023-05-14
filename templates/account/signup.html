@@ -14,7 +14,7 @@
       <img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
       <h1>{% trans "Sign Up" %}</h1>
       <p>{% blocktrans %}Welcome to Cre8AI.art! Do you already have an account? Then please <a class="link"
-          href="{{ login_url }}">sign in</a> instead, otherwise, register here.{% endblocktrans %}</p>
+          href="{{ login_url }}"  aria-label="Go to Sign In Page">sign in</a> instead, otherwise, register here.{% endblocktrans %}</p>
     </div>
   </div>
   <div class="row">
@@ -34,13 +34,13 @@
           {% endif %}
         </div>
         {% endfor %}
-        <button class="btn btn-custom right" type="submit">{% trans "Sign Up" %} &raquo;</button>
+        <button class="btn btn-custom right" type="submit" aria-label="Submit Sign Up Details">{% trans "Sign Up" %} &raquo;</button>
       </form>
     </div>
   </div>
   <div>
     <strong>
-      By signing up you are agreeing to our <a class="text-danger" href="{% url 'about' %}">Terms of Use</a>.
+      By signing up you are agreeing to our <a class="text-danger" href="{% url 'about' %}" aria-label="Go to about Page to See Terms of Use">Terms of Use</a>.
     </strong>
   </div>
 </div>

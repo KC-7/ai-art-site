@@ -3,48 +3,24 @@
 {% load static %}
 
 {% load i18n %}
+
 {% load account socialaccount %}
 
 {% block title %}Sign In{% endblock %}
 
 {% block content %}
-
+<!-- Sign In Container -->
 <div class="form-container">
   <div class="row">
+    <!-- Sign Up Heading -->
     <div class="col-md-8 mt-3 offset-md-2 text-center">
-
       <img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
-
       <h1>{% trans "Sign In" %}</h1>
-
-      <!-- {% get_providers as socialaccount_providers %}
-
-            {% if socialaccount_providers %}
-            <p>{% blocktrans with site.name as site_name %}Please sign in with one
-            of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-            for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-            <div class="socialaccount_ballot">
-
-              <ul class="socialaccount_providers">
-                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-              </ul>
-
-              <div class="login-or">{% trans 'or' %}</div>
-
-            </div>
-
-            {% include "socialaccount/snippets/login_extra.html" %}
-
-            {% else %} -->
-
       <p>{% blocktrans %}Welcome back to Cre8AI.art! If you have not created an account yet, then please
-        <a href="{{ signup_url }}" class="link">sign up</a> first.{% endblocktrans %}</p>
-      <!-- {% endif %} -->
-
+        <a href="{{ signup_url }}" class="link" aria-label="Go to Sign Up Page">sign up</a> first.{% endblocktrans %}</p>
     </div>
   </div>
-
+  <!-- Sign In Form -->
   <div class="row">
     <div class="col">
       <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -53,15 +29,14 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
-        <button class="btn btn-custom right" type="submit">{% trans "Sign In" %}</button>
+        <button class="btn btn-custom right" type="submit" aria-label="Submit Sign In Details">{% trans "Sign In" %}</button>
       </form>
     </div>
   </div>
   <br>
   <div class="text-center">
-    Please reach out to our support team at <a href="mailto:support@cre8ai.art">support@cre8ai.art</a><br>
-    for any account issues or to request a password reset</span>.<br>
+    Please reach out to our support team at <a href="mailto:support@cre8ai.art" aria-label="Send an Email">support@cre8ai.art</a><br>
+    for any account issues or to request a password reset.<br>
     We are always here to help and provide support to our valued community members.
   </div>
 </div>

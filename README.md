@@ -571,6 +571,80 @@ You will need to import OpenAI and add the API key to your project.
 
 ---
 
+## Tests
+
+### Console
+
+I found no remaining console error during final testing.
+
+| **Page**     | **Picture**                                                                     |
+|--------------|---------------------------------------------------------------------------------|
+| **Home**     | ![Home](readme_images/tests/console/home.png)                                   |
+| **About**    | ![About](readme_images/tests/console/about.png)                                 |
+| **Generate** | ![Generate](readme_images/tests/console/generate.png)                           |
+| **Profile**  | ![Profile](readme_images/tests/console/profile.png)                             |
+| **Sign In**  | ![SignIn](readme_images/tests/console/signIn.png)                               |
+| **Sign Out** | ![SignOut](readme_images/tests/console/signOut.png)                             |
+| **Sign Up**  | ![SignUp](readme_images/tests/console/signUp.png)                               |
+| **Upload**   | ![Upload](readme_images/tests/console/upload.png)                               |
+
+
+### Lighthouse Tests
+
+Only minor errors remain. Accessibility could be easily improved by changing the colours for readability. Note, I made further updates to the Sign In, Sign Out and Sign Up pages to improve the below results but did not have a chance to retest.
+
+| **Page**         | **Performance** | **Accessibility** | **Best Practices** | **SEO**  | **Picture**                                                                                 |
+|------------------|-----------------|-------------------|--------------------|----------|---------------------------------------------------------------------------------------------|
+| **Home**         | 100             | 96                | 100                | 100      | ![Home](readme_images/tests/lighthouse/LDHome.png)                                          |
+| **About**        | 100             | 95                | 100                | 100      | ![About](readme_images/tests/lighthouse/LDAbout.png)                                        |
+| **Static**       | 100             | 92                | 100                | 100      | ![Static](readme_images/tests/lighthouse/LDStatic.png)                                      |
+| **Sign In**      | 100             | 96                | 100                | 100      | ![Sign In](readme_images/tests/lighthouse/LDSignIn.png)                                     |
+| **Sign Up**      | 100             | 96                | 100                | 90       | ![Sign Up](readme_images/tests/lighthouse/LDSignUp.png)                                     |
+| **Generate Art** | 100             | 96                | 100                | 100      | ![Generate Art](readme_images/tests/lighthouse/LDGenerateArt.png)                           |
+| **Upload**       | 100             | 96                | 100                | 100      | ![Upload](readme_images/tests/lighthouse/LDUpload.png)                                      |
+| **Profile**      | 96              | 95                | 100                | 100      | ![Profile](readme_images/tests/lighthouse/LDProfile.png)                                    |
+| **Sign Out**     | 100             | 95                | 100                | 100      | ![Sign Out](readme_images/tests/lighthouse/LDSignOut.png) 
+
+### Responsiveness Testing
+
+#### Visual Testing using Google Inspect
+
+| **Device**                   | **Width (px)** | **Height (px)** |
+|------------------------------|---------------|------------------|
+| **iPhone SE**                | 375           | 667              |
+| **iPhone XR**                | 414           | 896              |
+| **iPhone 12 Pro**            | 390           | 844              |
+| **Pixel 5**                  | 393           | 851              |
+| **Samsung Galaxy S8+**       | 360           | 740              |
+| **Samsung Galaxy S20 Ultra** | 412           | 915              |
+| **iPad Air**                 | 820           | 1180             |
+| **iPad Mini**                | 768           | 1024             |
+| **Surface Pro 7**            | 912           | 1368             |
+| **Galaxy Fold**              | 280           | 653              |
+| **Nest Hub**                 | 1024          | 600              |
+| **Nest Hub Max**             | 1280          | 800              |
+
+#### Visual Testing using AmIRepsponsive
+
+| **Device**  | **Width (px)** | **Height (px)** | **Scale** |
+|-------------|----------------|-----------------|-----------|
+| **Desktop** | 1600           | 992             | 0.3181    |
+| **Laptop**  | 1280           | 802             | 0.277     |
+| **Tablet**  | 768            | 1024            | 0.219     |
+| **Mobile**  | 320            | 480             | 0.219     |
+
+![Example](readme_images/tests/responsive/responsiveIndex.png)
+
+#### Visual Testing on Pyhsical Devices
+
+| **Device**                           | **Width (px)** | **Height (px)** |
+|--------------------------------------|----------------|-----------------|
+| **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
+| **Dell Monitor - 27" (4k)**          | 3840           | 2160            |
+| **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
+
+---
+
 ## Bugs 🐛 🐌 🕷️
 
 ### Resolved Bugs ✅ 🐞
@@ -654,6 +728,55 @@ I would have liked to implement some of the below features but was unable to due
 - Set up a "Following" section and allow users to follow other creators
 
 - Set up social sign up and login
+<details> 
+        <summary>---------- Click here to see commented out social sign up code which has been removed from the deployed site</summary>
+
+        <div class="form-container">
+        <div class="row">
+        <div class="col-md-8 mt-3 offset-md-2 text-center">
+        <img class="mb-4 small-logo" src="{% static 'images/logo.png' %}" alt="Cre8AI.art Logo">
+        <h1>{% trans "Sign In" %}</h1>
+        <!-- {% get_providers as socialaccount_providers %}
+                {% if socialaccount_providers %}
+                <p>{% blocktrans with site.name as site_name %}Please sign in with one
+                of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+                for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+                <div class="socialaccount_ballot">
+                <ul class="socialaccount_providers">
+                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                </ul>
+                <div class="login-or">{% trans 'or' %}</div>
+                </div>
+                {% include "socialaccount/snippets/login_extra.html" %}
+                {% else %} -->
+        <p>{% blocktrans %}Welcome back to Cre8AI.art! If you have not created an account yet, then please
+                <a href="{{ signup_url }}" class="link">sign up</a> first.{% endblocktrans %}</p>
+        <!-- {% endif %} -->
+        </div>
+        </div>
+        <!-- Sign In Form -->
+        <div class="row">
+        <div class="col">
+        <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <!-- <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a> -->
+                <button class="btn btn-custom right" type="submit">{% trans "Sign In" %}</button>
+        </form>
+        </div>
+        </div>
+        <br>
+        <div class="text-center">
+        Please reach out to our support team at <a href="mailto:support@cre8ai.art">support@cre8ai.art</a><br>
+        for any account issues or to request a password reset.</span><br>
+        We are always here to help and provide support to our valued community members.
+        </div>
+        </div>
+
+</details>
 
 - Set up a social share feature that allows users to share their generations easily on social media
 
