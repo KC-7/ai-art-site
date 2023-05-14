@@ -376,6 +376,7 @@ You will need to import OpenAI and add the API key to your project.
 **On Gitpod:**
 
 - Create a env.py file in the top level directory and add the following: 
+
         import os
         os.environ["DATABASE_URL"] = "<ElephantSQL Database URL>"
         os.environ["SECRET_KEY"] = "<YourOwnRandomSecretKey>"
@@ -387,6 +388,7 @@ You will need to import OpenAI and add the API key to your project.
 **On Gitpod, in the settings.py file:**
 
 - Add the following: 
+
         from pathlib import Path
         import os
         import dj_database_url
@@ -395,9 +397,11 @@ You will need to import OpenAI and add the API key to your project.
         import env
 
 - Remove the insecure secret key and replace with following to link to the SECRET_KEY variable:
+
         SECRET_KEY = os.environ.get('SECRET_KEY')
 
-- Comment out the database section:
+- Comment out or remove the database section:
+
         # DATABASES = {
         #     'default': {
         #         'ENGINE': 'django.db.backends.sqlite3',
@@ -406,6 +410,7 @@ You will need to import OpenAI and add the API key to your project.
         # }
 
 - Add new Databases section to link to the DATABASE_URL: 
+
         DATABASES = {
             'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
         }
@@ -413,6 +418,7 @@ You will need to import OpenAI and add the API key to your project.
 **On Gitpod, in the terminal:**
 
 - Save and then migrate files: 
+
         python3 manage.py migrate
 
 **On Cloudinary:**
@@ -423,6 +429,7 @@ You will need to import OpenAI and add the API key to your project.
 **On Gitpod:**
 
 - Add the CLOUDINARY_URL to the env.py file:
+
         os.environ["CLOUDINARY_URL"] = "cloudinary://************************"
 
 **On Heroku:**
@@ -432,7 +439,8 @@ You will need to import OpenAI and add the API key to your project.
 
 **On Gitpod, in settings.py:**
 
-- Add the Cloudinary Libraries to INSTALLED_APPS (note, order is important): 
+- Add the Cloudinary Libraries to INSTALLED_APPS (note, order is important):
+
         INSTALLED_APPS = [
             …,
             'cloudinary_storage',
@@ -442,6 +450,7 @@ You will need to import OpenAI and add the API key to your project.
         ]
 
 - Add the following under Static Files to tell Django to use Cloudinary to store static media and files: 
+
         STATIC_URL = '/static/'
 
         STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
@@ -452,9 +461,11 @@ You will need to import OpenAI and add the API key to your project.
         DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 - Link file to the templates directory in Heroku, place under the BASE_DIR line:
+
         TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
 - Change the templates directory to TEMPLATES_DIR, place within the TEMPLATES array:
+
         TEMPLATES = [
             {
                 …,
@@ -466,14 +477,18 @@ You will need to import OpenAI and add the API key to your project.
         ]
 
 - Add Heroku Hostname to ALLOWED_HOSTS (ex: "HEROKU-PROJECT-NAME.herokuapp.com"):
+
         ALLOWED_HOSTS = ["ai-art-site.herokuapp.com", "localhost"]
 
 **On Gitpod:**
 
 - Add 3 new folders in top level directory: media, static, templates
 - Create a "Procfile" in the top level directory and add the following code (ai_art is the Django Project Name):
+
         web: gunicorn ai_art.wsgi
-- In the terminal, add commit and push: 
+
+- In the terminal, add commit and push:
+
         git add .
         git commit -m “Deployment Commit”
         git push
@@ -487,12 +502,12 @@ You will need to import OpenAI and add the API key to your project.
 ### Final Deployment to Heroku
 
 **On Gitpod:**
-- Within settings.py, ensure the 'DEBUG' value is set to 'False'.
-- Remove 'DISABLE_COLLECTSTATIC' from settings.py to ensure static files are collected correctly.
+- Within `settings.py`, ensure the `'DEBUG'` value is set to `'False'`.
+- Remove `'DISABLE_COLLECTSTATIC'` from `settings.py` to ensure static files are collected correctly.
 
 **On Heroku:** 
 
-- Remove 'DISABLE_COLLECTSTATIC' from the config vars.
+- Remove `'DISABLE_COLLECTSTATIC'` from the config vars.
 - Trigger a manual deployment in the Deployment Section for the project.
 
 ### Custom Web Domain & SSL 💻 🌐
@@ -500,7 +515,9 @@ You will need to import OpenAI and add the API key to your project.
 **On Gitpod:**
 
 - Add the custom domain name to ALLOWED_HOSTS (ex: "custom-domain.com"):
+
         ALLOWED_HOSTS = [... "cre8ai.art", ".cre8ai.art", "www.cre8ai.art" ...]
+
 - Migrate changes as per previous
 - Git add, commit and push changes
 
@@ -529,9 +546,9 @@ You will need to import OpenAI and add the API key to your project.
 - Configure the custom domain using Advanced DNS settings:
   - Set up the CNAME and URL Redirect.
 
-**On [DNS Checker (.org)](https://dnschecker.org/#A/cre8ai.art):**
+**On DNSChecker:**
 
-- Search domain name to see if it has propegated (this can take 24 to 48 hours)
+- Search domain name on [DNS Checker (.org)](https://dnschecker.org/#A/cre8ai.art) to see if it has propegated (this can take 24 to 48 hours).
 
 **On Cloudflare:** 
 
