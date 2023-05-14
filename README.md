@@ -563,109 +563,11 @@ You will need to import OpenAI and add the API key to your project.
 
 ### Custom Email Domain 📨 🌐
 
-<details> <summary>To avoid paying to use my custom web domain as an email domain, I found and followed the instructions in the following tutorial which explained how to set it up on Gmail for free: </summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
+<details> <summary>To avoid paying to use the custom web domain as an email domain, I found and followed the instructions in the following tutorial which explained how to set it up on Gmail for free: </summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
 
 | Link | Additional Set Up Requirements |
 | ---- | ------------------------------ |
 | [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Note the following required changes since this video was uploaded as described by Wiyre, the video uploader: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
-
----
-
-## Tests
-
-### Console
-
-I found no remaining console error during final testing.
-
-| **Page**     | **Picture**                                                                     |
-|--------------|---------------------------------------------------------------------------------|
-| **Home**     | ![Home](readme_images/tests/console/home.png)                                   |
-| **About**    | ![About](readme_images/tests/console/about.png)                                 |
-| **Generate** | ![Generate](readme_images/tests/console/generate.png)                           |
-| **Profile**  | ![Profile](readme_images/tests/console/profile.png)                             |
-| **Sign In**  | ![SignIn](readme_images/tests/console/signIn.png)                               |
-| **Sign Out** | ![SignOut](readme_images/tests/console/signOut.png)                             |
-| **Sign Up**  | ![SignUp](readme_images/tests/console/signUp.png)                               |
-| **Upload**   | ![Upload](readme_images/tests/console/upload.png)                               |
-
-
-### Lighthouse Tests
-
-Only minor errors remain. Accessibility could be easily improved by changing the colours for readability. Note, I made further updates to the Sign In, Sign Out and Sign Up pages to improve the below results but did not have a chance to retest.
-
-| **Page**         | **Performance** | **Accessibility** | **Best Practices** | **SEO**  | **Picture**                                                                                 |
-|------------------|-----------------|-------------------|--------------------|----------|---------------------------------------------------------------------------------------------|
-| **Home**         | 100             | 96                | 100                | 100      | ![Home](readme_images/tests/lighthouse/LDHome.png)                                          |
-| **About**        | 100             | 95                | 100                | 100      | ![About](readme_images/tests/lighthouse/LDAbout.png)                                        |
-| **Static**       | 100             | 92                | 100                | 100      | ![Static](readme_images/tests/lighthouse/LDStatic.png)                                      |
-| **Sign In**      | 100             | 96                | 100                | 100      | ![Sign In](readme_images/tests/lighthouse/LDSignIn.png)                                     |
-| **Sign Up**      | 100             | 96                | 100                | 90       | ![Sign Up](readme_images/tests/lighthouse/LDSignUp.png)                                     |
-| **Generate Art** | 100             | 96                | 100                | 100      | ![Generate Art](readme_images/tests/lighthouse/LDGenerateArt.png)                           |
-| **Upload**       | 100             | 96                | 100                | 100      | ![Upload](readme_images/tests/lighthouse/LDUpload.png)                                      |
-| **Profile**      | 96              | 95                | 100                | 100      | ![Profile](readme_images/tests/lighthouse/LDProfile.png)                                    |
-| **Sign Out**     | 100             | 95                | 100                | 100      | ![Sign Out](readme_images/tests/lighthouse/LDSignOut.png) 
-
-### Responsiveness Testing
-
-#### Visual Testing using Google Inspect
-
-| **Device**                   | **Width (px)** | **Height (px)** |
-|------------------------------|---------------|------------------|
-| **iPhone SE**                | 375           | 667              |
-| **iPhone XR**                | 414           | 896              |
-| **iPhone 12 Pro**            | 390           | 844              |
-| **Pixel 5**                  | 393           | 851              |
-| **Samsung Galaxy S8+**       | 360           | 740              |
-| **Samsung Galaxy S20 Ultra** | 412           | 915              |
-| **iPad Air**                 | 820           | 1180             |
-| **iPad Mini**                | 768           | 1024             |
-| **Surface Pro 7**            | 912           | 1368             |
-| **Galaxy Fold**              | 280           | 653              |
-| **Nest Hub**                 | 1024          | 600              |
-| **Nest Hub Max**             | 1280          | 800              |
-
-#### Visual Testing using AmIRepsponsive
-
-| **Device**  | **Width (px)** | **Height (px)** | **Scale** |
-|-------------|----------------|-----------------|-----------|
-| **Desktop** | 1600           | 992             | 0.3181    |
-| **Laptop**  | 1280           | 802             | 0.277     |
-| **Tablet**  | 768            | 1024            | 0.219     |
-| **Mobile**  | 320            | 480             | 0.219     |
-
-![Example](readme_images/tests/responsive/responsiveIndex.png)
-
-#### Visual Testing on Pyhsical Devices
-
-| **Device**                           | **Width (px)** | **Height (px)** |
-|--------------------------------------|----------------|-----------------|
-| **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
-| **Dell Monitor - 27" (4k)**          | 3840           | 2160            |
-| **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
-
----
-
-## Bugs 🐛 🐌 🕷️
-
-### Resolved Bugs ✅ 🐞
-
-| Bug | Fix |
-| --- | --- |
-| HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
-| Post titles and slugs too long | I set up truncating to reduce the length. |
-| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrimating by 1. |
-| Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
-| Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
-| LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
-| Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
-| Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
-| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
-
-### Outstanding Bugs ❌ 🤔
-
-| Bug | Comments |
-| --- | --- |
-| When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after so I have left the bug present for now until I have more time to resolve. |
 
 ---
 
@@ -704,8 +606,122 @@ Only minor errors remain. Accessibility could be easily improved by changing the
 | Empty comment on a post                                    | Displays an error message and does not create the comment                                           | ✅    |
 | Edit a post with empty input                               | Displays an error message and does not update the post                                              | ✅    |
 | Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
+| Test 404, change the slug to an invalid slug               | Displays the 404 page                                                                               | ✅    |
 
 <details> <summary>Click here to see an example of an Error Message</summary> <img src="readme_images/features/errorMessage.png"> </details>
+
+<details> <summary>Click here to see the 404 Page</summary> <img src="readme_images/screenshots/404.png"> </details>
+
+### Console
+
+I found no remaining console error during final testing.
+
+| **Page**     | **Picture**                                                                     |
+|--------------|---------------------------------------------------------------------------------|
+| **Home**     | ![Home](readme_images/tests/console/home.png)                                   |
+| **About**    | ![About](readme_images/tests/console/about.png)                                 |
+| **Generate** | ![Generate](readme_images/tests/console/generate.png)                           |
+| **Profile**  | ![Profile](readme_images/tests/console/profile.png)                             |
+| **Sign In**  | ![SignIn](readme_images/tests/console/signIn.png)                               |
+| **Sign Out** | ![SignOut](readme_images/tests/console/signOut.png)                             |
+| **Sign Up**  | ![SignUp](readme_images/tests/console/signUp.png)                               |
+| **Upload**   | ![Upload](readme_images/tests/console/upload.png)                               |
+
+
+### Lighthouse Tests
+
+Only minor errors remain. Accessibility could be easily improved by changing the colours in the nav bar and footer for readability.
+
+Note, I made further updates to the Sign In, Sign Out and Sign Up pages to improve the below results but did not have a chance to retest.
+
+| **Page**         | **Performance** | **Accessibility** | **Best Practices** | **SEO**  | **Picture**                                                                                 |
+|------------------|-----------------|-------------------|--------------------|----------|---------------------------------------------------------------------------------------------|
+| **Home**         | 100             | 96                | 100                | 100      | ![Home](readme_images/tests/lighthouse/LDHome.png)                                          |
+| **About**        | 100             | 95                | 100                | 100      | ![About](readme_images/tests/lighthouse/LDAbout.png)                                        |
+| **Static**       | 100             | 92                | 100                | 100      | ![Static](readme_images/tests/lighthouse/LDStatic.png)                                      |
+| **Sign In**      | 100             | 96                | 100                | 100      | ![Sign In](readme_images/tests/lighthouse/LDSignIn.png)                                     |
+| **Sign Up**      | 100             | 96                | 100                | 90       | ![Sign Up](readme_images/tests/lighthouse/LDSignUp.png)                                     |
+| **Generate Art** | 100             | 96                | 100                | 100      | ![Generate Art](readme_images/tests/lighthouse/LDGenerateArt.png)                           |
+| **Upload**       | 100             | 96                | 100                | 100      | ![Upload](readme_images/tests/lighthouse/LDUpload.png)                                      |
+| **Profile**      | 96              | 95                | 100                | 100      | ![Profile](readme_images/tests/lighthouse/LDProfile.png)                                    |
+| **Sign Out**     | 100             | 95                | 100                | 100      | ![Sign Out](readme_images/tests/lighthouse/LDSignOut.png)                                   |
+| **Post**         | 97              | 95                | 100                | 100      | ![Post](readme_images/tests/lighthouse/LDPost.png)                                          |
+
+### W3C Validation Testing
+
+The W3C testing highlighed minor errors such as acouple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
+
+| **Page**     | **Picture**                                                                 |
+|--------------|-----------------------------------------------------------------------------|
+| **Home**     | ![Home](readme_images/tests/w3c/home.png)                                   |
+| **About**    | ![About](readme_images/tests/w3c/about.png)                                 |
+| **Static**   | ![Post](readme_images/tests/w3c/static.png)                                 |
+| **Profile**  | ![Profile](readme_images/tests/w3c/profile.png)                             |
+| **Sign In**  | ![SignIn](readme_images/tests/w3c/signIn.png)                               |
+| **Sign Up**  | ![SignUp](readme_images/tests/w3c/signUp.png)                               |
+| **Post**     | ![Post](readme_images/tests/w3c/post.png)                                   |
+
+### Responsiveness Testing
+
+#### Visual Testing using Google Inspect
+
+| **Device**                   | **Width (px)** | **Height (px)** |
+|------------------------------|---------------|------------------|
+| **iPhone SE**                | 375           | 667              |
+| **iPhone XR**                | 414           | 896              |
+| **iPhone 12 Pro**            | 390           | 844              |
+| **Pixel 5**                  | 393           | 851              |
+| **Samsung Galaxy S8+**       | 360           | 740              |
+| **Samsung Galaxy S20 Ultra** | 412           | 915              |
+| **iPad Air**                 | 820           | 1180             |
+| **iPad Mini**                | 768           | 1024             |
+| **Surface Pro 7**            | 912           | 1368             |
+| **Galaxy Fold**              | 280           | 653              |
+| **Nest Hub**                 | 1024          | 600              |
+| **Nest Hub Max**             | 1280          | 800              |
+
+#### Visual Testing using AmIRepsponsive
+
+| **Device**  | **Width (px)** | **Height (px)** | **Scale** |
+|-------------|----------------|-----------------|-----------|
+| **Desktop** | 1600           | 992             | 0.3181    |
+| **Laptop**  | 1280           | 802             | 0.277     |
+| **Tablet**  | 768            | 1024            | 0.219     |
+| **Mobile**  | 320            | 480             | 0.219     |
+
+<img src="readme_images/tests/responsive/responsiveIndex.png" style="max-width: 66%;">
+
+#### Visual Testing on Pyhsical Devices
+
+| **Device**                           | **Width (px)** | **Height (px)** |
+|--------------------------------------|----------------|-----------------|
+| **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
+| **Dell Monitor - 27" (4k)**          | 3840           | 2160            |
+| **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
+
+---
+
+## Bugs 🐛 🐌 🕷️
+
+### Resolved Bugs ✅ 🐞
+
+| Bug | Fix |
+| --- | --- |
+| HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
+| Post titles and slugs too long | I set up truncating to reduce the length. |
+| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrimating by 1. |
+| Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
+| Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
+| LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
+| Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
+| Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
+| Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
+
+### Outstanding Bugs ❌ 🤔
+
+| Bug | Comments |
+| --- | --- |
+| When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after so I have left the bug present for now until I have more time to resolve. |
 
 ---
 

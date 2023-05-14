@@ -44,9 +44,9 @@
                 {% for post in posts %}
                 {% if post.status == 1 %}
                 <div class="col-md-4 mb-3">
-                    <a href="{% url 'post_detail' post.slug %}">
-                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail"
-                            oncontextmenu="return false;" aria-label="Go to {{ post.title }}">
+                    <a href="{% url 'post_detail' post.slug %}" aria-label="Go to {{ post.title }}">
+                        <img src="{{ post.post_image.url }}" alt="Image for {{ post.title }}" class="img-thumbnail"
+                            oncontextmenu="return false;">
                     </a>
                 </div>
                 {% endif %}
@@ -66,9 +66,9 @@
                 {% for post in posts %}
                 {% if post.status == 0 %}
                 <div class="col-md-4 mb-3">
-                    <a href="{% url 'post_private' post.slug %}">
-                        <img src="{{ post.post_image.url }}" alt="{{ post.title }}" class="img-thumbnail"
-                            oncontextmenu="return false;" aria-label="Go to {{ post.title }}">
+                    <a href="{% url 'post_private' post.slug %}" aria-label="Go to {{ post.title }}">
+                        <img src="{{ post.post_image.url }}" alt="Image for {{ post.title }}" class="img-thumbnail"
+                            oncontextmenu="return false;">
                     </a>
                 </div>
                 {% endif %}
