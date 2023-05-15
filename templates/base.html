@@ -11,7 +11,6 @@
     <meta name="description" content="Cre8AI.art - Unleash your inner artist! Explore AI-generated art, create and share your own
         masterpieces with DALL-E 2, engage with fellow artists, and discover unique artwork on a platform designed
         for AI art enthusiasts. Sign up and start your creative journey today!">
-    <meta name="theme-color" content="#008891">
     <!-- Page Title -->
     <title>Cre8AI.art | {% block title %}{% endblock %}</title>
     <!-- Favicon -->
@@ -31,7 +30,6 @@
         <header>
             {% include 'header.html' %}
         </header>
-
         <!-- Alert Messages -->
         <div class="container">
             <div class="row">
@@ -45,12 +43,10 @@
                 </div>
             </div>
         </div>
-
         <!-- Main Content -->
         <main class="container">
             {% block content %}{% endblock %}
         </main>
-
     </div>
 
     <!-- Footer -->
@@ -71,8 +67,6 @@
             alert.close();
         }, 3000);
     </script>
-
-
 
     <!-- Script for Font Awesome -->
     <script src="https://kit.fontawesome.com/872cb96f02.js" crossorigin="anonymous"></script>

@@ -225,114 +225,9 @@ My initial goal was to set up a site that allows users to post generations from 
 
 ---
 
-## Coding Overview 🖥️ 🖱️
-
-### URLs 🌐
-
-The following URLs are used in the project:
-
-| URL                         | Description                                        |
-| ---                         | ---                                                |
-| `/`                         | Home page, displays list of image posts            |
-| `/accounts/signup/`         | User registration page                             |
-| `/upload/`                  | Form for uploading new image posts                 |
-| `/generate_art/`            | Form for generating art from text                  |
-| `/search/`                  | Search page for image posts                        |
-| `/about/`                   | About page, displays list of static pages          |
-| `/<slug:slug>/`             | Detail page for a specific image post              |
-| `/like/<slug:slug>/`        | Endpoint for liking/unliking a post                |
-| `/private/<slug:slug>/`     | Endpoint for making a post private                 |
-| `/public/<slug:slug>/`      | Endpoint for making a private post public again    |
-| `/delete/<slug:slug>/`      | Endpoint for deleting a post                       |
-| `/profile/<str:username>/`  | User profile page                                  |
-| `/post_edit/<slug:slug>/`   | Form for editing a posted image's description      |
-| `/about/<slug:slug>/`       | Detail page for a specific static page             |
-
-### Models 📄
-
-- **Post**: A model for image posts, which includes fields for the image, title, slug, creator, timestamps, description, status (private/public), likes, and approval status.
-
-- **Comment**: A model for comments on image posts, which includes fields for the associated post, name, email, body, timestamp, and approval status.
-
-- **Profile**: A model for user profiles, which includes fields for the associated user, bio, profile picture, last generation timestamp, and generation count.
-
-- **StaticPage**: A model for admin-created static pages, which includes fields for the title, slug, content, and status (private/public).
-
-### Views 👀
-
-- **RegisterUser**: Handles user registration and creates a profile for the registered user.
-
-- **PostList**: Displays a list of image posts, allows pagination, and supports sorting by most likes or most recent.
-
-- **PostDetail**: Displays the details of an image post and supports adding comments.
-
-- **PostLike**: Handles liking and unliking posts.
-
-- **UploadForm**: Manages the form for uploading image posts.
-
-- **GenerateArt**: Handles art generation requests and creates a public post with the generated art.
-
-- **PostPrivate**: Handles making and viewing private posts.
-
-- **PostPublic**: Allows users to make private posts public again.
-
-- **DeletePost**: Handles the deletion of posts.
-
-- **UserProfile**: Displays user profiles and allows editing of user bios and profile pictures.
-
-- **Search**: Handles user image search functionality.
-
-- **EditPost**: Handles editing post details.
-
-- **StaticPageView**: Handles static pages that can be uploaded and updated by site admins.
-
-- **AboutView**: Handles the about page and displays all of the admins' static pages.
-
-### Forms 📝
-
-- **CommentForm**: A form for adding comments to posts.
-
-- **PostForm**: A form for creating image posts, including a slug auto-generated from the title.
-
-- **GenerateForm**: A form for text-to-image art generation, with a prompt field.
-
-- **ProfileForm**: A form for editing user profiles, including bio and profile picture.
-
-- **EditPostForm**: A form for editing posted images' descriptions.
-
-### Utilities 🛠️
-
-- **generate_image_from_text(prompt)**: A function that generates an image from a text prompt using OpenAI's API. Takes a string 'prompt' as an argument and returns the URL of the generated image. Raises a ValueError if the API request is not successful.
-
-### Admin 👥
-
-- **PostAdmin**: Admin configuration for the image posts, including list display, search fields, prepopulated fields, list filters, and custom actions such as making posts private and liking posts.
-
-- **CommentAdmin**: Admin configuration for the comments on the posts, including list display, list filters, and search fields.
-
-- **ProfileAdmin**: Admin configuration for the users' profiles, including list display, search fields, and custom actions such as resetting profile pictures and resetting daily generation count.
-
-- **StaticPageAdmin**: Admin configuration for the static pages displayed in the About section, including list display, search fields, prepopulated fields, and custom actions such as making static pages private.
-
----
-
-## OpenAI DALL-E 2
-
-The images are generated using OpenAI's Dall-E 2, [you can view their easy to follow instructions here](https://beta.openai.com/docs/api-reference/introduction).
-
-<details> <summary>Or click here to see an image of the above instructions</summary> <img src="readme_images/setup/openaiImageGeneration.png" style="max-width: 66%;"> </details>
-
-<details> <summary>Once registered, you can set up an API key in the API section of their site</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
-
-You will need to import OpenAI and add the API key to your project.
-
-<details> <summary>The free account currently comes with $18 dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
-
----
-
 ## Deployment (Prior to Completing Project) 🚀
 
-### Step 1: Setting up the Django Project 🛠️ 1️⃣
+<details> <summary>Step 1: Setting up the Django Project 🛠️ 1️⃣</summary>
 
 **On Gipod:**
 
@@ -354,7 +249,9 @@ You will need to import OpenAI and add the API key to your project.
         python3 manage.py migrate  # This migrates the changes.
         python3 manage.py runserver  # This runs the server, test it works.
 
-### Step 2: Deploying App to Heroku 🚀 2️⃣
+</details>
+
+<details> <summary>Step 2: Deploying App to Heroku 🚀 2️⃣</summary>
 
 **On ElephantSQL:**
 
@@ -497,6 +394,115 @@ You will need to import OpenAI and add the API key to your project.
 
 - Deploy content manually, I used the GitHub deployment method on main branch.
 
+</details>
+
+---
+
+## Coding Overview 🖥️ 🖱️
+
+### URLs 🌐
+
+The following URLs are used in the project:
+
+| URL                         | Description                                        |
+| ---                         | ---                                                |
+| `/`                         | Home page, displays list of image posts            |
+| `/accounts/signup/`         | User registration page                             |
+| `/upload/`                  | Form for uploading new image posts                 |
+| `/generate_art/`            | Form for generating art from text                  |
+| `/search/`                  | Search page for image posts                        |
+| `/about/`                   | About page, displays list of static pages          |
+| `/<slug:slug>/`             | Detail page for a specific image post              |
+| `/like/<slug:slug>/`        | Endpoint for liking/unliking a post                |
+| `/private/<slug:slug>/`     | Endpoint for making a post private                 |
+| `/public/<slug:slug>/`      | Endpoint for making a private post public again    |
+| `/delete/<slug:slug>/`      | Endpoint for deleting a post                       |
+| `/profile/<str:username>/`  | User profile page                                  |
+| `/post_edit/<slug:slug>/`   | Form for editing a posted image's description      |
+| `/about/<slug:slug>/`       | Detail page for a specific static page             |
+
+### Models 📄
+
+- **Post**: A model for image posts, which includes fields for the image, title, slug, creator, timestamps, description, status (private/public), likes, and approval status.
+
+- **Comment**: A model for comments on image posts, which includes fields for the associated post, name, email, body, timestamp, and approval status.
+
+- **Profile**: A model for user profiles, which includes fields for the associated user, bio, profile picture, last generation timestamp, and generation count.
+
+- **StaticPage**: A model for admin-created static pages, which includes fields for the title, slug, content, and status (private/public).
+
+### Views 👀
+
+- **RegisterUser**: Handles user registration and creates a profile for the registered user.
+
+- **PostList**: Displays a list of image posts, allows pagination, and supports sorting by most likes or most recent.
+
+- **PostDetail**: Displays the details of an image post and supports adding comments.
+
+- **PostLike**: Handles liking and unliking posts.
+
+- **UploadForm**: Manages the form for uploading image posts.
+
+- **GenerateArt**: Handles art generation requests and creates a public post with the generated art.
+
+- **PostPrivate**: Handles making and viewing private posts.
+
+- **PostPublic**: Allows users to make private posts public again.
+
+- **DeletePost**: Handles the deletion of posts.
+
+- **UserProfile**: Displays user profiles and allows editing of user bios and profile pictures.
+
+- **Search**: Handles user image search functionality.
+
+- **EditPost**: Handles editing post details.
+
+- **StaticPageView**: Handles static pages that can be uploaded and updated by site admins.
+
+- **AboutView**: Handles the about page and displays all of the admins' static pages.
+
+### Forms 📝
+
+- **CommentForm**: A form for adding comments to posts.
+
+- **PostForm**: A form for creating image posts, including a slug auto-generated from the title.
+
+- **GenerateForm**: A form for text-to-image art generation, with a prompt field.
+
+- **ProfileForm**: A form for editing user profiles, including bio and profile picture.
+
+- **EditPostForm**: A form for editing posted images' descriptions.
+
+### Utilities 🛠️
+
+- **generate_image_from_text(prompt)**: A function that generates an image from a text prompt using OpenAI's API. Takes a string 'prompt' as an argument and returns the URL of the generated image. Raises a ValueError if the API request is not successful.
+
+### Admin 👥
+
+- **PostAdmin**: Admin configuration for the image posts, including list display, search fields, prepopulated fields, list filters, and custom actions such as making posts private and liking posts.
+
+- **CommentAdmin**: Admin configuration for the comments on the posts, including list display, list filters, and search fields.
+
+- **ProfileAdmin**: Admin configuration for the users' profiles, including list display, search fields, and custom actions such as resetting profile pictures and resetting daily generation count.
+
+- **StaticPageAdmin**: Admin configuration for the static pages displayed in the About section, including list display, search fields, prepopulated fields, and custom actions such as making static pages private.
+
+---
+
+## OpenAI DALL-E 2
+
+The images are generated using OpenAI's Dall-E 2, [you can view their easy to follow instructions here](https://beta.openai.com/docs/api-reference/introduction).
+
+<details> <summary>Or click here to see an image of the above instructions</summary> <img src="readme_images/setup/openaiImageGeneration.png" style="max-width: 66%;"> </details>
+
+<details> <summary>Once registered, you can set up an API key in the API section of their site</summary> <img src="readme_images/setup/openaiAPI.png" style="max-width: 66%;"> </details>
+
+You will need to import OpenAI and add the API key to your project.
+
+<details> <summary>The free account currently comes with $18 dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
+
+---
+
 ## Final Deployment (Post Completion of Project) 🚀
 
 ### Final Deployment to Heroku
@@ -569,6 +575,7 @@ You will need to import OpenAI and add the API key to your project.
 <details> <summary>Clouflare Compression</summary> <img src="readme_images/setup/cloudflareCompression.png" style="max-width: 66%;"> </details>
 <details> <summary>Clouflare Overview</summary> <img src="readme_images/setup/cloudflareOverview.png" style="max-width: 66%;"> </details>
 <details> <summary>Clouflare SpeedTest</summary> <img src="readme_images/setup/cloudflareSpeedTest.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloundinary API & Details</summary> <img src="readme_images/setup/cloudinaryDetails.png" style="max-width: 66%;"> </details>
 <details> <summary>ElephantSQL</summary> <img src="readme_images/setup/elephantSQL.png" style="max-width: 66%;"> </details>
 <details> <summary>Heroku Deployment</summary> <img src="readme_images/setup/herokuDeploy.png" style="max-width: 66%;"> </details>
 <details> <summary>Heroku Settings</summary> <img src="readme_images/setup/herokuSettings.png" style="max-width: 66%;"> </details>
@@ -580,7 +587,7 @@ You will need to import OpenAI and add the API key to your project.
 
 ### Custom Email Domain 📨 🌐
 
-<details> <summary>To avoid paying to use the custom web domain as an email domain, I found and followed the instructions in the following tutorial which explained how to set it up on Gmail for free: </summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
+<details> <summary>To avoid paying to use the custom web domain as an email domain, I found the instructions in the following tutorial which explained how to set it up on Gmail for free: </summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
 
 | Link | Additional Set Up Requirements |
 | ---- | ------------------------------ |
@@ -594,22 +601,22 @@ You will need to import OpenAI and add the API key to your project.
 
 #### User Expectation Testing 👩‍🦰‍👦
 
-| Test Case                                                                                                                | Expected Result                                                                                     | Result |
-|--------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
-| <details> <summary>Load the homepage</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
-| <details> <summary>Register a new user</summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
-| <details> <summary>Log in an existing user</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage                                                      | ✅    |
-| <details> <summary>Upload a new post</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post in detail                                                                | ✅    |
-| <details> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
-| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
-| <details> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
-| <details> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
-| <details> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
-| <details> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
-| <details> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
-| <details> <summary>Delete a post</summary> <img src="readme_images/features/deletePost.png"> </details>                      | Removes the post and redirects to the user's profile                                            | ✅    |
-| <details> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
-| <details> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
+| Test Case                                                                                                                     | Expected Result                                                                                     | Result |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
+| <details open> <summary>Load the homepage</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
+| <details open> <summary>Register a new user</summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
+| <details open> <summary>Log in an existing user</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage                                                      | ✅    |
+| <details open> <summary>Upload a new post</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post in detail                                                                | ✅    |
+| <details open> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
+| <details open> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
+| <details open> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
+| <details open> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
+| <details open> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
+| <details open> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
+| <details open> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
+| <details open> <summary>Delete a post</summary> <img src="readme_images/features/deletePost.png"> </details>                  | Removes the post and redirects to the user's profile                                                | ✅    |
+| <details open> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
+| <details open> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
 
 #### Functionality/Input-Validation 🛠️ 🔧
 
@@ -687,6 +694,23 @@ The W3C testing highlighed minor errors such as acouple of missing alt tags and 
 
 </details>
 
+### JSHint Testing
+
+The JS testing was carried out using JSHint.
+
+<details> 
+        <summary>Click here to view the results</summary>
+
+| **Page**            | **Picture**                                                                    |
+|---------------------|--------------------------------------------------------------------------------|
+| **Profile**         | ![Profile](readme_images/tests/jshint/profile.png)                             |
+| **Post Private**    | ![Post Private](readme_images/tests/jshint/postPrivate.png)                    |
+| **Post**            | ![Post](readme_images/tests/jshint/post.png)                                   |
+| **Generate Art**    | ![Generate Art](readme_images/tests/jshint/generateArt.png)                    |
+| **Base**            | ![Base](readme_images/tests/jshint/base.png)                                   |
+
+</details>
+
 ### Responsiveness Testing
 
 #### Visual Testing using Google Inspect
@@ -722,7 +746,7 @@ The W3C testing highlighed minor errors such as acouple of missing alt tags and 
 | **Device**                           | **Width (px)** | **Height (px)** |
 |--------------------------------------|----------------|-----------------|
 | **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
-| **Dell Monitor - 27" (4k)**          | 3840           | 2160            |
+| **Dell Monitor - 27" (Landscape)**   | 3840           | 2160            |
 | **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
 
 ---
@@ -742,12 +766,14 @@ The W3C testing highlighed minor errors such as acouple of missing alt tags and 
 | Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
 | Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
 | Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
+| During initial set up for unique slug and title it was operating correctly, I made changes to this after and then noticed when a duplicate prompt was used, the slug was adding 1 to the end and the post title was adding 2 to the end | I resolved this by adjusting the initial counter value in the view. |
 
 ### Outstanding Bugs ❌ 🤔
 
 | Bug | Comments |
 | --- | --- |
 | When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after so I have left the bug present for now until I have more time to resolve. |
+| I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortuntly it was not being reset until the user clicked generate (it was still operating correctly, but the value was not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benifit to the user. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
 
 ---
 
@@ -845,20 +871,19 @@ I would have liked to implement some of the below features but was unable to due
 
 ---
 
-## Summary of Charges
+## Summary of Charges & Monitoring Usage
 
 As mentioned above, I have avoided subscriptions and costs where possible. I have spent less than 5 euro creating this project as most of the third party tecnologies used in this project are on free accounts (eg. Cloudflare, The Heroku Dyno, Cloudinary, ElephantSQL, etc) however the following items are charged for: 
 
-- **OpenAI API Calls** - The only OpenAI model used for this project is DALLE 2, each API call (at the time of writing) is charged at 2 cent. OpenAI comes with 20 dollars free credits which expire after 3 months, the free credits will cover 1,000 image generations (a few months ago it was 60cent per generation).
+- **OpenAI API Calls** - The only OpenAI model used for this project is DALLE 2, each API call (at the time of writing) is charged at 2 cent (a few months ago it was 60 cent per generation). OpenAI comes with 18 US dollars free credits which expires after 3 months, unfortunatly my free credits expired mid way through creating this project.
 
 - **NameCheap Domain Registration** - The total price for the domain, including privacy, was $3.88 for the first year.
 
-**Note:** the free accounts may come with limitations which may need to be monitored, example, cloudinary provides 25 credits per month, after 100s of image generations, I have only used the following: `Credit Usage For Last 30 Days = 1.61 of 25 (6.44% used)`
+**Note:** free accounts may come with limitations which may need to be monitored, example, cloudinary provides 25 credits per month, after 100s of image generations, I have only used the following: `Credit Usage For Last 30 Days = 1.61 of 25 (6.44% used)`
 
 **Images:**
 
-<details> <summary>NameCheap SSL Pricing</summary> <img src="readme_images/setup/namecheapSSLPrices.png" style="max-width: 66%;"> </details>
-<details> <summary>NameCheap Email Pricing</summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloundinary Usage</summary> <img src="readme_images/setup/cloudinaryUsage.png" style="max-width: 66%;"> </details>
 <details> <summary>OpenAI Usage</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 
 ---
@@ -869,17 +894,28 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 
 - Set up a virtual environment and install the required dependencies.
 
+        pip install -r requirements.txt
+
 - Set up cloudinary and openai account.
 
 - Create a .env file with the required environment variables:
-    - "DATABASE_URL"
-    - "SECRET_KEY"
-    - "CLOUDINARY_URL"
-    - "OPENAI_API_KEY"
+
+        DATABASE_URL=your_database_url
+        SECRET_KEY=your_secret_key
+        CLOUDINARY_URL=your_cloudinary_url
+        OPENAI_API_KEY=your_openai_api_key
 
 - Apply database migrations and create a superuser account.
 
+        python manage.py migrate
+
+        python manage.py createsuperuser
+
 - Run the Django development server.
+
+        python manage.py runserver
+
+- You should now be able to access the application locally at http://localhost:8000.
 
 ---
 

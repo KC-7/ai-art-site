@@ -268,7 +268,6 @@ class GenerateArt(LoginRequiredMixin, FormView):
         """
         Creates the post using the generated image.
         """
-        # response = requests.get(image_url)
         response = get(image_url)
         image_io = BytesIO(response.content)
         image = Image.open(image_io)
@@ -280,11 +279,10 @@ class GenerateArt(LoginRequiredMixin, FormView):
         post = Post()
         post.title = f"Generation for: '{prompt[:75]}...'"
 
-        # Check if there is an existing post with same title,
-        # if so add a number to the end and increment by 1
-        # to ensure it is unique.
-        counter = 1
+        counter = 0
+        # Check if there is an existing post with same title
         while Post.objects.filter(title=post.title).exists():
+            # Add a number to the end and increment by 1 to ensure unqiue
             counter += 1
             post.title = f"Generation for: '{prompt[:75]}...' ({counter})"
 

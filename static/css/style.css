@@ -178,14 +178,6 @@ textarea {
     align-items: center;
 }
 
-.nav-text {
-    color: var(--col-6);
-}
-
-.nav-link {
-    color: var(--col-2);
-}
-
 .author {
     color: var(--col-6);
     margin: 4px;
