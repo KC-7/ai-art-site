@@ -92,7 +92,7 @@ This web application allows users to create custom AI generated artwork using th
 
 - CSS (Programming Language for Styling)
 
-- Javascript (Programming Language for Interactivity)
+- JavaScript (Programming Language for Interactivity)
 
 - Cloudinary (Cloud based image and video hosting service)
 
@@ -102,9 +102,9 @@ This web application allows users to create custom AI generated artwork using th
 
 - Git (Version Control)
 
-- Github (Web based hosting repository)
+- GitHub (Web based hosting repository)
 
-- Gitpod (Cloud Based Development Environment)
+- GitPod (Cloud Based Development Environment)
 
 - Cloudflare (Security Network / SSL Cert)
 
@@ -499,7 +499,7 @@ The images are generated using OpenAI's Dall-E 2, [you can view their easy to fo
 
 You will need to import OpenAI and add the API key to your project.
 
-<details> <summary>The free account currently comes with $18 dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
+<details> <summary>The free account currently comes with $18 US dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 
 ---
 
@@ -518,7 +518,7 @@ You will need to import OpenAI and add the API key to your project.
 
 ### Custom Web Domain & SSL 💻 🌐
 
-**On Gitpod:**
+**On GitPod:**
 
 - Add the custom domain name to ALLOWED_HOSTS (ex: "custom-domain.com"):
 
@@ -541,11 +541,11 @@ You will need to import OpenAI and add the API key to your project.
 - Link to the custom domain
 - Set up authorisation token
 
-**On Gitpod:**
+**On GitPod:**
 
 - In the terminal login to Heroku by entering the following: 
         heroku login -i
-- Enter your Heroku Login details and use the heroku authorisation token as the password - your heroku password or code from authenticaor will not work.
+- Enter your Heroku Login details and use the Heroku authorisation token as the password - your Heroku password or code from authenticator will not work.
 
 **On NameCheap:**
 
@@ -554,27 +554,28 @@ You will need to import OpenAI and add the API key to your project.
 
 **On DNSChecker:**
 
-- Search domain name on [DNS Checker (.org)](https://dnschecker.org/#A/cre8ai.art) to see if it has propegated (this can take 24 to 48 hours).
+- Search domain name on [DNS Checker (.org)](https://dnschecker.org/#A/cre8ai.art) to see if it has propagated (this can take 24 to 48 hours).
 
 **On Cloudflare:** 
 
 <details> 
-<summary>SSL certs are free on the Standard Heroku Domain but both Heroku and Namecheap charge for SSL certification for custom domains so I set it up for free with Clourflare.</summary> 
+<summary>SSL certs are free on the Standard Heroku Domain but both Heroku and Namecheap charge for SSL certification for custom domains so I set it up for free with Cloudflare.</summary> 
 <img src="readme_images/setup/namecheapSSLPrices.png" style="max-width: 66%;">
 </details>
 
 - Set up free account
 - Link to website
 - Set up redirect to HTTPS to ensure secure connection
+- See images below for further details
 
 **Deployment Images**
 
-<details> <summary>Clouflare DNS</summary> <img src="readme_images/setup/cloudflareDNS.png" style="max-width: 66%;"> </details>
-<details> <summary>Clouflare SSL 1</summary> <img src="readme_images/setup/cloudflareSSLTLS.png" style="max-width: 66%;"> </details>
-<details> <summary>Clouflare SSL 2</summary> <img src="readme_images/setup/cloudflareSSLTLS2.png" style="max-width: 66%;"> </details>
-<details> <summary>Clouflare Compression</summary> <img src="readme_images/setup/cloudflareCompression.png" style="max-width: 66%;"> </details>
-<details> <summary>Clouflare Overview</summary> <img src="readme_images/setup/cloudflareOverview.png" style="max-width: 66%;"> </details>
-<details> <summary>Clouflare SpeedTest</summary> <img src="readme_images/setup/cloudflareSpeedTest.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloudflare DNS</summary> <img src="readme_images/setup/cloudflareDNS.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloudflare SSL 1</summary> <img src="readme_images/setup/cloudflareSSLTLS.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloudflare SSL 2</summary> <img src="readme_images/setup/cloudflareSSLTLS2.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloudflare Compression</summary> <img src="readme_images/setup/cloudflareCompression.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloudflare Overview</summary> <img src="readme_images/setup/cloudflareOverview.png" style="max-width: 66%;"> </details>
+<details> <summary>Cloudflare SpeedTest</summary> <img src="readme_images/setup/cloudflareSpeedTest.png" style="max-width: 66%;"> </details>
 <details> <summary>Cloundinary API & Details</summary> <img src="readme_images/setup/cloudinaryDetails.png" style="max-width: 66%;"> </details>
 <details> <summary>ElephantSQL</summary> <img src="readme_images/setup/elephantSQL.png" style="max-width: 66%;"> </details>
 <details> <summary>Heroku Deployment</summary> <img src="readme_images/setup/herokuDeploy.png" style="max-width: 66%;"> </details>
@@ -611,14 +612,14 @@ You will need to import OpenAI and add the API key to your project.
 | <details open> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
 | <details open> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
 | <details open> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
-| <details open> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the post's like count                                                                       | ✅    |
+| <details open> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the posts like count                                                                        | ✅    |
 | <details open> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
 | <details open> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
 | <details open> <summary>Delete a post</summary> <img src="readme_images/features/deletePost.png"> </details>                  | Removes the post and redirects to the user's profile                                                | ✅    |
 | <details open> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
 | <details open> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
 
-#### Functionality/Input-Validation 🛠️ 🔧
+#### Functionality / Input-Validation 🛠️ 🔧
 
 | Test Case                                                  | Expected Result                                                                                     | Result |
 |------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
@@ -677,7 +678,7 @@ Note, I made further updates to the Sign In, Sign Out and Sign Up pages to impro
 
 ### W3C Validation Testing
 
-The W3C testing highlighed minor errors such as acouple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
+The W3C testing highlighted minor errors such as a couple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
 
 <details> 
         <summary>Click here to view the results</summary>
@@ -741,7 +742,7 @@ The JS testing was carried out using JSHint.
 
 <img src="readme_images/tests/responsive/responsiveIndex.png" style="max-width: 66%;">
 
-#### Visual Testing on Pyhsical Devices
+#### Visual Testing on Physical Devices
 
 | **Device**                           | **Width (px)** | **Height (px)** |
 |--------------------------------------|----------------|-----------------|
@@ -759,10 +760,10 @@ The JS testing was carried out using JSHint.
 | --- | --- |
 | HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
 | Post titles and slugs too long | I set up truncating to reduce the length. |
-| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrimating by 1. |
+| Posts with same prompt generation not working | I set up a function to make each title and slug unique by adding a number to the end and incrementing by 1. |
 | Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
 | Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
-| LoginRequiredMixin wasn't working | To seolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
+| LoginRequiredMixin wasn't working | To resolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
 | Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
 | Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
 | Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
@@ -772,14 +773,17 @@ The JS testing was carried out using JSHint.
 
 | Bug | Comments |
 | --- | --- |
-| When the user generates an image with the same prompt as an image generated prior to May, it may dispay the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the orginal was created in May or after so I have left the bug present for now until I have more time to resolve. |
-| I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortuntly it was not being reset until the user clicked generate (it was still operating correctly, but the value was not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benifit to the user. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
+| When the user generates an image with the same prompt as an image generated prior to May, it may display the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the original was created in May or after so I have left the bug present for now until I have more time to resolve. |
+| I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortunately, it was not being reset until the user clicked generate (it was still operating correctly, but the value was not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benefit to the user. The displayed time is out by 1 hour. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
+| Change the profile URL from a String to a Slug using Slugify | I had issues when initially setting up the slug for this and used a string as a temporary fix. Unfortunately, I forgot about it and moved on, during my final review I noticed this again but am hesitant to make the change as I dont want to potentially cause a different issue / bug while too close to the submission deadline to test and resolve it. This will be planned in as a future fix. |
 
 ---
 
 ## Future Development 💭 💡
 
 I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage:
+
+- Set up automated python tests and coverage report
 
 - Set up additional sign up information as a requirement, such as email address, etc. 
 
@@ -860,8 +864,8 @@ I would have liked to implement some of the below features but was unable to due
 
 - Set up social media accounts
 
-- Set up a prompt generator using ChatGPT API. The user will be asked a series of questions, ChatGPT will use the users input to create a more detailed text prompt that would then be passed through the the DALLE API to create the image, this will help the user create more detailed prompts for the text to art generations instead of simple user inputs like "A painting of a sunset". Example of detailed prompt below: 
-    - "Create a surrealistic artwork of a futuristic cityscape with flying cars and neon lights. The city should be situated on a giant floating platform that hovers over an endless abyss. In the foreground, there should be a mysterious figure wearing a hooded cloak, holding a glowing orb. The overall aesthetic should be cyberpunk with a touch of magic and mystery. The artwork should be bold and dynamic, with a strong use of contrasting colors and dramatic lighting. Let your imagination run wild and create a stunning visual representation of this futuristic world."
+- Set up a prompt generator using ChatGPT API. The user will be asked a series of questions, ChatGPT will use the users input to create a more detailed text prompt that would then be passed through the DALLE API to create the image, this will help the user create more detailed prompts for the text to art generations instead of simple user inputs like "A painting of a sunset". Example of detailed prompt below: 
+    - *"Create a surrealistic artwork of a futuristic cityscape with flying cars and neon lights. The city should be situated on a giant floating platform that hovers over an endless abyss. In the foreground, there should be a mysterious figure wearing a hooded cloak, holding a glowing orb. The overall aesthetic should be cyberpunk with a touch of magic and mystery. The artwork should be bold and dynamic, with a strong use of contrasting colors and dramatic lighting. Let your imagination run wild and create a stunning visual representation of this futuristic world."*
 
 - Consider changing the admin static about pages from HTML to a standard text entry format so that the admins will not need to enter the data using any code.
 
@@ -873,9 +877,9 @@ I would have liked to implement some of the below features but was unable to due
 
 ## Summary of Charges & Monitoring Usage
 
-As mentioned above, I have avoided subscriptions and costs where possible. I have spent less than 5 euro creating this project as most of the third party tecnologies used in this project are on free accounts (eg. Cloudflare, The Heroku Dyno, Cloudinary, ElephantSQL, etc) however the following items are charged for: 
+As mentioned above, I have avoided subscriptions and costs where possible. I have spent less than 5 euro creating this project as most of the third party technologies used in this project are on free accounts (eg. Cloudflare, The Heroku Dyno, Cloudinary, ElephantSQL, etc) however the following items are charged for: 
 
-- **OpenAI API Calls** - The only OpenAI model used for this project is DALLE 2, each API call (at the time of writing) is charged at 2 cent (a few months ago it was 60 cent per generation). OpenAI comes with 18 US dollars free credits which expires after 3 months, unfortunatly my free credits expired mid way through creating this project.
+- **OpenAI API Calls** - The only OpenAI model used for this project is DALLE 2, each API call (at the time of writing) is charged at 2 cent (a few months ago it was 60 cent per generation). OpenAI comes with 18 US dollars free credits which expires after 3 months, unfortunately my free credits expired mid way through creating this project.
 
 - **NameCheap Domain Registration** - The total price for the domain, including privacy, was $3.88 for the first year.
 
@@ -921,52 +925,52 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 
 ## Useful Links & Documentation 📎📖
 
-| Link | Description |
-| ---- | ----------- |
-| [Django documentation](https://docs.djangoproject.com/en/3.2/) | Official Django documentation |
-| [Django views](https://docs.djangoproject.com/en/3.2/topics/class-based-views/) | Class-based views in Django |
-| [Django generic views](https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/) | Generic class-based views in Django |
-| [Django forms](https://docs.djangoproject.com/en/3.2/topics/forms/) | Working with forms in Django |
-| [Django model forms](https://docs.djangoproject.com/en/3.2/topics/forms/modelforms/) | Creating forms from models in Django |
-| [Django messages](https://docs.djangoproject.com/en/3.2/ref/contrib/messages/) | Django messages framework for displaying messages |
-| [Django authentication](https://docs.djangoproject.com/en/3.2/topics/auth/) | Authentication in Django |
-| [Django signals](https://docs.djangoproject.com/en/3.2/topics/signals/) | Signals in Django for decoupled applications |
-| [Django queries](https://docs.djangoproject.com/en/3.2/topics/db/queries/) | Querying the database in Django |
-| [Django Q objects](https://docs.djangoproject.com/en/3.2/topics/db/queries/#complex-lookups-with-q-objects) | Using Q objects in Django for complex lookups |
-| [Django pagination](https://docs.djangoproject.com/en/3.2/topics/pagination/) | Pagination in Django |
-| [Django decorators](https://docs.djangoproject.com/en/3.2/topics/class-based-views/intro/#decorating-the-class) | Decorators in Django for class-based views |
-| [Cloudinary](https://cloudinary.com/documentation/django_image_and_video_upload) | Django integration for image and video management with Cloudinary |
-| [PIL](https://pillow.readthedocs.io/en/stable/) | Python Imaging Library for image processing |
-| [Requests](https://docs.python-requests.org/en/master/) | Python library for making HTTP requests |
-| [OpenAI API](https://beta.openai.com/docs/api-reference/introduction) | API reference for OpenAI |
-| [Python datetime](https://docs.python.org/3/library/datetime.html) | Working with dates and times in Python |
-| [Python io](https://docs.python.org/3/library/io.html) | Input and output in Python |
-| [Python slugify](https://github.com/un33k/python-slugify) | Python library for converting strings to slugs |
-| [Python image processing](https://docs.python.org/3/library/image.html) | Built-in Python library for image processing |
-| [Updating Admin Portal Text](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/change_text.html) | Changing text in Django admin portal |
-| [Adding Messages with Django](https://docs.djangoproject.com/en/4.2/ref/contrib/messages/) | Adding messages in Django |
-| [Django messages](https://django-messages.readthedocs.io/en/latest/) | Additional documentation for the Django messages framework |
-| [BytesIO](https://docs.python.org/3/library/io.html) | Python library for working with bytes in memory |
-| [Text Logo](https://www.w3schools.com/css/css3_3dtransforms.asp) | Creating a 3D text-based logo using CSS |
-| [CSS Variables for Colour Palette](https://www.w3schools.com/css/css3_variables.asp) | Using CSS variables to create a custom color palette |
-| [Loading Wheel for AI Art Generation & Wait Time Updates](https://loading.io/) | Loading wheel for AI art generation and wait time updates |
-| [Aesthetically Pleasing Icons](https://fontawesome.com/search?q=next&o=r&m=free) | Font Awesome icons for use in the project |
-| [Allow Only Registered Users to Download Images](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/) | Django documentation for restricting access to registered users |
-| [Disable Right Click on Images](https://www.dotnettricks.com/learn/aspnet/disable-right-click-on-web-page-and-images) | Tutorial on disabling right-click on images for added protection |
-| [Youtube: Setting Up Free SSL with CloudFlare](https://www.youtube.com/watch?v=Y4iHXhRkpO4) | Video tutorial on setting up CloudFlare for free SSL cert |
-| [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Video tutorial on setting up a custom domain on gmail, note additional requirements for set up are noted above |
-| [Markdown Table of Contents Generator](http://ecotrust-canada.github.io/markdown-toc/) | Table of contents generated with markdown-toc |
-| [Wix Logo Maker](https://www.wix.com/logo/maker) | The Logo was made using Wix's Free Logo Maker |
+| Link                                                                                                                    | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [Django documentation](https://docs.djangoproject.com/en/3.2/)                                                          | Official Django documentation                                                                                     |
+| [Django views](https://docs.djangoproject.com/en/3.2/topics/class-based-views/)                                         | Class-based views in Django                                                                                       |
+| [Django generic views](https://docs.djangoproject.com/en/3.2/ref/class-based-views/generic-display/)                    | Generic class-based views in Django                                                                               |
+| [Django forms](https://docs.djangoproject.com/en/3.2/topics/forms/)                                                     | Working with forms in Django                                                                                      |
+| [Django model forms](https://docs.djangoproject.com/en/3.2/topics/forms/modelforms/)                                    | Creating forms from models in Django                                                                              |
+| [Django messages](https://docs.djangoproject.com/en/3.2/ref/contrib/messages/)                                          | Django messages framework for displaying messages                                                                 |
+| [Django authentication](https://docs.djangoproject.com/en/3.2/topics/auth/)                                             | Authentication in Django                                                                                          |
+| [Django signals](https://docs.djangoproject.com/en/3.2/topics/signals/)                                                 | Signals in Django for decoupled applications                                                                      |
+| [Django queries](https://docs.djangoproject.com/en/3.2/topics/db/queries/)                                              | Querying the database in Django                                                                                   |
+| [Django Q objects](https://docs.djangoproject.com/en/3.2/topics/db/queries/#complex-lookups-with-q-objects)             | Using Q objects in Django for complex lookups                                                                     |
+| [Django pagination](https://docs.djangoproject.com/en/3.2/topics/pagination/)                                           | Pagination in Django                                                                                              |
+| [Django decorators](https://docs.djangoproject.com/en/3.2/topics/class-based-views/intro/#decorating-the-class)         | Decorators in Django for class-based views                                                                        |
+| [Cloudinary](https://cloudinary.com/documentation/django_image_and_video_upload)                                        | Django integration for image and video management with Cloudinary                                                 |
+| [PIL](https://pillow.readthedocs.io/en/stable/)                                                                         | Python Imaging Library for image processing                                                                       |
+| [Requests](https://docs.python-requests.org/en/master/)                                                                 | Python library for making HTTP requests                                                                           |
+| [OpenAI API](https://beta.openai.com/docs/api-reference/introduction)                                                   | API reference for OpenAI                                                                                          |
+| [Python datetime](https://docs.python.org/3/library/datetime.html)                                                      | Working with dates and times in Python                                                                            |
+| [Python io](https://docs.python.org/3/library/io.html)                                                                  | Input and output in Python                                                                                        |
+| [Python slugify](https://github.com/un33k/python-slugify)                                                               | Python library for converting strings to slugs                                                                    |
+| [Python image processing](https://docs.python.org/3/library/image.html)                                                 | Built-in Python library for image processing                                                                      |
+| [Updating Admin Portal Text](https://books.agiliq.com/projects/django-admin-cookbook/en/latest/change_text.html)        | Changing text in Django admin portal                                                                              |
+| [Adding Messages with Django](https://docs.djangoproject.com/en/4.2/ref/contrib/messages/)                              | Adding messages in Django                                                                                         |
+| [Django messages](https://django-messages.readthedocs.io/en/latest/)                                                    | Additional documentation for the Django messages framework                                                        |
+| [BytesIO](https://docs.python.org/3/library/io.html)                                                                    | Python library for working with bytes in memory                                                                   |
+| [Text Logo](https://www.w3schools.com/css/css3_3dtransforms.asp)                                                        | Creating a 3D text-based logo using CSS                                                                           |
+| [CSS Variables for Colour Palette](https://www.w3schools.com/css/css3_variables.asp)                                    | Using CSS variables to create a custom colour palette                                                             |
+| [Loading Wheel for AI Art Generation & Wait Time Updates](https://loading.io/)                                          | Loading wheel for AI art generation and wait time updates                                                         |
+| [Aesthetically Pleasing Icons](https://fontawesome.com/search?q=next&o=r&m=free)                                        | Font Awesome icons for use in the project                                                                         |
+| [Allow Only Registered Users to Download Images](https://docs.djangoproject.com/en/4.2/ref/templates/builtins/)         | Django documentation for restricting access to registered users                                                   |
+| [Disable Right Click on Images](https://www.dotnettricks.com/learn/aspnet/disable-right-click-on-web-page-and-images)   | Tutorial on disabling right-click on images for added protection                                                  |
+| [Youtube: Setting Up Free SSL with CloudFlare](https://www.youtube.com/watch?v=Y4iHXhRkpO4)                             | Video tutorial on setting up CloudFlare for free SSL cert                                                         |
+| [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c)                             | Video tutorial on setting up a custom domain on gmail, note additional requirements for set up are noted above    |
+| [Markdown Table of Contents Generator](http://ecotrust-canada.github.io/markdown-toc/)                                  | Table of contents generated with markdown-toc                                                                     |
+| [Wix Logo Maker](https://www.wix.com/logo/maker)                                                                        | The Logo was made using Wix's Free Logo Maker                                                                     |
 
 ## Credits 👏 🙌
 
 I would like to give credit to the all of the content creators and developers of the above documentation and listed resources. In addition to this, I would like to give a lot of credit to the following resources: 
 
-- **Code Institute** - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk through Django Blog Project very helpful and it was used as the base for this project and expanded on from there. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiteratted in the Deployment section above.
+- **Code Institute** - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk-through Django Blog Project very helpful and it was used as the base for this project and expanded on from there. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiterated in the Deployment section above.
 
 - **CI Mentor** - I found my three calls with my Code Institute mentor, Rohit, exceptionally valuable and useful.
 
-- **ChatGPT** - ChatGPT is relativly new technolgoy and needs to be used with a **mountain** of salt. Despite its inaccuracies, hallecanations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularliy useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross checked any information provided by ChatGPT with reputable resources to ensure the data being provided is reliable and accurate. I used ChatGPT to create the table for the libraries used above.
+- **ChatGPT** - ChatGPT is relatively new technology and needs to be used with a **mountain** of salt. Despite its inaccuracies, hallucinations and limitations, I found it a very useful resource when creating this project. I used it to assist with debugging and to point me in the direction of some of the coding requirements. It was particularly useful when configuring the GenerateArt View, this took some trial and error before I had it functioning as intended. I also used ChatGPT to create the boilerplate data for the static about pages. I cross checked any information provided by ChatGPT with reputable resources to ensure the data being provided is reliable and accurate. I used ChatGPT to create the table for the libraries used above.
 
 - **YouTube** - I watched many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, set up free SSL cert, set up free custom email domains, etc, most of which have been listed above. I enjoy visual learning and find watching tutorials very useful.
 
