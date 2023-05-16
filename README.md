@@ -62,6 +62,7 @@ This web application allows users to create custom AI generated artwork using th
   * [Console](#console)
   * [Lighthouse Tests](#lighthouse-tests)
   * [W3C Validation Testing](#w3c-validation-testing)
+  * [W3 Jigsaw Testing](#w3-jigsaw-testing)
   * [JSHint Testing](#jshint-testing)
   * [Responsiveness Testing](#responsiveness-testing)
     + [Visual Testing on Physical Devices](#visual-testing-on-physical-devices)
@@ -770,7 +771,7 @@ Note, I made further updates to the Sign In, Sign Out and Sign Up pages to impro
 
 ### W3C Validation Testing
 
-The W3C testing highlighted minor errors such as a couple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
+The W3C testing highlighted minor HTML errors such as a couple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
 
 <details> 
         <summary>Click here to view the console for each page</summary>
@@ -787,9 +788,9 @@ The W3C testing highlighted minor errors such as a couple of missing alt tags an
 
 </details>
 
-### Jigsaw Testing
+### W3 Jigsaw Testing
 
-No errors where identified with the W3 Jigsaw tests.
+No CSS errors where identified with the W3 Jigsaw tests.
 
 <details> 
         <summary>Click here to view the results</summary>
