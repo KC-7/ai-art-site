@@ -602,24 +602,47 @@ You will need to import OpenAI and add the API key to your project.
 
 #### User Expectation Testing 👩‍🦰‍👦
 
-| Test Case                                                                                                                     | Expected Result                                                                                     | Result |
-|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
-| <details open> <summary>Load the homepage</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Displays a list of posts with pagination and allows sorting by most likes or most recent            | ✅    |
-| <details open> <summary>Register a new user</summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, and redirects to the homepage                             | ✅    |
-| <details open> <summary>Log in an existing user</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage                                                      | ✅    |
-| <details open> <summary>Upload a new post</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post in detail                                                                | ✅    |
-| <details open> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Generates AI art based on a given prompt and displays the resulting post in detail                  | ✅    |
-| <details open> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query, paginates and gives option to filter by       | ✅    |
-| <details open> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile with their posts and allows editing of bio and profile picture          | ✅    |
-| <details open> <summary>Edit a post</summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the updated post in detail                                                                 | ✅    |
-| <details open> <summary>Like/unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>        | Updates the posts like count                                                                        | ✅    |
-| <details open> <summary>Make a post private</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
-| <details open> <summary>Make a post public</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
-| <details open> <summary>Delete a post</summary> <img src="readme_images/features/deletePost.png"> </details>                  | Removes the post and redirects to the user's profile                                                | ✅    |
-| <details open> <summary>View the about page</summary> <img src="readme_images/screenshots/about.png"> </details>              | Displays the about page with a list of admin-created static pages                                   | ✅    |
-| <details open> <summary>View a static page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page                                                             | ✅    |
+| Test Case                                                                                                                     | Expected Result                                                                                    | Result |
+|-------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|--------|
+| <details> <summary>Load the home page by going to the live link</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>   | Home page loads and displays welcome message for new or signed out users.    | ✅    |
+| <details> <summary>View the about page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/about.png"> </details>     | Displays the about page with a list of admin-created static pages.           | ✅    |
+| <details> <summary>View a static page by selecting one of the titles in the about page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page.          | ✅    |
+| <details> <summary>Go to the Sign Up page by selecting Register in the Nav Bar or clicking on the message on the home page </summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Register page loads.           | ✅    |
+| <details> <summary>Register a new user by entering the required information </summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, redirects to the homepage and displays successful sign in message.       | ✅    |
+| <details> <summary>Go to Generate Art page by selecting Generate Art in the Nav Bar</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Loads the Generates AI art page.                  | ✅    |
+| <details> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Displays loading wheel and loading message(s). Generates AI art based on the given text prompt and save as a public post. Redirect to post to display art.                  | ✅    |
+| <details> <summary>View edit post page by selecting the edit button on your post </summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the post edit template                  | ✅    |
+| <details> <summary>Edit the post by entering the new description and clicking submit </summary> <img src="readme_images/screenshots/editPostFull.png"> </details>      | Displays the post page with updated description       | ✅    |
+| <details> <summary>Make a post private by selecting Make Private on your Public post</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
+| <details> <summary>Make a post public by selecting Make Public on your Private post</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
+| <details> <summary>Like / unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>      | Updates the posts like count                                                                        | ✅    |
+| <details> <summary>Delete a post by selecting Delete Post on your post and entering your username as required to confirm deletion </summary> <img src="readme_images/features/deletePost.png"> </details>                  | Removes the post and redirects to the user's profile. Displays a success message.           | ✅    |
+| <details> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile page. Displays Edit Profile button and Private Posts to the registered user.      | ✅    |
+| <details> <summary>Edit user's profile by selecting Edit Profile on your profile & entering a new Bio and uploading a new profile picture</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile page with new Bio and Profile Picture. Displays success message.     | ✅    |
+| <details> <summary>Go to the Upload post page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post page.                            | ✅    |
+| <details> <summary>Upload a new post by completing the Upload Form </summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post page.                                     | ✅    |
+| <details> <summary>Comment on a post by entering a comment on a post and pressing submit</summary> <img src="readme_images/features/postComment.png"> </details>               | Displays the comment on the post page.        | ✅    |
+| <details> <summary>Download a post by selecting the download button below the post (when signed in)</summary> <img src="readme_images/features/#.png"> </details>    | Displays the image in a new tab so you can download it by right clicking and saving it.    | ✅    |
+| <details> <summary>Go to Sign Out page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Display the Sign Out Page.                                               | ✅    |
+| <details> <summary>Sign Out by selecting the Sign Out Button on the Sign Out Page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs out the user and redirects to the homepage. Displays success message.          | ✅    |
+| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query on the search results page.                                           | ✅    |
+| Use pagination to go to next, last, previous, first page by using the buttons at the end of the Home or Search Page | Displays the posts on the different pages.            | ✅    |
+| Use Sort By Newest or Most Liked on the Home or Search Page | Adjusts the order the posts are sorted in.           | ✅    |
+| View a post while logged out | The post page will load. The download button for the image will display a sign up / sign in link instead.          | ✅    |
+| <details> <summary>Go to Sign In Page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Displays the Sign In Page.                                                | ✅    |
+| <details> <summary>Log in an existing user by entering correct log in details on the sign in page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage. Displays success message.     | ✅    |
 
-#### Functionality / Input-Validation 🛠️ 🔧
+#### Admin portal tests
+
+| URL | Action | Expected Result | Actual Result |
+| --- | --- | --- | --- |
+| [Go to Admin Portal](https://www.cre8ai.art/admin/) | Sign In to the Admin Portal | Displays custom title and heading | ✅ |
+| [Go to Comments](https://www.cre8ai.art/admin/art_gallery/comment) | Check Comments Page | Displays body, name, post, created on + option to delete comments | ✅ |
+| [Go to Posts](https://www.cre8ai.art/admin/art_gallery/post) | Check Posts Page | Displays title, creator, likes, status, created on + option to like, make private and delete posts | ✅ |
+| [Go to Profile](https://www.cre8ai.art/admin/art_gallery/profile) | Check Profile Page | Displays user, profile picture id, total posts, bio, last generation timestamp and generation count + option to delete users, reset generation counter to 0 or reset profile picture to default | ✅ |
+| [Go to Static Pages](https://www.cre8ai.art/admin/art_gallery/staticpage) | Check Static Pages Page | Displays title, slug, content and status + option to delete or make private | ✅ |
+
+#### Functionality / Input Validation 🛠️ 🔧
 
 | Test Case                                                  | Expected Result                                                                                     | Result |
 |------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
@@ -630,8 +653,10 @@ You will need to import OpenAI and add the API key to your project.
 | Generate more than the limit for AI art                    | Displays an error message and does not generate the art                                             | ✅    |
 | Empty comment on a post                                    | Displays an error message and does not create the comment                                           | ✅    |
 | Edit a post with empty input                               | Displays an error message and does not update the post                                              | ✅    |
+| Delete a post with incorrect username input                | Displays an error message and does not delete the post                                              | ✅    |
 | Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
 | Test 404, change the slug to an invalid slug               | Displays the 404 page                                                                               | ✅    |
+| Attempt to download a post image by right clicking on it   | Right click is disabled                                                                             | ✅    |
 
 <details> <summary>Click here to see an example of an Error Message</summary> <img src="readme_images/features/errorMessage.png"> </details>
 
@@ -639,7 +664,7 @@ You will need to import OpenAI and add the API key to your project.
 
 ### Console
 
-I found no remaining console error during final testing.
+I found no remaining console error during final testing as showen below.
 
 <details> 
         <summary>Click here to view the results</summary>
@@ -697,7 +722,7 @@ The W3C testing highlighted minor errors such as a couple of missing alt tags an
 
 ### JSHint Testing
 
-The JS testing was carried out using JSHint.
+The JS testing was carried out using JSHint and is free of errors.
 
 <details> 
         <summary>Click here to view the results</summary>
