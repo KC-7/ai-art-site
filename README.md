@@ -33,6 +33,7 @@ This web application allows users to create custom AI generated artwork using th
   * [Utilities](#utilities)
   * [Admin](#admin)
 - [OpenAI DALL-E 2](#openai-dall-e-2)
+- [Version Control](#version-control)
 - [Final Deployment (Post Completion of Project)](#final-deployment--post-completion-of-project-)
   * [Final Deployment to Heroku](#final-deployment-to-heroku)
   * [Custom Web Domain & SSL](#custom-web-domain---ssl)
@@ -47,9 +48,9 @@ This web application allows users to create custom AI generated artwork using th
   * [W3C Validation Testing](#w3c-validation-testing)
   * [JSHint Testing](#jshint-testing)
   * [Responsiveness Testing](#responsiveness-testing)
+    + [Visual Testing on Physical Devices](#visual-testing-on-physical-devices)
     + [Visual Testing using Google Inspect](#visual-testing-using-google-inspect)
     + [Visual Testing using AmIRepsponsive](#visual-testing-using-amirepsponsive)
-    + [Visual Testing on Physical Devices](#visual-testing-on-physical-devices)
 - [Bugs](#bugs)
   * [Resolved Bugs](#resolved-bugs)
   * [Outstanding Bugs](#outstanding-bugs)
@@ -58,7 +59,7 @@ This web application allows users to create custom AI generated artwork using th
 - [Local Set Up Guide](#local-set-up-guide)
 - [Credits](#credits)
   * [Useful Links & Documentation](#useful-links---documentation)
-- [Special Thanks](#special-thanks)
+  * [Special Thanks](#special-thanks)
 - [Contact](#contact)
 
 ---
@@ -524,6 +525,14 @@ You will need to import OpenAI and add the API key to your project.
 
 ---
 
+## Version Control
+
+Version control for this project is managed using Git commits. Each significant change or addition is documented through a commit, which includes a commit message describing the purpose and details of the change. These commit messages provide a chronological history of the project's development.
+
+To view the detailed commit messages history, you can visit the [commit history](https://github.com/KC-7/ai-art-site/commits/main) page on my GitHub page for this project.
+
+---
+
 ## Final Deployment (Post Completion of Project)
 
 ### Final Deployment to Heroku
@@ -635,7 +644,7 @@ You will need to import OpenAI and add the API key to your project.
 | <details> <summary>Go to the Sign Up page by selecting Register in the Nav Bar or clicking on the message on the home page </summary> <img src="readme_images/screenshots/signUp.png"> </details>        | Register page loads.           | ✅    |
 | <details> <summary>Register a new user by entering the required information </summary> <img src="readme_images/features/signUp.png"> </details>             | Creates a user profile, logs in the user, redirects to the homepage and displays successful sign in message.       | ✅    |
 | <details> <summary>Go to Generate Art page by selecting Generate Art in the Nav Bar</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Loads the Generates AI art page.                  | ✅    |
-| <details> <summary>Generate AI art by entering a text prompt and submitting it</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Displays loading wheel and loading message(s). Generates AI art based on the given text prompt and save as a public post. Redirect to post to display art.                  | ✅    |
+| <details> <summary>Generate AI art by entering a text prompt and submitting it</summary> <img src="readme_images/features/generateArt.png"> </details>            | Displays loading wheel and loading message(s). Generates AI art based on the given text prompt and save as a public post. Redirect to post to display art.                  | ✅    |
 | <details> <summary>View edit post page by selecting the edit button on your post </summary> <img src="readme_images/features/editPost.png"> </details>                 | Displays the post edit template                  | ✅    |
 | <details> <summary>Edit the post by entering the new description and clicking submit </summary> <img src="readme_images/screenshots/editPostFull.png"> </details>      | Displays the post page with updated description       | ✅    |
 | <details> <summary>Make a post private by selecting Make Private on your Public post</summary> <img src="readme_images/features/editPost.png"> </details>  | Redirects to the private post's detail view and removes the post from the public listing.     | ✅    |
@@ -649,14 +658,14 @@ You will need to import OpenAI and add the API key to your project.
 | <details> <summary>Comment on a post by entering a comment on a post and pressing submit</summary> <img src="readme_images/features/postComment.png"> </details>               | Displays the comment on the post page.        | ✅    |
 | <details> <summary>Download a post by selecting the download button below the post (when signed in)</summary> <img src="readme_images/features/downloadImage.png"> </details>    | Displays the image in a new tab so you can download it by right clicking and saving it.    | ✅    |
 | <details> <summary>Go to Sign Out page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signOut.png"> </details>         | Display the Sign Out Page.                                               | ✅    |
-| <details> <summary>Sign Out by selecting the Sign Out Button on the Sign Out Page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs out the user and redirects to the homepage. Displays success message.          | ✅    |
+| <details> <summary>Sign Out by selecting the Sign Out Button on the Sign Out Page</summary> <img src="readme_images/features/signOut.png"> </details>         | Logs out the user and redirects to the homepage. Displays success message.          | ✅    |
 | <details> <summary>Search for posts by entering word(s) into the search bar</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query on the search results page.                    | ✅    |
 | <details> <summary>Use pagination to go to next, last, previous, first page by using the buttons at the end of the Home or Search Page</summary> <img src="readme_images/features/pagination2.png"> </details> | Displays the posts on the different pages. | ✅    |
 | <details> <summary>Use Sort By Newest or Most Liked on the Home or Search Page</summary> <img src="readme_images/features/searchFilter.png"> </details>  | Adjusts the order the posts are sorted in.           | ✅    |
-| <details> <summary>View a post while logged out</summary> <img src="readme_images/screenshots/postLoggedOut.png"> </details>  | The post page will load. The download button for the image will display a sign up / sign in link instead.          | ✅    |
+| <details> <summary>View a post while logged out</summary> <img src="readme_images/screenshots/postLoggedOut.png"> </details>  | The post page will load. The download button for the image will display a sign up / sign in link instead. The user will not be able to like or comment on the post.     | ✅    |
 | <details> <summary>Go to Sign In Page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Displays the Sign In Page.                                                | ✅    |
-| <details> <summary>Log in an existing user by entering correct log in details on the sign in page</summary> <img src="readme_images/screenshots/signIn.png"> </details>      | Logs in the user and redirects to the homepage. Displays success message.     | ✅    |
-| <details> <summary>Go to a different users profile  by clicking on their username</summary> <img src="readme_images/screenshots/otherProfileUser.png"> </details>         | Displays their profile page. Does not display private posts or edit post button.            | ✅    |
+| <details> <summary>Log in an existing user by entering correct log in details on the sign in page</summary> <img src="readme_images/features/signIn.png"> </details>      | Logs in the user and redirects to the homepage. Displays success message.     | ✅    |
+| <details> <summary>Go to a different users profile by clicking on their username</summary> <img src="readme_images/screenshots/otherUserProfile.png"> </details>         | Displays their profile page. Does not display private posts or edit post button.            | ✅    |
 
 #### Admin Portal Tests
 
@@ -684,7 +693,7 @@ You will need to import OpenAI and add the API key to your project.
 | Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
 | Attempt to upload an image larger than 5mb                 | Displays "File size must not exceed 5 MB." and does not upload the post                             | ✅    |
 | Attempt to download a post image by right clicking on it   | Right click is disabled                                                                             | ✅    |
-| Test 404, change the slug to an invalid slug               | Displays the 404 page                                                                               | ✅    |
+| Test 404, change the post slug to an invalid slug          | Displays the 404 page                                                                               | ✅    |
 
 <details> <summary>Click here to see an example of an Error Message 🔧</summary> <img src="readme_images/features/errorMessage.png"> </details>
 
@@ -736,7 +745,7 @@ Note, I made further updates to the Sign In, Sign Out and Sign Up pages to impro
 The W3C testing highlighted minor errors such as a couple of missing alt tags and one open span which I have since resolved. There are no issues remaining. 
 
 <details> 
-        <summary>Click here to view the results</summary>
+        <summary>Click here to view the console for each page</summary>
 
 | **Page**     | **Picture**                                                                 |
 |--------------|-----------------------------------------------------------------------------|
@@ -769,8 +778,6 @@ The JS testing was carried out using JSHint and is free of errors.
 
 ### Responsiveness Testing
 
-#### Visual Testing using Google Inspect
-
 #### Visual Testing on Physical Devices
 
 | **Device**                           | **Width (px)** | **Height (px)** |
@@ -778,6 +785,8 @@ The JS testing was carried out using JSHint and is free of errors.
 | **Dell Monitor - 27" (Landscape)**   | 3840           | 2160            |
 | **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
 | **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
+
+#### Visual Testing using Google Inspect
 
 | **Device**                   | **Width (px)** | **Height (px)** |
 |------------------------------|---------------|------------------|
@@ -921,24 +930,24 @@ I would have liked to implement some of the below features but was unable to due
 
 - Set up automatic likes for users own posts
 
-- Set up advertising on the site to generate revenue
+- Set up advertising on the site to generate revenue / offset operational costs
 
 - Set up subscription tiers: Free, Paid Plan and Supreme Plan. Restrict daily generations based on tier and amount of adverts displayed etc.
 
 - Set up additional site analytics on the admin panel
 
-- Improve on the search feature, for example, if you search "car" it will also show results for "cartoon" but it will not show keyword with car models like "Lamborghini"
+- Improve on the search feature, for example, if you search "car" it will also show results for "cartoon" but it will not show keywords with car models like "Lamborghini"
 
-- Set up social media accounts
+- Set up social media accounts for Cre8AI.art
 
-- Set up a prompt generator using ChatGPT API. The user will be asked a series of questions, ChatGPT will use the users input to create a more detailed text prompt that would then be passed through the DALLE API to create the image, this will help the user create more detailed prompts for the text to art generations instead of simple user inputs like "A painting of a sunset". Example of detailed prompt below: 
+- Set up a prompt generator using ChatGPT API. The user will be asked a series of questions, ChatGPT will use the users input to create a more detailed text prompt that would then be passed through the DALLE API to create the image, this will help the user create more detailed prompts for the text to art generations instead of simple user inputs like "A painting of a sunset". The logic for this will be similar to an AI Travel Planner I set up which can be viewed [here](https://ai-testing.herokuapp.com/). Example of a detailed prompt below: 
     - *"Create a surrealistic artwork of a futuristic cityscape with flying cars and neon lights. The city should be situated on a giant floating platform that hovers over an endless abyss. In the foreground, there should be a mysterious figure wearing a hooded cloak, holding a glowing orb. The overall aesthetic should be cyberpunk with a touch of magic and mystery. The artwork should be bold and dynamic, with a strong use of contrasting colors and dramatic lighting. Let your imagination run wild and create a stunning visual representation of this futuristic world."*
 
 - Consider changing the admin static about pages from HTML to a standard text entry format so that the admins will not need to enter the data using any code.
 
 - I briefly set up a function to generate keywords automatically for each of the generated images using GPT3 (OpenAI) but decided not to implement this feature to keep API charges to a minimum, this could be added back in future.
 
-- I chose not to add a watermark to the generated images but this could be added in future.
+- I chose not to add a watermark to the generated images but this could be added in future if desired.
 
 [Go Back Up to Table of Contents 📗](#table-of-contents)
 
@@ -952,7 +961,7 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 
 - **NameCheap Domain Registration** - The total price for the domain, including privacy, was $3.88 for the first year.
 
-**Note:** free accounts may come with limitations which may need to be monitored, example, cloudinary provides 25 credits per month, after 100s of image generations, I have only used the following: `Credit Usage For Last 30 Days = 1.61 of 25 (6.44% used)`
+**Note:** free accounts may come with limitations which may need to be monitored, example, cloudinary provides 25 credits per month, after 100s of image generations, I have only used the following: `Credit Usage For Last 30 Days = 1.61 of 25 (6.44% used)`. I implemented an upload limit of 5mb to prevent users uploading large images via the upload section.
 
 **Images:**
 
@@ -963,7 +972,7 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 
 ---
 
-## Local Set Up Guide
+## Local Set Up Guide (High Level)
 
 - Clone the repository.
 
@@ -971,7 +980,7 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 
         pip install -r requirements.txt
 
-- Set up cloudinary and openai account.
+- Set up required accounts such as Cloudinary, OpenAI, etc.
 
 - Create a .env file with the required environment variables:
 
