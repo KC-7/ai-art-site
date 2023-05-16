@@ -49,10 +49,6 @@ a:hover {
     float: right;
 }
 
-/* .white-text {
-    color: var(--col-8);
-} */
-
 .thin {
     font-weight: 300;
 }
@@ -84,16 +80,6 @@ textarea {
     width: 100%;
 }
 
-.bg-message {
-    background-color: var(--col-3);
-    padding: 10px;
-    color: white;
-}
-
-.bg-message:hover {
-    background-color: var(--col-2);
-}
-
 .edit-container {
     padding: 28px;
 }
@@ -114,6 +100,16 @@ textarea {
 
 .main-bg {
     background-color: var(--col-8);
+}
+
+.bg-message {
+    background-color: var(--col-3);
+    padding: 10px;
+    color: white;
+}
+
+.bg-message:hover {
+    background-color: var(--col-2);
 }
 
 /* ------------------------------------------------- Image & Containers */

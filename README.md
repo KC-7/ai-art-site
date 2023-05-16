@@ -9,7 +9,7 @@
 
 ## Description
 
-This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required.
+This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required. The target audience of the site is individuals interested in Art or AI technology.
 
 
 <details open> <summary>Site Preview</summary> 
@@ -135,6 +135,8 @@ This web application allows users to create custom AI generated artwork using th
 - Cloudflare (Security Network / SSL Cert)
 
 - NameCheap (Domain Name Registrar)
+
+- Bootstrap (CSS Framework)
 
 ### Imports and Libraries
 
@@ -785,6 +787,24 @@ The W3C testing highlighted minor errors such as a couple of missing alt tags an
 
 </details>
 
+### Jigsaw Testing
+
+No errors where identified with the W3 Jigsaw tests.
+
+<details> 
+        <summary>Click here to view the results</summary>
+
+| **Page**     | **Picture**                                                                    |
+|--------------|--------------------------------------------------------------------------------|
+| **Home**     | ![Home](readme_images/tests/jigsaw/home.png)                                   |
+| **About**    | ![About](readme_images/tests/jigsaw/about.png)                                 |
+| **Post**     | ![Generate](readme_images/tests/jigsaw/post.png)                               |
+| **Profile**  | ![Profile](readme_images/tests/jigsaw/profile.png)                             |
+| **Sign In**  | ![SignIn](readme_images/tests/jigsaw/signIn.png)                               |
+| **Sign Up**  | ![SignUp](readme_images/tests/jigsaw/signUp.png)                               |
+
+</details>
+
 ### JSHint Testing
 
 The JS testing was carried out using JSHint and is free of errors.
@@ -870,13 +890,11 @@ The JS testing was carried out using JSHint and is free of errors.
 | Lighthouse testing recommended some minor improvements such as additional aria-labels and colour changes | I added additional aria-labels and made some colour changes to improve the score however it still advises that the colour contrast in the nav bar could be improved, I experimented with the colours from the colour pallet I created however the Lighthouse test didnt like any of them so I chose to stay with the initial colour as I think it looks well on the site. |
 | Table of Contents in Readme not working | I was unable to get the ToC to work with the emojis in the headings (this wasnt an issue on previous projects) so I removed the emojis. |
 
-
 ### Outstanding Bugs
 
 | Bug 🐛 🕷️ | Comments ❌ 🤔 |
 | --- | --- |
-| When the user generates an image with the same prompt as an image generated in April 2023, it may display the previous generated image on the users post instead of the newly generated image | This issue arose after I made adjustments to the Cloudinary Public Image IDs (arounbd the end of April) so this issue does not occur with duplicated generations where the original was created in May or after so I have left the bug present for now as it only affects a small number of images. |
-| I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortunately, it is not being reset until the user clicks generate (it was still operating correctly, but the value is not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benefit to the user. The displayed time is out by 1 hour. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
+| When the user generates an image with the same prompt as an image generated in April 2023, it may display the previous generated image on the users post instead of the newly generated image | This issue arose after I made adjustments to the Cloudinary Public Image IDs (around the end of April) so this issue does not occur with duplicated generations where the original was created in May or after so I have left this minor bug present for now as it only affects a small number of images. |
 | Change the profile URL from a String to a Slug using Slugify | I had issues when initially setting up the slug for this and used a string as a temporary fix. Unfortunately, I forgot about it and moved on, during my final review I noticed this again but am hesitant to make the change as I dont want to potentially cause a different issue / bug while too close to the submission deadline to test and resolve it. This will be planned in as a future fix. |
 | Unable to run automated tests on default database settings |<details> <summary> Unfortunately I left the automated testing late, I wrote basic tests and received this console error when attempting to run them. </summary> `gitpod /workspace/ai-art-site (main) $ python manage.py test Creating test database for alias 'default'... /workspace/.pip-modules/lib/python3.8/site-packages/django/db/backends/postgresql/base.py:304: RuntimeWarning: Normally Django will use a connection to the 'postgres' database to avoid running initialization queries against the production database when it's not needed (for example, when running tests). Django was unable to create a connection to the 'postgres' database and will use the first PostgreSQL database instead. warnings.warn(Got an error creating the test database: permission denied to create database`. </details> As a temporary fix, I can run the tests by changing the DATABASE setting in the settings.py file from `'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))` to `'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3'}`. I ran the test successfully and created a coverage report. [I have used Automated Testing in this repo so will use this for reference when developing the remainder of the automated tests](https://github.com/KC-7/unittest-student-class), this has been noted as a future development. |
 
@@ -887,6 +905,14 @@ The JS testing was carried out using JSHint and is free of errors.
 ## Future Development
 
 I would have liked to implement some of the below features but was unable to due to time constraints, the following could be planned for development at a later stage: 💭 💡
+
+- Set up a working generation counter that is displayed on the Generate Art Page, it should display how many generations the user has left and if they have reached the limit, it will display when they can create the next generation (i.e. date and time will be 24 hours after limit). I implemented a counter already but it was not resetting after 24 hours automatically, it was only being reset when the user attempted to generate the image and would then reset correctly. I removed the code for this from the Generate Art Template as it was not working as intended.
+
+<details> <summary>---------- Click here to see the code I removed from the Generate Art Template</summary> 
+
+`Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` 
+
+</details> 
 
 - Set up additional automated python tests and generate coverage report again
 
