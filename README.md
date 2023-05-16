@@ -58,6 +58,7 @@ This web application allows users to create custom AI generated artwork using th
     + [User Expectation Testing](#user-expectation-testing)
     + [Admin Portal Tests](#admin-portal-tests)
     + [Functionality / Input Validation](#functionality---input-validation)
+  * [Automated Testing](#automated-testing)
   * [Console](#console)
   * [Lighthouse Tests](#lighthouse-tests)
   * [W3C Validation Testing](#w3c-validation-testing)
@@ -686,8 +687,8 @@ To view the detailed commit messages history, you can visit the [commit history]
 
 | URL | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
-| [Go to Admin Portal](https://www.cre8ai.art/admin/) | Go to the Admin Portal Sign In Page | <details> <summary>Loads page and displays custom title</summary> <img src="readme_images/screenshots/adminPortal.png"> </details> | ✅ |
-| [Sign In to Admin Portal](https://www.cre8ai.art/admin/) | Sign In to the Admin Portal by entering correct name and password | <details> <summary>Loads Page and displays custom title and heading</summary> <img src="readme_images/screenshots/adminPortalSignIn.png"> </details> | ✅ |
+| [Go to Admin Portal](https://www.cre8ai.art/admin/) | Go to the Admin Portal Sign In Page | <details> <summary>Loads page and displays custom title</summary> <img src="readme_images/screenshots/adminPortalSignIn.png"> </details> | ✅ |
+| [Sign In to Admin Portal](https://www.cre8ai.art/admin/) | Sign In to the Admin Portal by entering correct name and password | <details> <summary>Loads Page and displays custom title and heading</summary> <img src="readme_images/screenshots/adminPortal.png"> </details> | ✅ |
 | [Go to Comments](https://www.cre8ai.art/admin/art_gallery/comment) | Check Comments Page | <details> <summary>Loads page. Displays body, name, post, created on + option to delete comments</summary> <img src="readme_images/screenshots/adminPortalComments.png"> </details> | ✅ |
 | [Go to Posts](https://www.cre8ai.art/admin/art_gallery/post) | Check Posts Page | <details> <summary>Loads page. Displays title, creator, likes, status, created on + options to like, make private and delete posts</summary> <img src="readme_images/screenshots/adminPortalPosts.png"> </details> | ✅ |
 | [Go to Profile](https://www.cre8ai.art/admin/art_gallery/profile) | Check Profile Page | <details> <summary>Loads page. Displays user, profile picture id, total posts, bio, last generation timestamp and generation count + option to delete users, reset generation counter to 0 or reset profile picture to default</summary> <img src="readme_images/screenshots/adminPortalProfile.png"> </details> | ✅ |
@@ -718,7 +719,7 @@ To view the detailed commit messages history, you can visit the [commit history]
 
 ### Automated Testing
 
-I left the implementation of Automated Testing late so its not as thorough as I would have liked. I have listed additional automated tests as a [future development](future-development).
+I left the implementation of Automated Testing late and focused on the manual testing so its not as thorough as I would have liked. I have listed additional automated tests as a [future development](future-development).
 
 <details> <summary>Click here to see the coverage report</summary> <img src="readme_images/tests/automated/automatedTestCoverageReport.png"> </details>
 
@@ -874,10 +875,10 @@ The JS testing was carried out using JSHint and is free of errors.
 
 | Bug 🐛 🕷️ | Comments ❌ 🤔 |
 | --- | --- |
-| When the user generates an image with the same prompt as an image generated prior to May, it may display the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the original was created in May or after so I have left the bug present for now until I have more time to resolve. |
-| I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortunately, it was not being reset until the user clicked generate (it was still operating correctly, but the value was not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benefit to the user. The displayed time is out by 1 hour. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
+| When the user generates an image with the same prompt as an image generated in April 2023, it may display the previous generated image on the users post instead of the newly generated image | This issue arose after I made adjustments to the Cloudinary Public Image IDs (arounbd the end of April) so this issue does not occur with duplicated generations where the original was created in May or after so I have left the bug present for now as it only affects a small number of images. |
+| I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortunately, it is not being reset until the user clicks generate (it was still operating correctly, but the value is not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benefit to the user. The displayed time is out by 1 hour. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
 | Change the profile URL from a String to a Slug using Slugify | I had issues when initially setting up the slug for this and used a string as a temporary fix. Unfortunately, I forgot about it and moved on, during my final review I noticed this again but am hesitant to make the change as I dont want to potentially cause a different issue / bug while too close to the submission deadline to test and resolve it. This will be planned in as a future fix. |
-| Unable to run automated tests |<details> <summary> Unfortunately I left the automated testing late, I wrote basic tests and received this console error when attempting to run them. </summary> `gitpod /workspace/ai-art-site (main) $ python manage.py test Creating test database for alias 'default'... /workspace/.pip-modules/lib/python3.8/site-packages/django/db/backends/postgresql/base.py:304: RuntimeWarning: Normally Django will use a connection to the 'postgres' database to avoid running initialization queries against the production database when it's not needed (for example, when running tests). Django was unable to create a connection to the 'postgres' database and will use the first PostgreSQL database instead. warnings.warn(Got an error creating the test database: permission denied to create database`. </details> As a temporary fix, I can run the tests by changing the DATABASE setting in the settings.py file from `'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))` to `'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3'}`. I ran the test successfully and created a coverage report. [I have used Automated Testing in this repo so will use this for reference when developing the remainder of the automated tests.](https://github.com/KC-7/unittest-student-class), this has been noted as a future development. |
+| Unable to run automated tests on default database settings |<details> <summary> Unfortunately I left the automated testing late, I wrote basic tests and received this console error when attempting to run them. </summary> `gitpod /workspace/ai-art-site (main) $ python manage.py test Creating test database for alias 'default'... /workspace/.pip-modules/lib/python3.8/site-packages/django/db/backends/postgresql/base.py:304: RuntimeWarning: Normally Django will use a connection to the 'postgres' database to avoid running initialization queries against the production database when it's not needed (for example, when running tests). Django was unable to create a connection to the 'postgres' database and will use the first PostgreSQL database instead. warnings.warn(Got an error creating the test database: permission denied to create database`. </details> As a temporary fix, I can run the tests by changing the DATABASE setting in the settings.py file from `'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))` to `'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3'}`. I ran the test successfully and created a coverage report. [I have used Automated Testing in this repo so will use this for reference when developing the remainder of the automated tests](https://github.com/KC-7/unittest-student-class), this has been noted as a future development. |
 
 [Go Back Up to Table of Contents 📗](#table-of-contents)
 
@@ -885,9 +886,9 @@ The JS testing was carried out using JSHint and is free of errors.
 
 ## Future Development
 
-I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage: 💭 💡
+I would have liked to implement some of the below features but was unable to due to time constraints, the following could be planned for development at a later stage: 💭 💡
 
-- Set up aadditional automated python tests and generate coverage report again.
+- Set up additional automated python tests and generate coverage report again
 
 - Set up additional sign up information as a requirement, such as email address, etc. 
 
