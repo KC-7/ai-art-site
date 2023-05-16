@@ -1,13 +1,28 @@
 # [Cre8AI.art 🎨](https://www.cre8ai.art/)
 
 ## Live Links
-- Custom Domain: https://www.cre8ai.art/
-- Heroku Link: https://ai-art-site.herokuapp.com/
 
+| Description     | Site Link                                                                | Admin Link                                                                           |
+| --------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| Custom Domain   | [https://www.cre8ai.art/](https://www.cre8ai.art/)                       | [https://www.cre8ai.art/admin/](https://www.cre8ai.art/admin/)                       |
+| Heroku Link     | [https://ai-art-site.herokuapp.com/](https://ai-art-site.herokuapp.com/) | [https://ai-art-site.herokuapp.com/admin/](https://ai-art-site.herokuapp.com/admin/) |
 
 ## Description
 
 This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required.
+
+
+<details open> <summary>Site Preview</summary> 
+
+<img src="readme_images/screenshots/siteSmall.gif" style="max-width: 66%;">
+
+</details>
+
+<details open> <summary>Admin Portal Preview</summary> 
+
+<img src="readme_images/screenshots/adminSmall.gif" style="max-width: 66%;">
+
+</details>
 
 <details> <summary>Click here to see a preview of the homepage</summary> <img src="readme_images/screenshots/homeFull.png" style="max-width: 66%;"> </details>
 
