@@ -716,6 +716,16 @@ To view the detailed commit messages history, you can visit the [commit history]
 
 <details> <summary>Click here to see the 5mb Limit Message</summary> <img src="readme_images/features/uploadMaxSize.png"> </details>
 
+### Automated Testing
+
+I left the implementation of Automated Testing late so its not as thorough as I would have liked. I have listed additional automated tests as a [future development](future-development).
+
+<details> <summary>Click here to see the coverage report</summary> <img src="readme_images/tests/automated/automatedTestCoverageReport.png"> </details>
+
+<details> <summary>Click here to see the automated test result</summary> <img src="readme_images/tests/automated/automatedTest1.png"> </details>
+
+I encountered an issue when running the test which I have detailed in the [Bugs Section](#bugs).
+
 ### Console
 
 I found no remaining console error during final testing as showen below.
@@ -829,6 +839,8 @@ The JS testing was carried out using JSHint and is free of errors.
 
 <img src="readme_images/tests/responsive/responsiveIndex.png" style="max-width: 66%;">
 
+<small>Note: Welcome Message styling has been updated</small>
+
 [Go Back Up to Table of Contents 📗](#table-of-contents)
 
 ---
@@ -865,6 +877,7 @@ The JS testing was carried out using JSHint and is free of errors.
 | When the user generates an image with the same prompt as an image generated prior to May, it may display the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the original was created in May or after so I have left the bug present for now until I have more time to resolve. |
 | I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortunately, it was not being reset until the user clicked generate (it was still operating correctly, but the value was not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benefit to the user. The displayed time is out by 1 hour. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
 | Change the profile URL from a String to a Slug using Slugify | I had issues when initially setting up the slug for this and used a string as a temporary fix. Unfortunately, I forgot about it and moved on, during my final review I noticed this again but am hesitant to make the change as I dont want to potentially cause a different issue / bug while too close to the submission deadline to test and resolve it. This will be planned in as a future fix. |
+| Unable to run automated tests | Unfortunately I left the automated testing late, I wrote basic tests but received the following console error when attempting to run them `gitpod /workspace/ai-art-site (main) $ python manage.py test Creating test database for alias 'default'... /workspace/.pip-modules/lib/python3.8/site-packages/django/db/backends/postgresql/base.py:304: RuntimeWarning: Normally Django will use a connection to the 'postgres' database to avoid running initialization queries against the production database when it's not needed (for example, when running tests). Django was unable to create a connection to the 'postgres' database and will use the first PostgreSQL database instead. warnings.warn(Got an error creating the test database: permission denied to create database`. As a temporary fix, I can run the tests by changing the DATABASE setting in the settings.py file from `'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))` to `'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3'}`. I ran the test successfully and created a coverage report. [I have used Automated Testing in this repo so will use this for reference when developing the remainder of the automated tests.](https://github.com/KC-7/unittest-student-class), this has been noted as a future development. |
 
 [Go Back Up to Table of Contents 📗](#table-of-contents)
 
@@ -874,7 +887,7 @@ The JS testing was carried out using JSHint and is free of errors.
 
 I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage: 💭 💡
 
-- Set up automated python tests and coverage report
+- Set up aadditional automated python tests and generate coverage report again.
 
 - Set up additional sign up information as a requirement, such as email address, etc. 
 
