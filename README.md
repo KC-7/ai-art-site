@@ -1,11 +1,11 @@
 # [Cre8AI.art 🎨](https://www.cre8ai.art/)
 
-## Live Links 🚀 🌐
+## Live Links
 - Custom Domain: https://www.cre8ai.art/
 - Heroku Link: https://ai-art-site.herokuapp.com/
 
 
-## Description 📝
+## Description
 
 This web application allows users to create custom AI generated artwork using the impressive DALLE-2 API by OpenAI. The generated image is automatically shared as a public post. The user can view it, change it to private, edit the description, download the image or delete the post. User accounts are limited to 5 generations per day. Users can also use the upload form to share a generation from a different site (example, stable diffusion). The site also has an About section which is managed from the sites admin panel, this allows admins to alter and create additional pages as required.
 
@@ -13,50 +13,57 @@ This web application allows users to create custom AI generated artwork using th
 
 ---
 
-## Table of Contents 📖
+## Table of Contents
 
-- [Live Links 🚀 🌐](#live-links------)
-- [Description 📝](#description---)
-- [Table of Contents 📖](#table-of-contents---)
-- [Main Features 🎨](#main-features---)
-- [Technologies & Services Used 💻 🌎](#technologies---services-used------)
+- [Live Links](#live-links)
+- [Description](#description)
+- [Table of Contents](#table-of-contents)
+- [Main Features](#main-features)
+- [Technologies & Services Used](#technologies---services-used)
   * [Main Technologies and Services](#main-technologies-and-services)
   * [Imports and Libraries](#imports-and-libraries)
 - [Planning & Wireframes](#planning---wireframes)
-- [Agile Sprint List 📅 🏃‍♂️💨](#agile-sprint-list-----------)
-- [Coding Overview 🖥️ 🖱️](#coding-overview--------)
-  * [URLs 🌐](#urls---)
-  * [Models 📄](#models---)
-  * [Views 👀](#views---)
-  * [Forms 📝](#forms---)
-  * [Utilities 🛠️](#utilities----)
-  * [Admin 👥](#admin---)
-- [OpenAI Dall-E 2](#openai-dall-e-2)
-- [Deployment (Prior to Completing Project) 🚀](#deployment--prior-to-completing-project----)
-  * [Step 1: Setting up the Django Project 🛠️ 1️⃣](#step-1--setting-up-the-django-project-----1--)
-  * [Step 2: Deploying App to Heroku 🚀 2️⃣](#step-2--deploying-app-to-heroku----2--)
-- [Final Deployment (Post Completion of Project) 🚀](#final-deployment--post-completion-of-project----)
+- [Agile Sprint List](#agile-sprint-list)
+- [Deployment (Prior to Completing Project)](#deployment--prior-to-completing-project-)
+- [Coding Overview](#coding-overview)
+  * [URLs](#urls)
+  * [Models](#models)
+  * [Views](#views)
+  * [Forms](#forms)
+  * [Utilities](#utilities)
+  * [Admin](#admin)
+- [OpenAI DALL-E 2](#openai-dall-e-2)
+- [Final Deployment (Post Completion of Project)](#final-deployment--post-completion-of-project-)
   * [Final Deployment to Heroku](#final-deployment-to-heroku)
-  * [Custom Web Domain & SSL 💻 🌐](#custom-web-domain---ssl------)
-  * [Custom Email Domain 📨 🌐](#custom-email-domain------)
-- [Bugs 🐛 🐌 🕷️](#bugs----------)
-  * [Resolved Bugs ✅ 🐞](#resolved-bugs-----)
-  * [Outstanding Bugs ❌ 🤔](#outstanding-bugs-----)
-- [Testing 🕵️ 💻](#testing-------)
-  * [Manual Testing 🔎](#manual-testing---)
-    + [User Expectation Testing 👩‍🦰‍👦](#user-expectation-testing---------)
-    + [Functionality/Input-Validation 🛠️ 🔧](#functionality-input-validation-------)
-- [Future Development 💭 💡](#future-development------)
-- [Summary of Charges](#summary-of-charges)
-- [Local Set Up Guide 🖥️ 🛠️](#local-set-up-guide--------)
-- [Useful Links & Documentation 📎📖](#useful-links---documentation-----)
-- [Credits 👏 🙌](#credits------)
-- [Contact 📨 📫](#contact------)
-
+  * [Custom Web Domain & SSL](#custom-web-domain---ssl)
+  * [Custom Email Domain](#custom-email-domain)
+- [Testing](#testing)
+  * [Manual Testing](#manual-testing)
+    + [User Expectation Testing](#user-expectation-testing)
+    + [Admin Portal Tests](#admin-portal-tests)
+    + [Functionality / Input Validation](#functionality---input-validation)
+  * [Console](#console)
+  * [Lighthouse Tests](#lighthouse-tests)
+  * [W3C Validation Testing](#w3c-validation-testing)
+  * [JSHint Testing](#jshint-testing)
+  * [Responsiveness Testing](#responsiveness-testing)
+    + [Visual Testing using Google Inspect](#visual-testing-using-google-inspect)
+    + [Visual Testing using AmIRepsponsive](#visual-testing-using-amirepsponsive)
+    + [Visual Testing on Physical Devices](#visual-testing-on-physical-devices)
+- [Bugs](#bugs)
+  * [Resolved Bugs](#resolved-bugs)
+  * [Outstanding Bugs](#outstanding-bugs)
+- [Future Development](#future-development)
+- [Summary of Charges & Monitoring Usage](#summary-of-charges---monitoring-usage)
+- [Local Set Up Guide](#local-set-up-guide)
+- [Credits](#credits)
+  * [Useful Links & Documentation](#useful-links---documentation)
+- [Special Thanks](#special-thanks)
+- [Contact](#contact)
 
 ---
 
-## Main Features 🎨
+## Main Features
 
 <details> <summary>User registration and authentication 📝</summary> <img src="readme_images/features/signUp.png" style="max-width: 66%;"> </details>
 
@@ -78,9 +85,11 @@ This web application allows users to create custom AI generated artwork using th
 
 <details> <summary>Admin panel for managing posts, comments, user profiles, and static pages 👥</summary> <img src="readme_images/features/adminPortal.png" style="max-width: 66%;"> </details>
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Technologies & Services Used 💻 🌎
+## Technologies & Services Used
 
 ### Main Technologies and Services
 
@@ -161,6 +170,8 @@ This web application allows users to create custom AI generated artwork using th
 
 </details>
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
 ## Planning & Wireframes
@@ -171,15 +182,17 @@ I created the following wireframe sketches prior to creating the project. I want
 
 <details> <summary>Post Page Plan</summary> <img src="readme_images/setup/postPlan.jpg" style="max-width: 66%;"> </details>
 
-My initial goal was to set up a site that allows users to post generations from other resources then to implement additional features such as the AI Art Generations if I had time.
+As I was using an Agile approach, my initial goal was to set up a site that allows users to post generations from other resources then to implement additional features such as the AI Art Generations if I had time.
+
+[Go Back Up to Table of Contents 📗](#table-of-contents)
 
 ---
 
-## Agile Sprint List 📅 🏃‍♂️💨
+## Agile Sprint List 
 
 [Click Here to see the Agile Planning Board on GitHub](https://github.com/users/KC-7/projects/4/views/1)
 
-<details> <summary>Or click here to see an image of the Agile Planning Board</summary> <img src="readme_images/screenshots/userStories.png" style="max-width: 66%;"> </details>
+<details> <summary>Or click here to see an image of the Agile Planning Board 📅 🏃‍♂️💨</summary> <img src="readme_images/screenshots/userStories.png" style="max-width: 66%;"> </details>
 
 **1️⃣ Sprint 1**
 - Create & Moderate Posts
@@ -223,9 +236,11 @@ My initial goal was to set up a site that allows users to post generations from 
 - Admin portal features
 - etc
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Deployment (Prior to Completing Project) 🚀
+## Deployment (Prior to Completing Project)
 
 <details> <summary>Step 1: Setting up the Django Project 🛠️ 1️⃣</summary>
 
@@ -396,13 +411,15 @@ My initial goal was to set up a site that allows users to post generations from 
 
 </details>
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Coding Overview 🖥️ 🖱️
+## Coding Overview
 
-### URLs 🌐
+### URLs
 
-The following URLs are used in the project:
+The following URLs are used in the project: 🌐
 
 | URL                         | Description                                        |
 | ---                         | ---                                                |
@@ -421,7 +438,7 @@ The following URLs are used in the project:
 | `/post_edit/<slug:slug>/`   | Form for editing a posted image's description      |
 | `/about/<slug:slug>/`       | Detail page for a specific static page             |
 
-### Models 📄
+### Models
 
 - **Post**: A model for image posts, which includes fields for the image, title, slug, creator, timestamps, description, status (private/public), likes, and approval status.
 
@@ -431,7 +448,7 @@ The following URLs are used in the project:
 
 - **StaticPage**: A model for admin-created static pages, which includes fields for the title, slug, content, and status (private/public).
 
-### Views 👀
+### Views
 
 - **RegisterUser**: Handles user registration and creates a profile for the registered user.
 
@@ -461,7 +478,7 @@ The following URLs are used in the project:
 
 - **AboutView**: Handles the about page and displays all of the admins' static pages.
 
-### Forms 📝
+### Forms
 
 - **CommentForm**: A form for adding comments to posts.
 
@@ -473,11 +490,11 @@ The following URLs are used in the project:
 
 - **EditPostForm**: A form for editing posted images' descriptions.
 
-### Utilities 🛠️
+### Utilities
 
 - **generate_image_from_text(prompt)**: A function that generates an image from a text prompt using OpenAI's API. Takes a string 'prompt' as an argument and returns the URL of the generated image. Raises a ValueError if the API request is not successful.
 
-### Admin 👥
+### Admin
 
 - **PostAdmin**: Admin configuration for the image posts, including list display, search fields, prepopulated fields, list filters, and custom actions such as making posts private and liking posts.
 
@@ -486,6 +503,8 @@ The following URLs are used in the project:
 - **ProfileAdmin**: Admin configuration for the users' profiles, including list display, search fields, and custom actions such as resetting profile pictures and resetting daily generation count.
 
 - **StaticPageAdmin**: Admin configuration for the static pages displayed in the About section, including list display, search fields, prepopulated fields, and custom actions such as making static pages private.
+
+[Go Back Up to Table of Contents 📗](#table-of-contents)
 
 ---
 
@@ -501,9 +520,11 @@ You will need to import OpenAI and add the API key to your project.
 
 <details> <summary>The free account currently comes with $18 US dollars worth of free credit, you can check and monitor your API usage in the Usage section of their site. Note: the free credits expire after 3 months.</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Final Deployment (Post Completion of Project) 🚀
+## Final Deployment (Post Completion of Project)
 
 ### Final Deployment to Heroku
 
@@ -516,7 +537,7 @@ You will need to import OpenAI and add the API key to your project.
 - Remove `'DISABLE_COLLECTSTATIC'` from the config vars.
 - Trigger a manual deployment in the Deployment Section for the project.
 
-### Custom Web Domain & SSL 💻 🌐
+### Custom Web Domain & SSL
 
 **On GitPod:**
 
@@ -584,26 +605,30 @@ You will need to import OpenAI and add the API key to your project.
 <details> <summary>NameCheap Nameservers</summary> <img src="readme_images/setup/namecheapNameservers.png" style="max-width: 66%;"> </details>
 <details> <summary>Clouflare Overview</summary> <img src="readme_images/setup/cloudflareOverview.png" style="max-width: 66%;"> </details>
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-### Custom Email Domain 📨 🌐
+### Custom Email Domain
 
-<details> <summary>To avoid paying to use the custom web domain as an email domain, I found the instructions in the following tutorial which explained how to set it up on Gmail for free: </summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
+<details> <summary>To avoid paying to use the custom web domain as an email domain, I found the instructions in the following tutorial which explained how to set it up on Gmail for free: 📨 🌐</summary> <img src="readme_images/setup/namecheapEmailPrices.png" style="max-width: 66%;"> </details>
 
 | Link | Additional Set Up Requirements |
 | ---- | ------------------------------ |
 | [Youtube: Setting Up Free Custom Email Domain](https://www.youtube.com/watch?v=a322wIdQe4c) | Note the following required changes since this video was uploaded as described by Wiyre, the video uploader: _"For people watching this on June 2022 and up with authentification failed error, Less secure app Access is not available anymore, so here are the steps that worked for me: (1) you have to Go to Manage your Google Account - Security. (2) Then Enable 2-Step verifications. (3) Go to App password and select ''Mail'' and the device you are on (4) Click Generate and Note the password (it will show it only one time) (5) Go back to the login window where it says: ''Authentification failed, Please check...'' (6) Enter your login email, and as the password put the NEW PASSWORD google gave you on the App Password (7) Verify the code and voilà! Your done"_ |
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Testing 🕵️ 💻
+## Testing
 
-### Manual Testing 🔎
+### Manual Testing
 
-#### User Expectation Testing 👩‍🦰‍👦
+#### User Expectation Testing
 
-| Test Case                                                                                                                     | Expected Result                                                                                    | Result |
-|-------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|--------|
+| Test Case                                                                                                                     | Expected Result                                                                               | Result |
+|-------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|--------|
 | <details> <summary>Load the home page by going to the live link</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>   | Home page loads and displays welcome message for new or signed out users.    | ✅    |
 | <details> <summary>View the about page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/about.png"> </details>     | Displays the about page with a list of admin-created static pages.           | ✅    |
 | <details> <summary>View a static page by selecting one of the titles in the about page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page.          | ✅    |
@@ -625,24 +650,25 @@ You will need to import OpenAI and add the API key to your project.
 | <details> <summary>Download a post by selecting the download button below the post (when signed in)</summary> <img src="readme_images/features/#.png"> </details>    | Displays the image in a new tab so you can download it by right clicking and saving it.    | ✅    |
 | <details> <summary>Go to Sign Out page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Display the Sign Out Page.                                               | ✅    |
 | <details> <summary>Sign Out by selecting the Sign Out Button on the Sign Out Page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs out the user and redirects to the homepage. Displays success message.          | ✅    |
-| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query on the search results page.                                           | ✅    |
+| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query on the search results page.                    | ✅    |
 | Use pagination to go to next, last, previous, first page by using the buttons at the end of the Home or Search Page | Displays the posts on the different pages.            | ✅    |
 | Use Sort By Newest or Most Liked on the Home or Search Page | Adjusts the order the posts are sorted in.           | ✅    |
 | View a post while logged out | The post page will load. The download button for the image will display a sign up / sign in link instead.          | ✅    |
 | <details> <summary>Go to Sign In Page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Displays the Sign In Page.                                                | ✅    |
 | <details> <summary>Log in an existing user by entering correct log in details on the sign in page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage. Displays success message.     | ✅    |
 
-#### Admin portal tests
+#### Admin Portal Tests
 
 | URL | Action | Expected Result | Actual Result |
 | --- | --- | --- | --- |
-| [Go to Admin Portal](https://www.cre8ai.art/admin/) | Sign In to the Admin Portal | Displays custom title and heading | ✅ |
-| [Go to Comments](https://www.cre8ai.art/admin/art_gallery/comment) | Check Comments Page | Displays body, name, post, created on + option to delete comments | ✅ |
-| [Go to Posts](https://www.cre8ai.art/admin/art_gallery/post) | Check Posts Page | Displays title, creator, likes, status, created on + option to like, make private and delete posts | ✅ |
-| [Go to Profile](https://www.cre8ai.art/admin/art_gallery/profile) | Check Profile Page | Displays user, profile picture id, total posts, bio, last generation timestamp and generation count + option to delete users, reset generation counter to 0 or reset profile picture to default | ✅ |
-| [Go to Static Pages](https://www.cre8ai.art/admin/art_gallery/staticpage) | Check Static Pages Page | Displays title, slug, content and status + option to delete or make private | ✅ |
+| [Go to Admin Portal](https://www.cre8ai.art/admin/) | Go to the Admin Portal Sign In Page | <details> <summary>Loads page and displays custom title</summary> <img src="readme_images/screenshots/adminPortal.png"> </details> | ✅ |
+| [Sign In to Admin Portal](https://www.cre8ai.art/admin/) | Sign In to the Admin Portal by entering correct name and password | <details> <summary>Loads Page and displays custom title and heading</summary> <img src="readme_images/screenshots/adminPortalSignIn.png"> </details> | ✅ |
+| [Go to Comments](https://www.cre8ai.art/admin/art_gallery/comment) | Check Comments Page | <details> <summary>Loads page. Displays body, name, post, created on + option to delete comments</summary> <img src="readme_images/screenshots/adminPortalComments.png"> </details> | ✅ |
+| [Go to Posts](https://www.cre8ai.art/admin/art_gallery/post) | Check Posts Page | <details> <summary>Loads page. Displays title, creator, likes, status, created on + options to like, make private and delete posts</summary> <img src="readme_images/screenshots/adminPortalPosts.png"> </details> | ✅ |
+| [Go to Profile](https://www.cre8ai.art/admin/art_gallery/profile) | Check Profile Page | <details> <summary>Loads page. Displays user, profile picture id, total posts, bio, last generation timestamp and generation count + option to delete users, reset generation counter to 0 or reset profile picture to default</summary> <img src="readme_images/screenshots/adminPortalProfile.png"> </details> | ✅ |
+| [Go to Static Pages](https://www.cre8ai.art/admin/art_gallery/staticpage) | Check Static Pages Page | <details> <summary>Loads page. Displays title, slug, content and status + option to delete or make private</summary> <img src="readme_images/screenshots/adminPortalStatic.png"> </details> | ✅ |
 
-#### Functionality / Input Validation 🛠️ 🔧
+#### Functionality / Input Validation  
 
 | Test Case                                                  | Expected Result                                                                                     | Result |
 |------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|--------|
@@ -658,9 +684,9 @@ You will need to import OpenAI and add the API key to your project.
 | Test 404, change the slug to an invalid slug               | Displays the 404 page                                                                               | ✅    |
 | Attempt to download a post image by right clicking on it   | Right click is disabled                                                                             | ✅    |
 
-<details> <summary>Click here to see an example of an Error Message</summary> <img src="readme_images/features/errorMessage.png"> </details>
+<details> <summary>Click here to see an example of an Error Message 🔧</summary> <img src="readme_images/features/errorMessage.png"> </details>
 
-<details> <summary>Click here to see the 404 Page</summary> <img src="readme_images/screenshots/404.png"> </details>
+<details> <summary>Click here to see the 404 Page 🛠️</summary> <img src="readme_images/screenshots/404.png"> </details>
 
 ### Console
 
@@ -775,13 +801,15 @@ The JS testing was carried out using JSHint and is free of errors.
 | **Dell Monitor - 27" (Landscape)**   | 3840           | 2160            |
 | **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Bugs 🐛 🐌 🕷️
+## Bugs 
 
-### Resolved Bugs ✅ 🐞
+### Resolved Bugs 
 
-| Bug | Fix |
+| Bug 🐛 🕷️ | Fix ✅ 🐞 |
 | --- | --- |
 | HTML code being displayed on the post previews | I used the striptags filter to remove the code tags |
 | Post titles and slugs too long | I set up truncating to reduce the length. |
@@ -794,19 +822,21 @@ The JS testing was carried out using JSHint and is free of errors.
 | Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
 | During initial set up for unique slug and title it was operating correctly, I made changes to this after and then noticed when a duplicate prompt was used, the slug was adding 1 to the end and the post title was adding 2 to the end | I resolved this by adjusting the initial counter value in the view. |
 
-### Outstanding Bugs ❌ 🤔
+### Outstanding Bugs
 
-| Bug | Comments |
+| Bug 🐛 🕷️ | Comments ❌ 🤔 |
 | --- | --- |
 | When the user generates an image with the same prompt as an image generated prior to May, it may display the previous generated image on the users post instead of the newly generated images | This issue arose after I made adjustments to the Cloudinary Public Image IDs, this issue does not occur with duplicated generations where the original was created in May or after so I have left the bug present for now until I have more time to resolve. |
 | I wanted to display the number of art generations the user created in the last 24 hours or how many generations they have left on the Generate Art page. Unfortunately, it was not being reset until the user clicked generate (it was still operating correctly, but the value was not being reset from 5 to 0 automatically). | I changed the HTML code to display the generation count and last generation instead. I was thinking of removing it for now but figured this provides a benefit to the user. The displayed time is out by 1 hour. <details> <summary> Click here to see the adjusted HTML. </summary> `Your generation count is at {{ request.user.profile.generation_count }}. Your last generation was {{ request.user.profile.last_generation_timestamp }}.` </details> |
 | Change the profile URL from a String to a Slug using Slugify | I had issues when initially setting up the slug for this and used a string as a temporary fix. Unfortunately, I forgot about it and moved on, during my final review I noticed this again but am hesitant to make the change as I dont want to potentially cause a different issue / bug while too close to the submission deadline to test and resolve it. This will be planned in as a future fix. |
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Future Development 💭 💡
+## Future Development
 
-I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage:
+I would have liked to implement some of the below features but was unable to due to timing restraints, the following could be planned for development at a later stage: 💭 💡
 
 - Set up automated python tests and coverage report
 
@@ -898,6 +928,8 @@ I would have liked to implement some of the below features but was unable to due
 
 - I chose not to add a watermark to the generated images but this could be added in future.
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
 ## Summary of Charges & Monitoring Usage
@@ -915,9 +947,11 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 <details> <summary>Cloundinary Usage</summary> <img src="readme_images/setup/cloudinaryUsage.png" style="max-width: 66%;"> </details>
 <details> <summary>OpenAI Usage</summary> <img src="readme_images/setup/openaiUsage.png" style="max-width: 66%;"> </details>
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Local Set Up Guide 🖥️ 🛠️
+## Local Set Up Guide
 
 - Clone the repository.
 
@@ -946,11 +980,15 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 
 - You should now be able to access the application locally at http://localhost:8000.
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Useful Links & Documentation 📎📖
+## Credits
 
-| Link                                                                                                                    | Description                                                                                                       |
+### Useful Links & Documentation 
+
+| Link 📖                                                                                                                | Description 📎                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | [Django documentation](https://docs.djangoproject.com/en/3.2/)                                                          | Official Django documentation                                                                                     |
 | [Django views](https://docs.djangoproject.com/en/3.2/topics/class-based-views/)                                         | Class-based views in Django                                                                                       |
@@ -987,9 +1025,9 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 | [Markdown Table of Contents Generator](http://ecotrust-canada.github.io/markdown-toc/)                                  | Table of contents generated with markdown-toc                                                                     |
 | [Wix Logo Maker](https://www.wix.com/logo/maker)                                                                        | The Logo was made using Wix's Free Logo Maker                                                                     |
 
-## Credits 👏 🙌
+## Special Thanks
 
-I would like to give credit to the all of the content creators and developers of the above documentation and listed resources. In addition to this, I would like to give a lot of credit to the following resources: 
+I would like to give credit to the all of the content creators and developers of the above documentation and listed resources. In addition to this, I would like to give a lot of credit to the following resources:  👏 🙌
 
 - **Code Institute** - I've been learning how to code through the Code Institute, I found the information learned so far has given me the ability to create most of this project, I found the walk-through Django Blog Project very helpful and it was used as the base for this project and expanded on from there. The Django "cheat sheet for deployment" was also really useful for the deployment stages, most of which has been reiterated in the Deployment section above.
 
@@ -999,10 +1037,16 @@ I would like to give credit to the all of the content creators and developers of
 
 - **YouTube** - I watched many videos on how to set up and use the OpenAI API, create Django projects, configure custom domains, set up free SSL cert, set up free custom email domains, etc, most of which have been listed above. I enjoy visual learning and find watching tutorials very useful.
 
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
 ---
 
-## Contact 📨 📫
+## Contact
 
-Thanks for getting this far! If you would like to reach out to me, I can be contacted directly at the following email address: 
+Thanks for getting this far! If you would like to reach out to me, I can be contacted directly at the following email address:  📨 📫
 
 - <a href="mailto:Kieran@KC-7.com">Kieran@KC-7.com</a>
+
+[Go Back Up to Table of Contents 📗](#table-of-contents)
+
+---
