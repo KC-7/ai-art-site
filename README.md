@@ -632,30 +632,31 @@ You will need to import OpenAI and add the API key to your project.
 | <details> <summary>Load the home page by going to the live link</summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>   | Home page loads and displays welcome message for new or signed out users.    | ✅    |
 | <details> <summary>View the about page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/about.png"> </details>     | Displays the about page with a list of admin-created static pages.           | ✅    |
 | <details> <summary>View a static page by selecting one of the titles in the about page</summary> <img src="readme_images/screenshots/staticPageExample.png"> </details>   | Displays the content of the static page.          | ✅    |
-| <details> <summary>Go to the Sign Up page by selecting Register in the Nav Bar or clicking on the message on the home page </summary> <img src="readme_images/screenshots/homeLoggedOut.png"> </details>        | Register page loads.           | ✅    |
-| <details> <summary>Register a new user by entering the required information </summary> <img src="readme_images/screenshots/signUp.png"> </details>             | Creates a user profile, logs in the user, redirects to the homepage and displays successful sign in message.       | ✅    |
+| <details> <summary>Go to the Sign Up page by selecting Register in the Nav Bar or clicking on the message on the home page </summary> <img src="readme_images/screenshots/signUp.png"> </details>        | Register page loads.           | ✅    |
+| <details> <summary>Register a new user by entering the required information </summary> <img src="readme_images/features/signUp.png"> </details>             | Creates a user profile, logs in the user, redirects to the homepage and displays successful sign in message.       | ✅    |
 | <details> <summary>Go to Generate Art page by selecting Generate Art in the Nav Bar</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Loads the Generates AI art page.                  | ✅    |
-| <details> <summary>Generate AI art</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Displays loading wheel and loading message(s). Generates AI art based on the given text prompt and save as a public post. Redirect to post to display art.                  | ✅    |
-| <details> <summary>View edit post page by selecting the edit button on your post </summary> <img src="readme_images/screenshots/editPostFull.png"> </details>               | Displays the post edit template                  | ✅    |
+| <details> <summary>Generate AI art by entering a text prompt and submitting it</summary> <img src="readme_images/screenshots/generateArt.png"> </details>            | Displays loading wheel and loading message(s). Generates AI art based on the given text prompt and save as a public post. Redirect to post to display art.                  | ✅    |
+| <details> <summary>View edit post page by selecting the edit button on your post </summary> <img src="readme_images/features/editPost.png"> </details>                 | Displays the post edit template                  | ✅    |
 | <details> <summary>Edit the post by entering the new description and clicking submit </summary> <img src="readme_images/screenshots/editPostFull.png"> </details>      | Displays the post page with updated description       | ✅    |
-| <details> <summary>Make a post private by selecting Make Private on your Public post</summary> <img src="readme_images/features/editPost1.png"> </details>             | Redirects to the private post's detail view and removes the post from the public listing            | ✅    |
-| <details> <summary>Make a post public by selecting Make Public on your Private post</summary> <img src="readme_images/features/editPost.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing                  | ✅    |
-| <details> <summary>Like / unlike a post</summary> <img src="readme_images/features/postLikeComment.png"> </details>      | Updates the posts like count                                                                        | ✅    |
+| <details> <summary>Make a post private by selecting Make Private on your Public post</summary> <img src="readme_images/features/editPost.png"> </details>  | Redirects to the private post's detail view and removes the post from the public listing.     | ✅    |
+| <details> <summary>Make a post public by selecting Make Public on your Private post</summary> <img src="readme_images/features/editPost1.png"> </details>               | Redirects to the public post's detail view and adds the post to the public listing. | ✅    |
+| <details> <summary>Like / unlike a post by clicking on the heart icon</summary> <img src="readme_images/features/postLikeComment.png"> </details>      | Updates the posts like count                                                                        | ✅    |
 | <details> <summary>Delete a post by selecting Delete Post on your post and entering your username as required to confirm deletion </summary> <img src="readme_images/features/deletePost.png"> </details>                  | Removes the post and redirects to the user's profile. Displays a success message.           | ✅    |
 | <details> <summary>View user's profile</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile page. Displays Edit Profile button and Private Posts to the registered user.      | ✅    |
-| <details> <summary>Edit user's profile by selecting Edit Profile on your profile & entering a new Bio and uploading a new profile picture</summary> <img src="readme_images/screenshots/newProfileLoggedIn.png"> </details> | Displays the user's profile page with new Bio and Profile Picture. Displays success message.     | ✅    |
+| <details> <summary>Edit user's profile by selecting Edit Profile on your profile & entering a new Bio and uploading a new profile picture</summary> <img src="readme_images/screenshots/editProfile.png"> </details> | Displays the user's profile page with new Bio and Profile Picture. Displays success message.     | ✅    |
 | <details> <summary>Go to the Upload post page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post page.                            | ✅    |
-| <details> <summary>Upload a new post by completing the Upload Form </summary> <img src="readme_images/screenshots/upload.png"> </details>               | Displays the uploaded post page.                                     | ✅    |
+| <details> <summary>Upload a new post by completing the Upload Form </summary> <img src="readme_images/features/uploadPost.png"> </details>               | Displays the uploaded post page.                                     | ✅    |
 | <details> <summary>Comment on a post by entering a comment on a post and pressing submit</summary> <img src="readme_images/features/postComment.png"> </details>               | Displays the comment on the post page.        | ✅    |
-| <details> <summary>Download a post by selecting the download button below the post (when signed in)</summary> <img src="readme_images/features/#.png"> </details>    | Displays the image in a new tab so you can download it by right clicking and saving it.    | ✅    |
-| <details> <summary>Go to Sign Out page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Display the Sign Out Page.                                               | ✅    |
+| <details> <summary>Download a post by selecting the download button below the post (when signed in)</summary> <img src="readme_images/features/downloadImage.png"> </details>    | Displays the image in a new tab so you can download it by right clicking and saving it.    | ✅    |
+| <details> <summary>Go to Sign Out page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signOut.png"> </details>         | Display the Sign Out Page.                                               | ✅    |
 | <details> <summary>Sign Out by selecting the Sign Out Button on the Sign Out Page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs out the user and redirects to the homepage. Displays success message.          | ✅    |
-| <details> <summary>Search for posts</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query on the search results page.                    | ✅    |
-| Use pagination to go to next, last, previous, first page by using the buttons at the end of the Home or Search Page | Displays the posts on the different pages.            | ✅    |
-| Use Sort By Newest or Most Liked on the Home or Search Page | Adjusts the order the posts are sorted in.           | ✅    |
-| View a post while logged out | The post page will load. The download button for the image will display a sign up / sign in link instead.          | ✅    |
+| <details> <summary>Search for posts by entering word(s) into the search bar</summary> <img src="readme_images/screenshots/search.png"> </details>                | Displays a list of posts that match the search query on the search results page.                    | ✅    |
+| <details> <summary>Use pagination to go to next, last, previous, first page by using the buttons at the end of the Home or Search Page</summary> <img src="readme_images/features/pagination2.png"> </details> | Displays the posts on the different pages. | ✅    |
+| <details> <summary>Use Sort By Newest or Most Liked on the Home or Search Page</summary> <img src="readme_images/features/searchFilter.png"> </details>  | Adjusts the order the posts are sorted in.           | ✅    |
+| <details> <summary>View a post while logged out</summary> <img src="readme_images/screenshots/postLoggedOut.png"> </details>  | The post page will load. The download button for the image will display a sign up / sign in link instead.          | ✅    |
 | <details> <summary>Go to Sign In Page by selecting it in the Nav Bar</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Displays the Sign In Page.                                                | ✅    |
-| <details> <summary>Log in an existing user by entering correct log in details on the sign in page</summary> <img src="readme_images/screenshots/signIn.png"> </details>         | Logs in the user and redirects to the homepage. Displays success message.     | ✅    |
+| <details> <summary>Log in an existing user by entering correct log in details on the sign in page</summary> <img src="readme_images/screenshots/signIn.png"> </details>      | Logs in the user and redirects to the homepage. Displays success message.     | ✅    |
+| <details> <summary>Go to a different users profile  by clicking on their username</summary> <img src="readme_images/screenshots/otherProfileUser.png"> </details>         | Displays their profile page. Does not display private posts or edit post button.            | ✅    |
 
 #### Admin Portal Tests
 
@@ -681,12 +682,15 @@ You will need to import OpenAI and add the API key to your project.
 | Edit a post with empty input                               | Displays an error message and does not update the post                                              | ✅    |
 | Delete a post with incorrect username input                | Displays an error message and does not delete the post                                              | ✅    |
 | Update user profile with empty input                       | Displays an error message and does not update the user's profile                                    | ✅    |
-| Test 404, change the slug to an invalid slug               | Displays the 404 page                                                                               | ✅    |
+| Attempt to upload an image larger than 5mb                 | Displays "File size must not exceed 5 MB." and does not upload the post                             | ✅    |
 | Attempt to download a post image by right clicking on it   | Right click is disabled                                                                             | ✅    |
+| Test 404, change the slug to an invalid slug               | Displays the 404 page                                                                               | ✅    |
 
 <details> <summary>Click here to see an example of an Error Message 🔧</summary> <img src="readme_images/features/errorMessage.png"> </details>
 
 <details> <summary>Click here to see the 404 Page 🛠️</summary> <img src="readme_images/screenshots/404.png"> </details>
+
+<details> <summary>Click here to see the 5mb Limit Message</summary> <img src="readme_images/features/uploadMaxSize.png"> </details>
 
 ### Console
 
@@ -767,6 +771,14 @@ The JS testing was carried out using JSHint and is free of errors.
 
 #### Visual Testing using Google Inspect
 
+#### Visual Testing on Physical Devices
+
+| **Device**                           | **Width (px)** | **Height (px)** |
+|--------------------------------------|----------------|-----------------|
+| **Dell Monitor - 27" (Landscape)**   | 3840           | 2160            |
+| **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
+| **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
+
 | **Device**                   | **Width (px)** | **Height (px)** |
 |------------------------------|---------------|------------------|
 | **iPhone SE**                | 375           | 667              |
@@ -793,14 +805,6 @@ The JS testing was carried out using JSHint and is free of errors.
 
 <img src="readme_images/tests/responsive/responsiveIndex.png" style="max-width: 66%;">
 
-#### Visual Testing on Physical Devices
-
-| **Device**                           | **Width (px)** | **Height (px)** |
-|--------------------------------------|----------------|-----------------|
-| **Dell Monitor - 24" (Portrait)**    | 1920           | 1200            |
-| **Dell Monitor - 27" (Landscape)**   | 3840           | 2160            |
-| **Samsung Galaxy S10 - 5.8"**        | 360            | 760             |
-
 [Go Back Up to Table of Contents 📗](#table-of-contents)
 
 ---
@@ -817,10 +821,18 @@ The JS testing was carried out using JSHint and is free of errors.
 | Site went down and stopped working after deployment | This issue arose after setting up the custom domain but appeared to be unrelated to these changes. After investigating, it turned out the issue was caused by a blank post that did not have a slug, despite numerous tests, I was unable to recreate another Post without a Slug or Title. I rectified the issue by adding a filter to the index template to remove posts without slugs from being displayed which allowed the site to load but it showed an empty post on the index page, I then deleted the empty post via the admin panel. I carried out numerous tests to recreate the issue but was unable to. If an empty post was somehow raised again, it would not cause the same issue. |
 | Unable to create image generation with the same prompt as previously used | I adapted the code to add a number to the end of the public id, slug and title to ensure the values are unique, its then replaced and increases by one. |
 | LoginRequiredMixin wasn't working | To resolve the issue, I moved the LoginRequiredMixin to the leftmost position of each the class function inheritance lists where it was implemented. |
+| The edit bio input box was not displayed correctly on devices with smaller screen widths | I resolved this issue by restricting the max width using CSS. |
+| When I set up Profile Pictures, the users created before this did not have the Default picture applied to them | Instead of adding them to each profile individually, I added an admin feature in the Profile Section of the Admin Portal to select multiple accounts and change the picture to default simultaneously. |
+| On the homepage, the post link was working when user clicks on the image but not the title | I initially had the link to the user profile inside the link to the post which enclosed the image and the title, I resolved this by seperating the post link, one for the image and another for the title, this meant the link to the creators profile was inbetween the two links instead of inside the other link which was causing the issue. |
+| User search was being reset when using the sort by feature or interacting with pagination | Initially, the search function was set up on a different template, I resolved the issue by adding the search features onto the index template instead. |
 | Console Problem: Line too long errors | I resolved these by splitting or reducing the length of comments for each line too long error. |
 | Console Problems: Trailing white spaces and too many / too little blank lines | I refactored these issues accordingly. |
 | Browser Console Problem on Posts and User Pages (when not the creator of the post / profile user): "Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')" | I resolved this issue by adding if statements before the JS code to check the element exists |
 | During initial set up for unique slug and title it was operating correctly, I made changes to this after and then noticed when a duplicate prompt was used, the slug was adding 1 to the end and the post title was adding 2 to the end | I resolved this by adjusting the initial counter value in the view. |
+| W3C testing highlighted a few missing alt tags on images and an open span tag | I resolved the highlighted issues by adding the alt tags to the images and removing the open, unrequired span. |
+| Lighthouse testing recommended some minor improvements such as additional aria-labels and colour changes | I added additional aria-labels and made some colour changes to improve the score however it still advises that the colour contrast in the nav bar could be improved, I experimented with the colours from the colour pallet I created however the Lighthouse test didnt like any of them so I chose to stay with the initial colour as I think it looks well on the site. |
+| Table of Contents in Readme not working | I was unable to get the ToC to work with the emojis in the headings (this wasnt an issue on previous projects) so I removed the emojis. |
+
 
 ### Outstanding Bugs
 
@@ -1025,7 +1037,7 @@ As mentioned above, I have avoided subscriptions and costs where possible. I hav
 | [Markdown Table of Contents Generator](http://ecotrust-canada.github.io/markdown-toc/)                                  | Table of contents generated with markdown-toc                                                                     |
 | [Wix Logo Maker](https://www.wix.com/logo/maker)                                                                        | The Logo was made using Wix's Free Logo Maker                                                                     |
 
-## Special Thanks
+### Special Thanks
 
 I would like to give credit to the all of the content creators and developers of the above documentation and listed resources. In addition to this, I would like to give a lot of credit to the following resources:  👏 🙌
 
